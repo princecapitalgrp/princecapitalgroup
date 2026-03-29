@@ -7,8 +7,9 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight, Target, BarChart2, CheckSquare } from "lucide-react";
 import { Link } from "wouter";
+import { useSEO } from "@/hooks/useSEO";
 
-const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-about-portrait-JKBiM3wHGg6M8x6JJQ8uJV.webp";
+const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pasted_file_YC1Nmo_image_adec1763.png";
 
 function useScrollFadeUp() {
   const ref = useRef<HTMLDivElement>(null);
@@ -86,6 +87,12 @@ const values = [
 ];
 
 export default function About() {
+  useSEO({
+    title: "About | Prince Capital Group",
+    description: "Learn about Antonio Grillo-Balen and PCG's mission: disciplined FX trading through confluence gating, risk governance, and weekly audit loops.",
+    canonical: "https://princecapitalgroup.com/about",
+  });
+
   const pageRef = useScrollFadeUp();
 
   return (
