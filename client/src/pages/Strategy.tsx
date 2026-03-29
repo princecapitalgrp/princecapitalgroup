@@ -1,12 +1,14 @@
 /*
  * PCG Strategy Page
  * Design: Editorial Authority — strategy-bg hero, signal stack sections
- * Sections: Hero, Signal Stack, Cross-Pair Mispricing, Macro Filters, Scope, Interpretation Note
+ * Sections: Hero, Signal Stack (reordered to emphasize z-score), Macro Filters, Scope, Interpretation Note
+ * SEO: Dynamic meta tags with useSEO hook
  */
 
 import { useEffect, useRef } from "react";
 import { ArrowRight, TrendingUp, GitMerge, Globe, AlertCircle } from "lucide-react";
 import { Link } from "wouter";
+import { useSEO } from "@/hooks/useSEO";
 
 const STRATEGY_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-strategy-bg-SiZWbmuevCpcAsjAwJ5uNx.webp";
 
@@ -42,15 +44,15 @@ const signalComponents = [
   {
     icon: GitMerge,
     number: "02",
-    title: "Cross-Pair Mispricing Logic",
-    subtitle: "Triangle Dislocation & Basis Analysis",
+    title: "Rolling Z-Score Analysis",
+    subtitle: "Statistical Mispricing Detection",
     description:
-      "The secondary layer identifies synthetic vs. quoted cross-pair dislocations. When a synthetic cross (e.g., EUR/GBP derived from EUR/USD and GBP/USD) deviates meaningfully from the quoted cross, a basis dislocation exists. Z-score normalization quantifies the magnitude of this deviation relative to historical distribution, providing an objective measure of mispricing.",
-    tags: ["Synthetic Cross", "Quoted Cross", "Basis / Z-Score", "Triangle Dislocation"],
+      "The secondary layer uses rolling z-score normalization to identify statistical dislocations in cross-pair relationships. Z-scores measure how many standard deviations the current basis sits from its rolling mean, providing an objective quantification of mispricing magnitude. This layer emphasizes prolonged statistical stretching and mean-reversion potential, detecting when synthetic vs. quoted cross pairs deviate significantly from their historical distribution.",
+    tags: ["Rolling Z-Score", "Statistical Stretching", "Basis Analysis", "Mean Reversion"],
     callout: {
-      title: "Educational Note: Basis & Z-Score",
+      title: "Educational Note: Z-Score Methodology",
       content:
-        "Basis refers to the spread between a synthetic cross rate and its quoted equivalent. A z-score measures how many standard deviations the current basis sits from its rolling mean. This is a purely educational framework — it does not constitute a trading signal or investment advice.",
+        "A z-score measures the number of standard deviations a data point is from the rolling mean. In FX analysis, rolling z-scores identify when cross-pair relationships deviate significantly from their historical norms. A z-score ≥ 2.0 indicates the basis is at least 2 standard deviations from the mean, suggesting potential mean-reversion opportunity. This is a purely educational framework — it does not constitute a trading signal or investment advice.",
     },
   },
   {
@@ -59,7 +61,7 @@ const signalComponents = [
     title: "Macro Filters",
     subtitle: "Rates / Regime / Event Risk",
     description:
-      "The tertiary layer applies top-down macro context as a directional filter. Rate differentials between central banks, prevailing risk regime (risk-on / risk-off), and scheduled event risk (central bank decisions, CPI, NFP) are assessed to determine whether the macro backdrop supports or contradicts the structural and mispricing signals.",
+      "The tertiary layer applies top-down macro context as a directional filter. Rate differentials between central banks, prevailing risk regime (risk-on / risk-off), and scheduled event risk (central bank decisions, CPI, NFP) are assessed to determine whether the macro backdrop supports or contradicts the structural and statistical signals.",
     tags: ["Rate Differentials", "Risk Regime", "Event Risk Calendar", "Central Bank Policy"],
   },
 ];
@@ -71,6 +73,12 @@ const g10Pairs = [
 ];
 
 export default function Strategy() {
+  useSEO({
+    title: "FX Strategy & Signal Stack | Prince Capital Group",
+    description: "Learn our confluence-gated signal stack approach to G10 FX trading: structure/timing frameworks, rolling z-score analysis, and macro filters.",
+    canonical: "https://princecapitalgroup.com/strategy",
+  });
+
   const pageRef = useScrollFadeUp();
 
   return (
@@ -100,72 +108,90 @@ export default function Strategy() {
             The Signal Stack
           </h1>
           <p
-            className="text-lg leading-relaxed fade-up"
-            style={{ color: "oklch(0.80 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "580px" }}
+            className="text-lg leading-relaxed mb-8 fade-up"
+            style={{
+              color: "oklch(0.80 0.03 243)",
+              fontFamily: "'IBM Plex Sans', sans-serif",
+              maxWidth: "600px",
+            }}
           >
-            A three-layer confluence framework for G10 FX: structure-based execution, cross-pair mispricing, and macro regime filters — all gates must align before a trade plan is formed.
+            A three-layer confluence framework built on structure, statistical analysis, and macro context. Disciplined entry criteria with defined risk parameters.
           </p>
+          <Link href="/contact">
+            <button className="pcg-btn-primary flex items-center gap-2 fade-up">
+              Get in Touch <ArrowRight size={14} />
+            </button>
+          </Link>
         </div>
       </section>
 
-      {/* ── SIGNAL STACK ── */}
-      <section className="container py-20 md:py-28">
+      {/* ── SIGNAL STACK LAYERS ── */}
+      <section className="py-20 md:py-28 container">
         <div className="fade-up mb-4">
-          <div className="pcg-section-label">Signal Architecture</div>
+          <div className="pcg-section-label">Three-Layer Confluence</div>
         </div>
-        <div className="flex items-end justify-between mb-16 fade-up">
+        <div className="flex items-end justify-between mb-12 fade-up">
           <h2
             className="text-white text-3xl md:text-4xl font-bold"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Three-Layer Confluence
+            Confluence Gating Framework
           </h2>
-          <div className="pcg-section-number hidden md:block">03</div>
         </div>
 
-        <div className="space-y-8">
-          {signalComponents.map((component, i) => {
+        <div className="space-y-12">
+          {signalComponents.map((component) => {
             const Icon = component.icon;
             return (
-              <div
-                key={component.number}
-                className="pcg-card p-8 md:p-10 fade-up"
-                style={{ transitionDelay: `${i * 120}ms` }}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                  {/* Left: Number + Icon */}
-                  <div className="md:col-span-2 flex md:flex-col items-center md:items-start gap-4">
+              <div key={component.number} className="fade-up">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {/* Left: Icon & Number */}
+                  <div className="flex flex-col items-start">
                     <div
-                      className="text-5xl font-bold leading-none"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228 / 30%)" }}
+                      className="w-16 h-16 rounded-lg flex items-center justify-center mb-4"
+                      style={{
+                        background: "oklch(0.52 0.07 228 / 15%)",
+                        border: "1px solid oklch(0.52 0.07 228 / 40%)",
+                      }}
                     >
-                      {component.number}
+                      <Icon size={28} style={{ color: "oklch(0.52 0.07 228)" }} />
                     </div>
                     <div
-                      className="w-10 h-10 flex items-center justify-center border"
-                      style={{ borderColor: "oklch(0.52 0.07 228 / 40%)" }}
+                      className="text-4xl font-bold"
+                      style={{
+                        color: "oklch(0.52 0.07 228 / 40%)",
+                        fontFamily: "'IBM Plex Mono', monospace",
+                      }}
                     >
-                      <Icon size={18} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      {component.number}
                     </div>
                   </div>
 
                   {/* Right: Content */}
-                  <div className="md:col-span-10">
-                    <div
-                      className="text-xs mb-1"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.12em", textTransform: "uppercase" }}
-                    >
-                      {component.subtitle}
-                    </div>
+                  <div className="md:col-span-2">
                     <h3
-                      className="text-white text-2xl font-bold mb-4"
+                      className="text-white text-2xl font-bold mb-2"
                       style={{ fontFamily: "'Playfair Display', serif" }}
                     >
                       {component.title}
                     </h3>
+                    <div
+                      className="text-sm mb-4"
+                      style={{
+                        color: "oklch(0.52 0.07 228)",
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {component.subtitle}
+                    </div>
                     <p
-                      className="text-sm leading-relaxed mb-6"
-                      style={{ color: "oklch(0.72 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      className="text-base leading-relaxed mb-6"
+                      style={{
+                        color: "oklch(0.80 0.03 243)",
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                      }}
                     >
                       {component.description}
                     </p>
@@ -175,13 +201,12 @@ export default function Strategy() {
                       {component.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] px-3 py-1 border"
+                          className="text-xs px-3 py-1 rounded"
                           style={{
-                            fontFamily: "'IBM Plex Mono', monospace",
-                            letterSpacing: "0.1em",
-                            textTransform: "uppercase",
+                            background: "oklch(0.52 0.07 228 / 15%)",
                             color: "oklch(0.52 0.07 228)",
-                            borderColor: "oklch(0.52 0.07 228 / 25%)",
+                            fontFamily: "'IBM Plex Mono', monospace",
+                            letterSpacing: "0.08em",
                           }}
                         >
                           {tag}
@@ -191,14 +216,29 @@ export default function Strategy() {
 
                     {/* Callout */}
                     {component.callout && (
-                      <div className="pcg-disclaimer">
+                      <div
+                        className="p-4 rounded-lg border-l-4"
+                        style={{
+                          background: "oklch(0.52 0.07 228 / 8%)",
+                          borderColor: "oklch(0.52 0.07 228)",
+                        }}
+                      >
                         <div
-                          className="font-medium mb-1"
-                          style={{ color: "oklch(0.75 0.07 228)", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.06em" }}
+                          className="text-sm font-semibold mb-2 flex items-center gap-2"
+                          style={{ color: "oklch(0.52 0.07 228)" }}
                         >
+                          <AlertCircle size={16} />
                           {component.callout.title}
                         </div>
-                        {component.callout.content}
+                        <p
+                          className="text-sm leading-relaxed"
+                          style={{
+                            color: "oklch(0.75 0.03 243)",
+                            fontFamily: "'IBM Plex Sans', sans-serif",
+                          }}
+                        >
+                          {component.callout.content}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -209,7 +249,7 @@ export default function Strategy() {
         </div>
       </section>
 
-      {/* ── SCOPE ── */}
+      {/* ── G10 SCOPE ── */}
       <section
         className="py-20 md:py-28"
         style={{ background: "oklch(0.20 0.04 243)" }}
@@ -218,107 +258,93 @@ export default function Strategy() {
           <div className="fade-up mb-4">
             <div className="pcg-section-label">Market Scope</div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div className="fade-up">
-              <h2
-                className="text-white text-3xl md:text-4xl font-bold mb-6"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                G10 FX Focus
-              </h2>
-              <p
-                className="text-sm leading-relaxed mb-6"
-                style={{ color: "oklch(0.72 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
-              >
-                PCG operates exclusively within the G10 foreign exchange universe. This includes the major EUR, GBP, and USD crosses, as well as JPY, CHF, AUD, NZD, and CAD pairs. The G10 universe offers the deepest liquidity, tightest spreads, and the most robust macro data environment for systematic analysis.
-              </p>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "oklch(0.72 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
-              >
-                EUR/GBP/USD crosses are particularly relevant for the triangle dislocation framework, as the three-way relationship between these currencies creates frequent basis opportunities.
-              </p>
-            </div>
-            <div className="fade-up">
-              <div
-                className="text-xs mb-4"
-                style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.52 0.07 228)" }}
-              >
-                Active Pairs
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                {g10Pairs.map((pair) => (
+          <div className="flex items-end justify-between mb-12 fade-up">
+            <h2
+              className="text-white text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              G10 FX Focus
+            </h2>
+          </div>
+
+          <div className="fade-up">
+            <p
+              className="text-base leading-relaxed mb-8"
+              style={{
+                color: "oklch(0.80 0.03 243)",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+                maxWidth: "700px",
+              }}
+            >
+              PCG operates exclusively within the G10 currency complex. This universe includes the major developed market currencies and their cross-pairs, offering sufficient liquidity, tight spreads, and reliable data for rigorous analysis.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {g10Pairs.map((pair) => (
+                <div
+                  key={pair}
+                  className="p-4 rounded-lg text-center fade-up"
+                  style={{
+                    background: "oklch(0.22 0.04 243)",
+                    border: "1px solid oklch(0.52 0.07 228 / 30%)",
+                  }}
+                >
                   <div
-                    key={pair}
-                    className="pcg-card px-4 py-3"
-                    style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.875rem", color: "oklch(0.85 0.03 243)" }}
+                    className="text-sm font-semibold"
+                    style={{
+                      color: "oklch(0.52 0.07 228)",
+                      fontFamily: "'IBM Plex Mono', monospace",
+                      letterSpacing: "0.1em",
+                    }}
                   >
                     {pair}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* ── INTERPRETATION NOTE ── */}
-      <section className="container py-16">
+      <section className="py-20 md:py-28 container">
         <div className="fade-up">
           <div
-            className="flex items-start gap-4 p-8 md:p-10"
-            style={{ border: "1px solid oklch(0.52 0.07 228 / 30%)", background: "oklch(0.20 0.04 243)" }}
+            className="p-8 rounded-lg"
+            style={{
+              background: "oklch(0.52 0.07 228 / 8%)",
+              border: "1px solid oklch(0.52 0.07 228 / 40%)",
+            }}
           >
-            <AlertCircle size={20} style={{ color: "oklch(0.52 0.07 228)", marginTop: "2px" }} className="shrink-0" />
-            <div>
-              <div
-                className="text-xs mb-3"
-                style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.52 0.07 228)" }}
-              >
-                How to Interpret Our Work
+            <div className="flex items-start gap-4">
+              <AlertCircle size={24} style={{ color: "oklch(0.52 0.07 228)", marginTop: "4px", flexShrink: 0 }} />
+              <div>
+                <h3
+                  className="text-white text-lg font-bold mb-3"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  How to Interpret Our Work
+                </h3>
+                <p
+                  className="text-base leading-relaxed mb-4"
+                  style={{
+                    color: "oklch(0.80 0.03 243)",
+                    fontFamily: "'IBM Plex Sans', sans-serif",
+                  }}
+                >
+                  Everything published by PCG is educational in nature. Our signal stack, z-score analysis, and process documentation are presented to illustrate our disciplined approach to FX trading. These materials do not constitute investment advice, trading signals, or recommendations of any kind.
+                </p>
+                <p
+                  className="text-base leading-relaxed"
+                  style={{
+                    color: "oklch(0.80 0.03 243)",
+                    fontFamily: "'IBM Plex Sans', sans-serif",
+                  }}
+                >
+                  We trade proprietary capital only. We do not manage client funds, provide advisory services, or accept external capital. All content is probabilistic in nature and reflects our internal research framework — not a guaranteed path to profitability.
+                </p>
               </div>
-              <h3
-                className="text-white text-xl font-semibold mb-4"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                Educational, Probabilistic, Not Advice
-              </h3>
-              <p
-                className="text-sm leading-relaxed mb-4"
-                style={{ color: "oklch(0.72 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
-              >
-                All strategy documentation published by PCG is intended as an educational record of our research process. The signal stack described here represents a framework for thinking about market structure and confluence — it is not a trading system, not a set of rules to be followed, and not investment advice.
-              </p>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "oklch(0.72 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
-              >
-                Markets are probabilistic environments. No framework guarantees outcomes. Our process documentation is shared to demonstrate disciplined thinking, not to suggest that any particular outcome is predictable or replicable. Always conduct your own research and consult qualified financial professionals before making any trading decisions.
-              </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── NEXT: RISK ── */}
-      <section className="container pb-20">
-        <div className="fade-up">
-          <div className="pcg-rule mb-8" />
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="pcg-section-label mb-2">Next</div>
-              <h3
-                className="text-white text-xl font-semibold"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                Risk & Governance
-              </h3>
-            </div>
-            <Link href="/risk">
-              <button className="pcg-btn-outline flex items-center gap-2">
-                View Risk Framework <ArrowRight size={14} />
-              </button>
-            </Link>
           </div>
         </div>
       </section>

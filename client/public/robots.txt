@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /.manus-logs
+Disallow: /__manus__
+
+Sitemap: https://princecapitalgroup.com/sitemap.xml
+
+Crawl-delay: 1

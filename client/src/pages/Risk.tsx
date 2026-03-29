@@ -7,6 +7,7 @@
 import { useEffect, useRef } from "react";
 import { Shield, CheckSquare, AlertTriangle, RotateCcw, Pause, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { useSEO } from "@/hooks/useSEO";
 
 const RISK_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-risk-bg-2Dzyx2bvpWc4oKbKzREXwF.webp";
 
@@ -33,7 +34,7 @@ const philosophyPrinciples = [
   {
     title: "Capital Preservation First",
     description:
-      "The primary objective is not profit maximisation — it is the preservation of trading capital. Every decision is evaluated through the lens of downside protection before upside potential.",
+      "The primary objective is not profit maximization — it is the preservation of trading capital. Every decision is evaluated through the lens of downside protection before upside potential.",
   },
   {
     title: "Discipline Over Discretion",
@@ -100,6 +101,12 @@ const governanceLoop = [
 ];
 
 export default function Risk() {
+  useSEO({
+    title: "Risk & Governance Framework | Prince Capital Group",
+    description: "Learn our risk governance philosophy: capital preservation, discipline, systematic de-risking, and kill-switch protocols for FX trading.",
+    canonical: "https://princecapitalgroup.com/risk",
+  });
+
   const pageRef = useScrollFadeUp();
 
   return (

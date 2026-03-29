@@ -14,7 +14,6 @@ const navLinks = [
   { href: "/risk", label: "Risk & Governance" },
   { href: "/academy", label: "Academy" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navigation() {
