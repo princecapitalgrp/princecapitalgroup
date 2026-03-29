@@ -3,7 +3,6 @@
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install",
   "framework": "vite",
-  "nodeVersion": "22.x",
   "env": {
     "NODE_ENV": "production"
   },
