@@ -53,7 +53,7 @@
   /* PCG Brand Colors */
   --color-pcg-navy: oklch(0.22 0.04 243);
   --color-pcg-navy-light: oklch(0.28 0.04 243);
-  --color-pcg-charcoal: oklch(0.30 0.01 250);
+  --color-pcg-charcoal: oklch(0.3 0.01 250);
   --color-pcg-steel: oklch(0.52 0.07 228);
   --color-pcg-steel-light: oklch(0.62 0.07 228);
   --color-pcg-offwhite: oklch(0.98 0.002 286);
@@ -70,10 +70,10 @@
   --popover-foreground: oklch(0.97 0.002 286);
   --primary: oklch(0.52 0.07 228);
   --primary-foreground: oklch(0.97 0.002 286);
-  --secondary: oklch(0.30 0.01 250);
+  --secondary: oklch(0.3 0.01 250);
   --secondary-foreground: oklch(0.97 0.002 286);
   --muted: oklch(0.28 0.03 243);
-  --muted-foreground: oklch(0.70 0.03 243);
+  --muted-foreground: oklch(0.7 0.03 243);
   --accent: oklch(0.52 0.07 228);
   --accent-foreground: oklch(0.97 0.002 286);
   --destructive: oklch(0.577 0.245 27.325);
@@ -86,7 +86,7 @@
   --chart-3: oklch(0.42 0.07 228);
   --chart-4: oklch(0.32 0.07 228);
   --chart-5: oklch(0.22 0.07 228);
-  --sidebar: oklch(0.20 0.04 243);
+  --sidebar: oklch(0.2 0.04 243);
   --sidebar-foreground: oklch(0.97 0.002 286);
   --sidebar-primary: oklch(0.52 0.07 228);
   --sidebar-primary-foreground: oklch(0.97 0.002 286);
@@ -102,12 +102,15 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3, h4 {
-    font-family: 'Playfair Display', serif;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Playfair Display", serif;
     letter-spacing: -0.02em;
   }
   button:not(:disabled),
@@ -154,7 +157,7 @@
 
   /* PCG Editorial Components */
   .pcg-section-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -162,7 +165,7 @@
   }
 
   .pcg-section-number {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 4rem;
     font-weight: 700;
     color: oklch(0.52 0.07 228 / 20%);
@@ -184,7 +187,7 @@
   }
 
   .pcg-rule-labeled::after {
-    content: '';
+    content: "";
     flex: 1;
     height: 1px;
     background: oklch(1 0 0 / 12%);
@@ -203,7 +206,7 @@
   .pcg-btn-primary {
     background: oklch(0.52 0.07 228);
     color: white;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 0.8125rem;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -221,7 +224,7 @@
   .pcg-btn-outline {
     background: transparent;
     color: white;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 0.8125rem;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -240,7 +243,7 @@
     background: oklch(0.18 0.04 243);
     border-left: 3px solid oklch(0.52 0.07 228);
     padding: 1rem 1.5rem;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.75rem;
     color: oklch(0.65 0.03 243);
     line-height: 1.6;
@@ -253,7 +256,7 @@
   }
 
   .pcg-nav-link {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 0.8125rem;
     font-weight: 500;
     letter-spacing: 0.06em;
@@ -264,7 +267,7 @@
   }
 
   .pcg-nav-link::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -296,7 +299,7 @@
     border-top: 2px solid oklch(0.52 0.07 228);
     border-bottom: 1px solid oklch(0.52 0.07 228 / 30%);
     padding: 0.625rem 1rem;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -308,7 +311,9 @@
   .fade-up {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 500ms ease, transform 500ms ease;
+    transition:
+      opacity 500ms ease,
+      transform 500ms ease;
   }
 
   .fade-up.visible {
@@ -322,7 +327,7 @@
   }
 
   .process-step::after {
-    content: '→';
+    content: "→";
     position: absolute;
     right: -1.25rem;
     top: 50%;

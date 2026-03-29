@@ -6,11 +6,18 @@
  */
 
 import { useEffect, useRef } from "react";
-import { ArrowRight, TrendingUp, GitMerge, Globe, AlertCircle } from "lucide-react";
+import {
+  ArrowRight,
+  TrendingUp,
+  GitMerge,
+  Globe,
+  AlertCircle,
+} from "lucide-react";
 import { Link } from "wouter";
 import { useSEO } from "@/hooks/useSEO";
 
-const STRATEGY_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-strategy-bg-SiZWbmuevCpcAsjAwJ5uNx.webp";
+const STRATEGY_BG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-strategy-bg-SiZWbmuevCpcAsjAwJ5uNx.webp";
 
 function useScrollFadeUp() {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,14 +25,14 @@ function useScrollFadeUp() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
-    el.querySelectorAll(".fade-up").forEach((e) => observer.observe(e));
+    el.querySelectorAll(".fade-up").forEach(e => observer.observe(e));
     return () => observer.disconnect();
   }, []);
   return ref;
@@ -39,7 +46,12 @@ const signalComponents = [
     subtitle: "Range / Structure-Based Execution",
     description:
       "The primary execution layer identifies market structure through price action: key levels, range boundaries, and structural pivots. Timing is derived from session overlap dynamics and liquidity windows. Entries are only considered when price is at a structurally meaningful location with defined invalidation.",
-    tags: ["Price Action", "Market Structure", "Session Timing", "Liquidity Windows"],
+    tags: [
+      "Price Action",
+      "Market Structure",
+      "Session Timing",
+      "Liquidity Windows",
+    ],
   },
   {
     icon: GitMerge,
@@ -48,7 +60,12 @@ const signalComponents = [
     subtitle: "Statistical Mispricing Detection",
     description:
       "The secondary layer uses rolling z-score normalization to identify statistical dislocations in cross-pair relationships. Z-scores measure how many standard deviations the current basis sits from its rolling mean, providing an objective quantification of mispricing magnitude. This layer emphasizes prolonged statistical stretching and mean-reversion potential, detecting when synthetic vs. quoted cross pairs deviate significantly from their historical distribution.",
-    tags: ["Rolling Z-Score", "Statistical Stretching", "Basis Analysis", "Mean Reversion"],
+    tags: [
+      "Rolling Z-Score",
+      "Statistical Stretching",
+      "Basis Analysis",
+      "Mean Reversion",
+    ],
     callout: {
       title: "Educational Note: Z-Score Methodology",
       content:
@@ -62,20 +79,33 @@ const signalComponents = [
     subtitle: "Rates / Regime / Event Risk",
     description:
       "The tertiary layer applies top-down macro context as a directional filter. Rate differentials between central banks, prevailing risk regime (risk-on / risk-off), and scheduled event risk (central bank decisions, CPI, NFP) are assessed to determine whether the macro backdrop supports or contradicts the structural and statistical signals.",
-    tags: ["Rate Differentials", "Risk Regime", "Event Risk Calendar", "Central Bank Policy"],
+    tags: [
+      "Rate Differentials",
+      "Risk Regime",
+      "Event Risk Calendar",
+      "Central Bank Policy",
+    ],
   },
 ];
 
 const g10Pairs = [
-  "EUR/USD", "GBP/USD", "USD/JPY", "USD/CHF",
-  "AUD/USD", "NZD/USD", "USD/CAD", "EUR/GBP",
-  "EUR/JPY", "GBP/JPY",
+  "EUR/USD",
+  "GBP/USD",
+  "USD/JPY",
+  "USD/CHF",
+  "AUD/USD",
+  "NZD/USD",
+  "USD/CAD",
+  "EUR/GBP",
+  "EUR/JPY",
+  "GBP/JPY",
 ];
 
 export default function Strategy() {
   useSEO({
     title: "FX Strategy & Signal Stack | Prince Capital Group",
-    description: "Learn our confluence-gated signal stack approach to G10 FX trading: structure/timing frameworks, rolling z-score analysis, and macro filters.",
+    description:
+      "Learn our confluence-gated signal stack approach to G10 FX trading: structure/timing frameworks, rolling z-score analysis, and macro filters.",
     canonical: "https://princecapitalgroup.com/strategy",
   });
 
@@ -100,10 +130,15 @@ export default function Strategy() {
           }}
         />
         <div className="relative container">
-          <div className="pcg-section-label mb-4 fade-up">Strategy Framework</div>
+          <div className="pcg-section-label mb-4 fade-up">
+            Strategy Framework
+          </div>
           <h1
             className="text-white text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
-            style={{ fontFamily: "'Playfair Display', serif", maxWidth: "700px" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              maxWidth: "700px",
+            }}
           >
             The Signal Stack
           </h1>
@@ -115,7 +150,9 @@ export default function Strategy() {
               maxWidth: "600px",
             }}
           >
-            A three-layer confluence framework built on structure, statistical analysis, and macro context. Disciplined entry criteria with defined risk parameters.
+            A three-layer confluence framework built on structure, statistical
+            analysis, and macro context. Disciplined entry criteria with defined
+            risk parameters.
           </p>
           <Link href="/contact">
             <button className="pcg-btn-primary flex items-center gap-2 fade-up">
@@ -140,7 +177,7 @@ export default function Strategy() {
         </div>
 
         <div className="space-y-12">
-          {signalComponents.map((component) => {
+          {signalComponents.map(component => {
             const Icon = component.icon;
             return (
               <div key={component.number} className="fade-up">
@@ -154,7 +191,10 @@ export default function Strategy() {
                         border: "1px solid oklch(0.52 0.07 228 / 40%)",
                       }}
                     >
-                      <Icon size={28} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon
+                        size={28}
+                        style={{ color: "oklch(0.52 0.07 228)" }}
+                      />
                     </div>
                     <div
                       className="text-4xl font-bold"
@@ -198,7 +238,7 @@ export default function Strategy() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-6">
-                      {component.tags.map((tag) => (
+                      {component.tags.map(tag => (
                         <span
                           key={tag}
                           className="text-xs px-3 py-1 rounded"
@@ -276,11 +316,14 @@ export default function Strategy() {
                 maxWidth: "700px",
               }}
             >
-              PCG operates exclusively within the G10 currency complex. This universe includes the major developed market currencies and their cross-pairs, offering sufficient liquidity, tight spreads, and reliable data for rigorous analysis.
+              PCG operates exclusively within the G10 currency complex. This
+              universe includes the major developed market currencies and their
+              cross-pairs, offering sufficient liquidity, tight spreads, and
+              reliable data for rigorous analysis.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-              {g10Pairs.map((pair) => (
+              {g10Pairs.map(pair => (
                 <div
                   key={pair}
                   className="p-4 rounded-lg text-center fade-up"
@@ -317,7 +360,14 @@ export default function Strategy() {
             }}
           >
             <div className="flex items-start gap-4">
-              <AlertCircle size={24} style={{ color: "oklch(0.52 0.07 228)", marginTop: "4px", flexShrink: 0 }} />
+              <AlertCircle
+                size={24}
+                style={{
+                  color: "oklch(0.52 0.07 228)",
+                  marginTop: "4px",
+                  flexShrink: 0,
+                }}
+              />
               <div>
                 <h3
                   className="text-white text-lg font-bold mb-3"
@@ -332,7 +382,11 @@ export default function Strategy() {
                     fontFamily: "'IBM Plex Sans', sans-serif",
                   }}
                 >
-                  Everything published by PCG is educational in nature. Our signal stack, z-score analysis, and process documentation are presented to illustrate our disciplined approach to FX trading. These materials do not constitute investment advice, trading signals, or recommendations of any kind.
+                  Everything published by PCG is educational in nature. Our
+                  signal stack, z-score analysis, and process documentation are
+                  presented to illustrate our disciplined approach to FX
+                  trading. These materials do not constitute investment advice,
+                  trading signals, or recommendations of any kind.
                 </p>
                 <p
                   className="text-base leading-relaxed"
@@ -341,7 +395,11 @@ export default function Strategy() {
                     fontFamily: "'IBM Plex Sans', sans-serif",
                   }}
                 >
-                  We trade proprietary capital only. We do not manage client funds, provide advisory services, or accept external capital. All content is probabilistic in nature and reflects our internal research framework — not a guaranteed path to profitability.
+                  We trade proprietary capital only. We do not manage client
+                  funds, provide advisory services, or accept external capital.
+                  All content is probabilistic in nature and reflects our
+                  internal research framework — not a guaranteed path to
+                  profitability.
                 </p>
               </div>
             </div>

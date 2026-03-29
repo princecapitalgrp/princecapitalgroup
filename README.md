@@ -10,6 +10,7 @@ A modern, multi-page website for Prince Capital Group, built with React 19, Tail
 ## 📋 Features
 
 ✅ **6 Complete Pages:**
+
 - **Home** — Hero, process loop, pillars, proof-of-work
 - **Strategy** — Signal stack, cross-pair mispricing, macro filters
 - **Risk & Governance** — Risk philosophy, governance loop, compliance
@@ -18,6 +19,7 @@ A modern, multi-page website for Prince Capital Group, built with React 19, Tail
 - **Contact** — Contact form, inquiry types, direct contact
 
 ✅ **Design:**
+
 - Dark navy editorial aesthetic (OKLCH color system)
 - Playfair Display + IBM Plex Sans typography
 - Responsive mobile-first design
@@ -25,6 +27,7 @@ A modern, multi-page website for Prince Capital Group, built with React 19, Tail
 - Full compliance disclaimers
 
 ✅ **Technology:**
+
 - React 19 with TypeScript
 - Wouter for client-side routing
 - Tailwind CSS 4 with custom design tokens
@@ -86,16 +89,19 @@ prince-capital-group/
 ## 🎨 Design System
 
 ### Colors (OKLCH)
+
 - **Primary Background:** `oklch(0.22 0.04 243)` — Deep Navy
 - **Accent:** `oklch(0.52 0.07 228)` — Steel Blue
 - **Text:** `oklch(0.75 0.03 243)` — Soft Gray
 
 ### Typography
+
 - **Headlines:** Playfair Display (serif)
 - **Body:** IBM Plex Sans (sans-serif)
 - **Monospace:** IBM Plex Mono
 
 ### Custom Classes
+
 - `.pcg-section-label` — Section labels
 - `.pcg-card` — Card styling
 - `.pcg-btn-primary` — Primary buttons
@@ -106,13 +112,13 @@ prince-capital-group/
 
 ### Available Scripts
 
-| Command | Purpose |
-|---------|---------|
-| `pnpm run dev` | Start development server |
-| `pnpm run build` | Build for production |
-| `pnpm run preview` | Preview production build |
-| `pnpm run check` | TypeScript type checking |
-| `pnpm run format` | Format code with Prettier |
+| Command            | Purpose                   |
+| ------------------ | ------------------------- |
+| `pnpm run dev`     | Start development server  |
+| `pnpm run build`   | Build for production      |
+| `pnpm run preview` | Preview production build  |
+| `pnpm run check`   | TypeScript type checking  |
+| `pnpm run format`  | Format code with Prettier |
 
 ### Adding New Pages
 
@@ -124,6 +130,7 @@ prince-capital-group/
 ### Customizing Content
 
 Edit page files in `client/src/pages/`:
+
 - `Home.tsx` — Home page content
 - `Strategy.tsx` — Strategy section
 - `Risk.tsx` — Risk & governance
@@ -134,6 +141,7 @@ Edit page files in `client/src/pages/`:
 ### Customizing Styles
 
 Edit `client/src/index.css` for:
+
 - Color tokens
 - Typography
 - Custom component classes
@@ -142,17 +150,20 @@ Edit `client/src/index.css` for:
 ## 📦 Dependencies
 
 ### Core
+
 - **react** 19.2.1 — UI framework
 - **wouter** 3.3.5 — Routing
 - **tailwindcss** 4.1.14 — Styling
 - **vite** 7.1.7 — Build tool
 
 ### UI Components
+
 - **shadcn/ui** — Pre-built components
 - **lucide-react** — Icons
 - **framer-motion** — Animations
 
 ### Server
+
 - **express** 4.21.2 — HTTP server
 - **typescript** 5.6.3 — Type safety
 
@@ -184,18 +195,21 @@ See `VERCEL-DEPLOYMENT.md` for detailed instructions.
 ### Deploy to Other Platforms
 
 **GitHub Pages:**
+
 ```bash
 npm install -g vercel
 vercel deploy --prod
 ```
 
 **Netlify:**
+
 ```bash
 npm install -g netlify-cli
 netlify deploy --prod --dir dist/public
 ```
 
 **Self-Hosted:**
+
 ```bash
 pnpm run build
 NODE_ENV=production node dist/index.js
@@ -204,12 +218,14 @@ NODE_ENV=production node dist/index.js
 ## 🔐 Security
 
 ✅ **Included:**
+
 - HTTPS/SSL (automatic on Vercel)
 - Security headers (X-Frame-Options, X-XSS-Protection)
 - Content Security Policy
 - DDoS protection (Vercel)
 
 ✅ **Recommended:**
+
 - Enable 2FA on GitHub & Vercel
 - Use environment variables for secrets
 - Regular dependency updates
@@ -225,6 +241,7 @@ NODE_ENV=production node dist/index.js
 ## 🐛 Troubleshooting
 
 ### Build Fails
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules pnpm-lock.yaml
@@ -233,6 +250,7 @@ pnpm run build
 ```
 
 ### TypeScript Errors
+
 ```bash
 # Check for type issues
 pnpm run check
@@ -242,6 +260,7 @@ pnpm run format
 ```
 
 ### Dev Server Won't Start
+
 ```bash
 # Kill any existing processes
 pkill -f "vite"
@@ -263,6 +282,7 @@ This website is proprietary to Prince Capital Group. All rights reserved.
 ## 📧 Support
 
 For questions or issues:
+
 - **Email:** contact@princecapitalgroup.com
 - **GitHub Issues:** Report bugs here
 - **Vercel Support:** https://vercel.com/support
@@ -271,4 +291,4 @@ For questions or issues:
 
 **Built with React 19, Tailwind CSS 4, and Vite**
 
-*Prince Capital Group — Global Macro FX through Disciplined Execution*
+_Prince Capital Group — Global Macro FX through Disciplined Execution_

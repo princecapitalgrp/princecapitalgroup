@@ -59,13 +59,20 @@ export default function Navigation() {
                 <div className="hidden sm:block">
                   <div
                     className="text-white text-sm font-semibold leading-tight"
-                    style={{ fontFamily: "'IBM Plex Sans', sans-serif", letterSpacing: "0.04em" }}
+                    style={{
+                      fontFamily: "'IBM Plex Sans', sans-serif",
+                      letterSpacing: "0.04em",
+                    }}
                   >
                     Prince Capital Group
                   </div>
                   <div
                     className="text-[oklch(0.52_0.07_228)] text-[10px] leading-tight"
-                    style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase" }}
+                    style={{
+                      fontFamily: "'IBM Plex Mono', monospace",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
                   >
                     Global Macro FX
                   </div>
@@ -75,7 +82,7 @@ export default function Navigation() {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {navLinks.map(link => (
                 <Link key={link.href} href={link.href}>
                   <span
                     className={`pcg-nav-link ${location === link.href ? "active" : ""}`}
@@ -89,9 +96,7 @@ export default function Navigation() {
             {/* CTA + Mobile Toggle */}
             <div className="flex items-center gap-4">
               <Link href="/contact" className="hidden md:block">
-                <button className="pcg-btn-primary text-xs">
-                  Contact
-                </button>
+                <button className="pcg-btn-primary text-xs">Contact</button>
               </Link>
               <button
                 className="lg:hidden text-white/80 hover:text-white transition-colors"
@@ -115,7 +120,10 @@ export default function Navigation() {
       >
         <div
           className="absolute inset-0"
-          style={{ background: "oklch(0.18 0.04 243 / 97%)", backdropFilter: "blur(16px)" }}
+          style={{
+            background: "oklch(0.18 0.04 243 / 97%)",
+            backdropFilter: "blur(16px)",
+          }}
           onClick={() => setMobileOpen(false)}
         />
         <div className="relative flex flex-col justify-center h-full px-8">
@@ -125,14 +133,19 @@ export default function Navigation() {
                 <div
                   className="flex items-center gap-4 group"
                   style={{
-                    transform: mobileOpen ? "translateX(0)" : "translateX(-20px)",
+                    transform: mobileOpen
+                      ? "translateX(0)"
+                      : "translateX(-20px)",
                     opacity: mobileOpen ? 1 : 0,
                     transition: `all 300ms ease ${i * 60}ms`,
                   }}
                 >
                   <span
                     className="text-[oklch(0.52_0.07_228)] text-xs"
-                    style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.1em" }}
+                    style={{
+                      fontFamily: "'IBM Plex Mono', monospace",
+                      letterSpacing: "0.1em",
+                    }}
                   >
                     0{i + 1}.
                   </span>

@@ -7,14 +7,26 @@
 
 import { Link } from "wouter";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Shield, BarChart2, RefreshCw, FileText, BookOpen, Layers, ChevronDown } from "lucide-react";
+import {
+  ArrowRight,
+  Shield,
+  BarChart2,
+  RefreshCw,
+  FileText,
+  BookOpen,
+  Layers,
+  ChevronDown,
+} from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-hero-bg-UBP35WQUSoTKrtQSwvhVWz.webp";
+const HERO_BG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-hero-bg-UBP35WQUSoTKrtQSwvhVWz.webp";
 
 // Scroll to top on mount
 function ScrollToTop() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return null;
 }
 
@@ -49,21 +61,24 @@ const proofOfWork = [
   {
     icon: FileText,
     label: "Weekly Process Memo",
-    description: "Structured weekly audit of trade process, rule adherence, and setup quality.",
+    description:
+      "Structured weekly audit of trade process, rule adherence, and setup quality.",
     tag: "Process",
     href: "/academy",
   },
   {
     icon: Shield,
     label: "Risk Toolkit",
-    description: "Journal templates, pre-trade checklists, and weekly memo frameworks.",
+    description:
+      "Journal templates, pre-trade checklists, and weekly memo frameworks.",
     tag: "Governance",
     href: "/academy",
   },
   {
     icon: Layers,
     label: "Setup Anatomy",
-    description: "Tagged library of trade setup examples: structure, mispricing, macro filter, risk.",
+    description:
+      "Tagged library of trade setup examples: structure, mispricing, macro filter, risk.",
     tag: "Education",
     href: "/academy",
   },
@@ -72,19 +87,23 @@ const proofOfWork = [
 const processDetails = [
   {
     title: "Idea",
-    content: "Monthly Turtle on EURUSD soup of highs that just closed below the low that swept the high. Furthermore, the ECB is cutting rates while oil prices increase.",
+    content:
+      "Monthly Turtle on EURUSD soup of highs that just closed below the low that swept the high. Furthermore, the ECB is cutting rates while oil prices increase.",
   },
   {
     title: "Signal Stack",
-    content: "Z-scores indicating prolonged statistical stretching, widening yield differential, high spread momentum and peaking z momentum. Triangle is insignificant.",
+    content:
+      "Z-scores indicating prolonged statistical stretching, widening yield differential, high spread momentum and peaking z momentum. Triangle is insignificant.",
   },
   {
     title: "Gate",
-    content: "Z ≥ 2.0? Spreadmom > -5bps? Zmom < 0? 1d∆ ≥ 8.0bps? Triangle > 1.00?",
+    content:
+      "Z ≥ 2.0? Spreadmom > -5bps? Zmom < 0? 1d∆ ≥ 8.0bps? Triangle > 1.00?",
   },
   {
     title: "Trade Plan",
-    content: "High impact news on Wednesday therefore no trades on Tuesday-Wednesday. If Monday accumulation then entry on OB. If no entry, wait for Thursday retest of bb.",
+    content:
+      "High impact news on Wednesday therefore no trades on Tuesday-Wednesday. If Monday accumulation then entry on OB. If no entry, wait for Thursday retest of bb.",
   },
   {
     title: "Execute",
@@ -92,15 +111,18 @@ const processDetails = [
   },
   {
     title: "Monitor",
-    content: "If Yields rise > 15bps, price wicks below 50% on daily TF, and Zmom > 0 then exit at breakeven.",
+    content:
+      "If Yields rise > 15bps, price wicks below 50% on daily TF, and Zmom > 0 then exit at breakeven.",
   },
   {
     title: "Journal",
-    content: "SL hit. Psychological error: Overconfidence and FOMO; Technical: Low probability OB; Cognitive error: Disregarded the bullish HTF trend. Therefore, avoid next time.",
+    content:
+      "SL hit. Psychological error: Overconfidence and FOMO; Technical: Low probability OB; Cognitive error: Disregarded the bullish HTF trend. Therefore, avoid next time.",
   },
   {
     title: "Weekly Review",
-    content: "What worked and what didn't? Adherence score = 90%. Z-scores did not align with price this week.",
+    content:
+      "What worked and what didn't? Adherence score = 90%. Z-scores did not align with price this week.",
   },
 ];
 
@@ -110,14 +132,14 @@ function useScrollFadeUp() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
-    el.querySelectorAll(".fade-up").forEach((e) => observer.observe(e));
+    el.querySelectorAll(".fade-up").forEach(e => observer.observe(e));
     return () => observer.disconnect();
   }, []);
   return ref;
@@ -126,7 +148,8 @@ function useScrollFadeUp() {
 export default function Home() {
   useSEO({
     title: "Prince Capital Group — Global Macro FX",
-    description: "Proprietary research-to-execution project focused on G10 FX with disciplined execution. Confluence-gated signal stack, risk governance, and weekly audit loops.",
+    description:
+      "Proprietary research-to-execution project focused on G10 FX with disciplined execution. Confluence-gated signal stack, risk governance, and weekly audit loops.",
     canonical: "https://princecapitalgroup.com",
   });
 
@@ -166,21 +189,34 @@ export default function Home() {
           <div className="max-w-3xl">
             <div
               className="text-[oklch(0.52_0.07_228)] text-6xl md:text-8xl font-bold leading-none mb-6 fade-up"
-              style={{ fontFamily: "'IBM Plex Mono', monospace", opacity: 0.15, letterSpacing: "-0.04em" }}
+              style={{
+                fontFamily: "'IBM Plex Mono', monospace",
+                opacity: 0.15,
+                letterSpacing: "-0.04em",
+              }}
             >
               PCG
             </div>
             <h1
               className="text-white text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 fade-up"
-              style={{ fontFamily: "'Playfair Display', serif", letterSpacing: "-0.02em" }}
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                letterSpacing: "-0.02em",
+              }}
             >
               Global Macro FX through Disciplined Execution
             </h1>
             <p
               className="text-lg md:text-xl leading-relaxed mb-10 fade-up"
-              style={{ color: "oklch(0.80 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "600px" }}
+              style={{
+                color: "oklch(0.80 0.03 243)",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+                maxWidth: "600px",
+              }}
             >
-              PCG is a proprietary research-to-execution project focused on G10 FX, built around confluence gating, risk governance, and weekly audit loops.
+              PCG is a proprietary research-to-execution project focused on G10
+              FX, built around confluence gating, risk governance, and weekly
+              audit loops.
             </p>
             <div className="flex flex-wrap gap-4 fade-up">
               <Link href="/academy">
@@ -198,7 +234,13 @@ export default function Home() {
         <div className="fade-up">
           <div
             className="pcg-rule-labeled mb-8"
-            style={{ color: "oklch(0.52 0.07 228)", fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase" }}
+            style={{
+              color: "oklch(0.52 0.07 228)",
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: "0.7rem",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+            }}
           >
             Scope & Compliance
           </div>
@@ -207,7 +249,12 @@ export default function Home() {
               <div>
                 <div
                   className="text-xs mb-4 flex items-center gap-2"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.52 0.07 228)" }}
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "oklch(0.52 0.07 228)",
+                  }}
                 >
                   <span className="w-2 h-2 rounded-full bg-green-400 inline-block" />
                   What We Do
@@ -218,11 +265,14 @@ export default function Home() {
                     "Conduct independent macro FX research",
                     "Publish educational process documentation",
                     "Operate under strict risk governance frameworks",
-                  ].map((item) => (
+                  ].map(item => (
                     <li
                       key={item}
                       className="flex items-start gap-3 text-sm"
-                      style={{ color: "oklch(0.85 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{
+                        color: "oklch(0.85 0.03 243)",
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                      }}
                     >
                       <span className="text-green-400 mt-0.5 shrink-0">✓</span>
                       {item}
@@ -233,7 +283,12 @@ export default function Home() {
               <div>
                 <div
                   className="text-xs mb-4 flex items-center gap-2"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.52 0.07 228)" }}
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "oklch(0.52 0.07 228)",
+                  }}
                 >
                   <span className="w-2 h-2 rounded-full bg-red-400 inline-block" />
                   What We Don't Do
@@ -244,11 +299,14 @@ export default function Home() {
                     "We do not provide investment advice",
                     "We do not accept external capital",
                     "We do not offer trading signals or recommendations",
-                  ].map((item) => (
+                  ].map(item => (
                     <li
                       key={item}
                       className="flex items-start gap-3 text-sm"
-                      style={{ color: "oklch(0.85 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{
+                        color: "oklch(0.85 0.03 243)",
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                      }}
                     >
                       <span className="text-red-400 mt-0.5 shrink-0">✕</span>
                       {item}
@@ -279,7 +337,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pillars.map((pillar) => {
+            {pillars.map(pillar => {
               const Icon = pillar.icon;
               return (
                 <Link key={pillar.title} href={pillar.href}>
@@ -291,10 +349,16 @@ export default function Home() {
                     }}
                   >
                     <div className="flex items-start gap-4 mb-6">
-                      <Icon size={24} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon
+                        size={24}
+                        style={{ color: "oklch(0.52 0.07 228)" }}
+                      />
                       <span
                         className="text-sm font-mono"
-                        style={{ color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em" }}
+                        style={{
+                          color: "oklch(0.52 0.07 228)",
+                          letterSpacing: "0.1em",
+                        }}
                       >
                         {pillar.number}
                       </span>
@@ -307,13 +371,21 @@ export default function Home() {
                     </h3>
                     <p
                       className="text-sm leading-relaxed mb-6"
-                      style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{
+                        color: "oklch(0.65 0.03 243)",
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                      }}
                     >
                       {pillar.description}
                     </p>
                     <div
                       className="flex items-center gap-2 text-xs group-hover:gap-3 transition-all"
-                      style={{ color: "oklch(0.52 0.07 228)", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                      style={{
+                        color: "oklch(0.52 0.07 228)",
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                      }}
                     >
                       Learn more <ArrowRight size={12} />
                     </div>
@@ -345,19 +417,21 @@ export default function Home() {
             {processDetails.map((step, idx) => (
               <div key={idx} className="relative">
                 <button
-                  onClick={() => setExpandedStep(expandedStep === idx ? null : idx)}
+                  onClick={() =>
+                    setExpandedStep(expandedStep === idx ? null : idx)
+                  }
                   className={`w-full p-3 rounded-lg text-center transition-all duration-300 ${
-                    expandedStep === idx
-                      ? "shadow-lg"
-                      : "hover:shadow-md"
+                    expandedStep === idx ? "shadow-lg" : "hover:shadow-md"
                   }`}
                   style={{
-                    background: expandedStep === idx
-                      ? "oklch(0.52 0.07 228)"
-                      : "oklch(0.22 0.04 243)",
-                    boxShadow: expandedStep === idx
-                      ? "0 0 20px oklch(0.52 0.07 228 / 50%)"
-                      : "none",
+                    background:
+                      expandedStep === idx
+                        ? "oklch(0.52 0.07 228)"
+                        : "oklch(0.22 0.04 243)",
+                    boxShadow:
+                      expandedStep === idx
+                        ? "0 0 20px oklch(0.52 0.07 228 / 50%)"
+                        : "none",
                     border: "1px solid oklch(0.52 0.07 228 / 30%)",
                   }}
                 >
@@ -365,7 +439,8 @@ export default function Home() {
                     className="text-[10px] mb-1"
                     style={{
                       fontFamily: "'IBM Plex Mono', monospace",
-                      color: expandedStep === idx ? "white" : "oklch(0.52 0.07 228)",
+                      color:
+                        expandedStep === idx ? "white" : "oklch(0.52 0.07 228)",
                       letterSpacing: "0.08em",
                     }}
                   >
@@ -374,7 +449,8 @@ export default function Home() {
                   <div
                     className="text-xs font-medium leading-tight mb-2"
                     style={{
-                      color: expandedStep === idx ? "white" : "oklch(0.80 0.03 243)",
+                      color:
+                        expandedStep === idx ? "white" : "oklch(0.80 0.03 243)",
                       fontFamily: "'IBM Plex Sans', sans-serif",
                     }}
                   >
@@ -383,7 +459,10 @@ export default function Home() {
                   <ChevronDown
                     size={14}
                     className={`mx-auto transition-transform ${expandedStep === idx ? "rotate-180" : ""}`}
-                    style={{ color: expandedStep === idx ? "white" : "oklch(0.52 0.07 228)" }}
+                    style={{
+                      color:
+                        expandedStep === idx ? "white" : "oklch(0.52 0.07 228)",
+                    }}
                   />
                 </button>
 
@@ -446,7 +525,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {proofOfWork.map((item) => {
+            {proofOfWork.map(item => {
               const Icon = item.icon;
               return (
                 <Link key={item.label} href={item.href}>
@@ -458,7 +537,10 @@ export default function Home() {
                     }}
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <Icon size={24} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon
+                        size={24}
+                        style={{ color: "oklch(0.52 0.07 228)" }}
+                      />
                       <span
                         className="text-xs px-2 py-1 rounded"
                         style={{
@@ -479,7 +561,10 @@ export default function Home() {
                     </h3>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{
+                        color: "oklch(0.65 0.03 243)",
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                      }}
                     >
                       {item.description}
                     </p>
@@ -492,7 +577,10 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER DISCLAIMER ── */}
-      <section className="py-16 border-t" style={{ borderColor: "oklch(0.52 0.07 228 / 20%)" }}>
+      <section
+        className="py-16 border-t"
+        style={{ borderColor: "oklch(0.52 0.07 228 / 20%)" }}
+      >
         <div className="container">
           <div
             className="pcg-disclaimer text-xs text-center"
@@ -503,10 +591,13 @@ export default function Home() {
             }}
           >
             <p className="mb-3">
-              This website is for educational purposes only. Nothing herein constitutes investment advice, trading signals, or recommendations.
+              This website is for educational purposes only. Nothing herein
+              constitutes investment advice, trading signals, or
+              recommendations.
             </p>
             <p>
-              PCG trades proprietary capital only. We do not manage client funds, provide advisory services, or accept external capital.
+              PCG trades proprietary capital only. We do not manage client
+              funds, provide advisory services, or accept external capital.
             </p>
           </div>
         </div>
