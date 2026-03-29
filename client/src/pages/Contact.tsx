@@ -13,14 +13,14 @@ function useScrollFadeUp() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
-    el.querySelectorAll(".fade-up").forEach((e) => observer.observe(e));
+    el.querySelectorAll(".fade-up").forEach(e => observer.observe(e));
     return () => observer.disconnect();
   }, []);
   return ref;
@@ -47,7 +47,10 @@ export default function Contact() {
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!formData.name.trim()) newErrors.name = "Name is required.";
-    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+    if (
+      !formData.email.trim() ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    )
       newErrors.email = "A valid email address is required.";
     if (!formData.inquiry) newErrors.inquiry = "Please select an inquiry type.";
     if (!formData.message.trim() || formData.message.trim().length < 20)
@@ -113,9 +116,14 @@ export default function Contact() {
             </h1>
             <p
               className="text-lg leading-relaxed fade-up"
-              style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+              style={{
+                color: "oklch(0.75 0.03 243)",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+              }}
             >
-              PCG welcomes inquiries related to mentorship, partnerships, research collaboration, and media. Please select the appropriate category below.
+              PCG welcomes inquiries related to mentorship, partnerships,
+              research collaboration, and media. Please select the appropriate
+              category below.
             </p>
           </div>
         </div>
@@ -129,9 +137,18 @@ export default function Contact() {
             {submitted ? (
               <div
                 className="p-10 text-center"
-                style={{ border: "1px solid oklch(0.52 0.07 228 / 30%)", background: "oklch(0.20 0.04 243)" }}
+                style={{
+                  border: "1px solid oklch(0.52 0.07 228 / 30%)",
+                  background: "oklch(0.20 0.04 243)",
+                }}
               >
-                <CheckCircle size={40} style={{ color: "oklch(0.52 0.07 228)", margin: "0 auto 1.5rem" }} />
+                <CheckCircle
+                  size={40}
+                  style={{
+                    color: "oklch(0.52 0.07 228)",
+                    margin: "0 auto 1.5rem",
+                  }}
+                />
                 <h3
                   className="text-white text-2xl font-bold mb-3"
                   style={{ fontFamily: "'Playfair Display', serif" }}
@@ -140,9 +157,14 @@ export default function Contact() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                  style={{
+                    color: "oklch(0.65 0.03 243)",
+                    fontFamily: "'IBM Plex Sans', sans-serif",
+                  }}
                 >
-                  Thank you for reaching out. PCG will review your inquiry and respond within 3–5 business days. Please note that PCG does not provide investment advice or accept client funds.
+                  Thank you for reaching out. PCG will review your inquiry and
+                  respond within 3–5 business days. Please note that PCG does
+                  not provide investment advice or accept client funds.
                 </p>
               </div>
             ) : (
@@ -154,14 +176,24 @@ export default function Contact() {
                     <input
                       type="text"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={e =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       placeholder="Your full name"
                       style={{
                         ...inputStyle,
-                        borderColor: errors.name ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)",
+                        borderColor: errors.name
+                          ? "oklch(0.80 0.245 27.325 / 60%)"
+                          : "oklch(1 0 0 / 12%)",
                       }}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.52 0.07 228)")}
-                      onBlur={(e) => (e.target.style.borderColor = errors.name ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)")}
+                      onFocus={e =>
+                        (e.target.style.borderColor = "oklch(0.52 0.07 228)")
+                      }
+                      onBlur={e =>
+                        (e.target.style.borderColor = errors.name
+                          ? "oklch(0.80 0.245 27.325 / 60%)"
+                          : "oklch(1 0 0 / 12%)")
+                      }
                     />
                     {errors.name && <div style={errorStyle}>{errors.name}</div>}
                   </div>
@@ -172,16 +204,28 @@ export default function Contact() {
                     <input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={e =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       placeholder="your@email.com"
                       style={{
                         ...inputStyle,
-                        borderColor: errors.email ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)",
+                        borderColor: errors.email
+                          ? "oklch(0.80 0.245 27.325 / 60%)"
+                          : "oklch(1 0 0 / 12%)",
                       }}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.52 0.07 228)")}
-                      onBlur={(e) => (e.target.style.borderColor = errors.email ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)")}
+                      onFocus={e =>
+                        (e.target.style.borderColor = "oklch(0.52 0.07 228)")
+                      }
+                      onBlur={e =>
+                        (e.target.style.borderColor = errors.email
+                          ? "oklch(0.80 0.245 27.325 / 60%)"
+                          : "oklch(1 0 0 / 12%)")
+                      }
                     />
-                    {errors.email && <div style={errorStyle}>{errors.email}</div>}
+                    {errors.email && (
+                      <div style={errorStyle}>{errors.email}</div>
+                    )}
                   </div>
 
                   {/* Inquiry Type */}
@@ -189,10 +233,14 @@ export default function Contact() {
                     <label style={labelStyle}>Inquiry Type</label>
                     <select
                       value={formData.inquiry}
-                      onChange={(e) => setFormData({ ...formData, inquiry: e.target.value })}
+                      onChange={e =>
+                        setFormData({ ...formData, inquiry: e.target.value })
+                      }
                       style={{
                         ...inputStyle,
-                        borderColor: errors.inquiry ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)",
+                        borderColor: errors.inquiry
+                          ? "oklch(0.80 0.245 27.325 / 60%)"
+                          : "oklch(1 0 0 / 12%)",
                         appearance: "none",
                         backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235b7c99' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
                         backgroundRepeat: "no-repeat",
@@ -200,14 +248,25 @@ export default function Contact() {
                         paddingRight: "2.5rem",
                       }}
                     >
-                      <option value="" style={{ background: "oklch(0.22 0.04 243)" }}>Select inquiry type...</option>
-                      {inquiryTypes.map((type) => (
-                        <option key={type.value} value={type.value} style={{ background: "oklch(0.22 0.04 243)" }}>
+                      <option
+                        value=""
+                        style={{ background: "oklch(0.22 0.04 243)" }}
+                      >
+                        Select inquiry type...
+                      </option>
+                      {inquiryTypes.map(type => (
+                        <option
+                          key={type.value}
+                          value={type.value}
+                          style={{ background: "oklch(0.22 0.04 243)" }}
+                        >
                           {type.label}
                         </option>
                       ))}
                     </select>
-                    {errors.inquiry && <div style={errorStyle}>{errors.inquiry}</div>}
+                    {errors.inquiry && (
+                      <div style={errorStyle}>{errors.inquiry}</div>
+                    )}
                   </div>
 
                   {/* Message */}
@@ -215,18 +274,30 @@ export default function Contact() {
                     <label style={labelStyle}>Message</label>
                     <textarea
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={e =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       placeholder="Please describe your inquiry in detail..."
                       rows={6}
                       style={{
                         ...inputStyle,
                         resize: "vertical",
-                        borderColor: errors.message ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)",
+                        borderColor: errors.message
+                          ? "oklch(0.80 0.245 27.325 / 60%)"
+                          : "oklch(1 0 0 / 12%)",
                       }}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.52 0.07 228)")}
-                      onBlur={(e) => (e.target.style.borderColor = errors.message ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)")}
+                      onFocus={e =>
+                        (e.target.style.borderColor = "oklch(0.52 0.07 228)")
+                      }
+                      onBlur={e =>
+                        (e.target.style.borderColor = errors.message
+                          ? "oklch(0.80 0.245 27.325 / 60%)"
+                          : "oklch(1 0 0 / 12%)")
+                      }
                     />
-                    {errors.message && <div style={errorStyle}>{errors.message}</div>}
+                    {errors.message && (
+                      <div style={errorStyle}>{errors.message}</div>
+                    )}
                   </div>
 
                   <button
@@ -241,7 +312,10 @@ export default function Contact() {
           </div>
 
           {/* Contact Info */}
-          <div className="md:col-span-5 fade-up" style={{ transitionDelay: "150ms" }}>
+          <div
+            className="md:col-span-5 fade-up"
+            style={{ transitionDelay: "150ms" }}
+          >
             <div className="space-y-8">
               {/* Direct Contact */}
               <div>
@@ -255,12 +329,20 @@ export default function Contact() {
                       className="w-10 h-10 flex items-center justify-center border shrink-0 group-hover:border-[oklch(0.52_0.07_228)] transition-colors"
                       style={{ borderColor: "oklch(1 0 0 / 15%)" }}
                     >
-                      <Mail size={16} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Mail
+                        size={16}
+                        style={{ color: "oklch(0.52 0.07 228)" }}
+                      />
                     </div>
                     <div>
                       <div
                         className="text-xs mb-0.5"
-                        style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                        style={{
+                          fontFamily: "'IBM Plex Mono', monospace",
+                          color: "oklch(0.52 0.07 228)",
+                          letterSpacing: "0.1em",
+                          textTransform: "uppercase",
+                        }}
                       >
                         Email
                       </div>
@@ -283,12 +365,20 @@ export default function Contact() {
                       className="w-10 h-10 flex items-center justify-center border shrink-0 group-hover:border-[oklch(0.52_0.07_228)] transition-colors"
                       style={{ borderColor: "oklch(1 0 0 / 15%)" }}
                     >
-                      <Linkedin size={16} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Linkedin
+                        size={16}
+                        style={{ color: "oklch(0.52 0.07 228)" }}
+                      />
                     </div>
                     <div>
                       <div
                         className="text-xs mb-0.5"
-                        style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                        style={{
+                          fontFamily: "'IBM Plex Mono', monospace",
+                          color: "oklch(0.52 0.07 228)",
+                          letterSpacing: "0.1em",
+                          textTransform: "uppercase",
+                        }}
                       >
                         LinkedIn
                       </div>
@@ -310,25 +400,32 @@ export default function Contact() {
                   {[
                     {
                       type: "Mentorship",
-                      description: "Process methodology, educational frameworks, and structured learning discussions.",
+                      description:
+                        "Process methodology, educational frameworks, and structured learning discussions.",
                     },
                     {
                       type: "Partnerships",
-                      description: "Research collaboration, content partnerships, and institutional introductions.",
+                      description:
+                        "Research collaboration, content partnerships, and institutional introductions.",
                     },
                     {
                       type: "Research / Academy",
-                      description: "Academy access requests, module feedback, and educational content inquiries.",
+                      description:
+                        "Academy access requests, module feedback, and educational content inquiries.",
                     },
                     {
                       type: "Media",
-                      description: "Press, podcast, and publication inquiries related to PCG's research process.",
+                      description:
+                        "Press, podcast, and publication inquiries related to PCG's research process.",
                     },
-                  ].map((item) => (
+                  ].map(item => (
                     <div
                       key={item.type}
                       className="p-4"
-                      style={{ borderLeft: "2px solid oklch(0.52 0.07 228 / 30%)", paddingLeft: "1rem" }}
+                      style={{
+                        borderLeft: "2px solid oklch(0.52 0.07 228 / 30%)",
+                        paddingLeft: "1rem",
+                      }}
                     >
                       <div
                         className="text-white text-sm font-medium mb-1"
@@ -338,7 +435,10 @@ export default function Contact() {
                       </div>
                       <div
                         className="text-xs leading-relaxed"
-                        style={{ color: "oklch(0.60 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                        style={{
+                          color: "oklch(0.60 0.03 243)",
+                          fontFamily: "'IBM Plex Sans', sans-serif",
+                        }}
                       >
                         {item.description}
                       </div>
@@ -352,8 +452,17 @@ export default function Contact() {
 
         {/* Disclaimer */}
         <div className="pcg-disclaimer mt-12 fade-up">
-          <strong style={{ color: "oklch(0.75 0.07 228)" }}>CONTACT DISCLAIMER:</strong>{" "}
-          PCG does not provide investment advice, financial planning services, or trading recommendations of any kind. Responses to inquiries are for informational and educational purposes only. PCG does not manage client funds and does not accept external investment. Any communication with PCG does not constitute a client relationship, advisory relationship, or financial services engagement. All inquiries are subject to review and PCG reserves the right to decline any request at its sole discretion.
+          <strong style={{ color: "oklch(0.75 0.07 228)" }}>
+            CONTACT DISCLAIMER:
+          </strong>{" "}
+          PCG does not provide investment advice, financial planning services,
+          or trading recommendations of any kind. Responses to inquiries are for
+          informational and educational purposes only. PCG does not manage
+          client funds and does not accept external investment. Any
+          communication with PCG does not constitute a client relationship,
+          advisory relationship, or financial services engagement. All inquiries
+          are subject to review and PCG reserves the right to decline any
+          request at its sole discretion.
         </div>
       </section>
     </div>

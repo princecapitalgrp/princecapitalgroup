@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
+import { Analytics } from "@vercel/analytics/react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
@@ -34,13 +35,17 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <div className="min-h-screen flex flex-col" style={{ background: "oklch(0.22 0.04 243)" }}>
+          <div
+            className="min-h-screen flex flex-col"
+            style={{ background: "oklch(0.22 0.04 243)" }}
+          >
             <Navigation />
             <main className="flex-1">
               <Router />
             </main>
             <Footer />
           </div>
+          <Analytics />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

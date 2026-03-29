@@ -8,8 +8,8 @@ export function useScrollAnimation() {
     if (!el) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
           }
@@ -19,7 +19,7 @@ export function useScrollAnimation() {
     );
 
     const elements = el.querySelectorAll(".fade-up");
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);

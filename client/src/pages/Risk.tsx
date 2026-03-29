@@ -5,11 +5,19 @@
  */
 
 import { useEffect, useRef } from "react";
-import { Shield, CheckSquare, AlertTriangle, RotateCcw, Pause, ArrowRight } from "lucide-react";
+import {
+  Shield,
+  CheckSquare,
+  AlertTriangle,
+  RotateCcw,
+  Pause,
+  ArrowRight,
+} from "lucide-react";
 import { Link } from "wouter";
 import { useSEO } from "@/hooks/useSEO";
 
-const RISK_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-risk-bg-2Dzyx2bvpWc4oKbKzREXwF.webp";
+const RISK_BG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-risk-bg-2Dzyx2bvpWc4oKbKzREXwF.webp";
 
 function useScrollFadeUp() {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,14 +25,14 @@ function useScrollFadeUp() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
-    el.querySelectorAll(".fade-up").forEach((e) => observer.observe(e));
+    el.querySelectorAll(".fade-up").forEach(e => observer.observe(e));
     return () => observer.disconnect();
   }, []);
   return ref;
@@ -67,43 +75,80 @@ const preTradeChecklist = [
 const riskLimitCategories = [
   {
     category: "Per-Trade Risk",
-    description: "Maximum capital at risk on any single trade, defined as a fixed percentage of the trading account. No exceptions.",
+    description:
+      "Maximum capital at risk on any single trade, defined as a fixed percentage of the trading account. No exceptions.",
   },
   {
     category: "Daily Loss Limit",
-    description: "A maximum daily loss threshold. When reached, all positions are closed and no new trades are initiated for the remainder of the session.",
+    description:
+      "A maximum daily loss threshold. When reached, all positions are closed and no new trades are initiated for the remainder of the session.",
   },
   {
     category: "Weekly Drawdown Limit",
-    description: "A weekly drawdown ceiling that triggers a mandatory pause-and-review period before trading resumes.",
+    description:
+      "A weekly drawdown ceiling that triggers a mandatory pause-and-review period before trading resumes.",
   },
   {
     category: "Drawdown Kill-Switch",
-    description: "A cumulative drawdown threshold that activates the kill-switch protocol: all trading halts pending a formal review and reset process.",
+    description:
+      "A cumulative drawdown threshold that activates the kill-switch protocol: all trading halts pending a formal review and reset process.",
   },
   {
     category: "Concentration Limit",
-    description: "Maximum exposure to correlated pairs or directional themes. Prevents over-concentration in a single macro narrative.",
+    description:
+      "Maximum exposure to correlated pairs or directional themes. Prevents over-concentration in a single macro narrative.",
   },
   {
     category: "Leverage Ceiling",
-    description: "An absolute maximum leverage ratio that cannot be exceeded regardless of perceived opportunity quality.",
+    description:
+      "An absolute maximum leverage ratio that cannot be exceeded regardless of perceived opportunity quality.",
   },
 ];
 
 const governanceLoop = [
-  { step: "01", title: "Pre-Trade Checklist", icon: CheckSquare, description: "All criteria verified before any trade plan is formed." },
-  { step: "02", title: "Risk Limits Applied", icon: Shield, description: "Position size calculated and limits confirmed." },
-  { step: "03", title: "Trade Executed", icon: ArrowRight, description: "Entry only after full checklist and plan documentation." },
-  { step: "04", title: "Active Monitoring", icon: AlertTriangle, description: "Position monitored against invalidation and limits." },
-  { step: "05", title: "Journal Entry", icon: CheckSquare, description: "Trade documented regardless of outcome." },
-  { step: "06", title: "Weekly Review Memo", icon: RotateCcw, description: "Process quality assessed, not P&L." },
+  {
+    step: "01",
+    title: "Pre-Trade Checklist",
+    icon: CheckSquare,
+    description: "All criteria verified before any trade plan is formed.",
+  },
+  {
+    step: "02",
+    title: "Risk Limits Applied",
+    icon: Shield,
+    description: "Position size calculated and limits confirmed.",
+  },
+  {
+    step: "03",
+    title: "Trade Executed",
+    icon: ArrowRight,
+    description: "Entry only after full checklist and plan documentation.",
+  },
+  {
+    step: "04",
+    title: "Active Monitoring",
+    icon: AlertTriangle,
+    description: "Position monitored against invalidation and limits.",
+  },
+  {
+    step: "05",
+    title: "Journal Entry",
+    icon: CheckSquare,
+    description: "Trade documented regardless of outcome.",
+  },
+  {
+    step: "06",
+    title: "Weekly Review Memo",
+    icon: RotateCcw,
+    description: "Process quality assessed, not P&L.",
+  },
 ];
 
 export default function Risk() {
   useSEO({
     title: "Risk & Governance Framework | Prince Capital Group",
-    description: "Learn our risk governance philosophy: capital preservation, discipline, systematic de-risking, and kill-switch protocols for FX trading.",
+    description:
+      "Learn our risk governance philosophy: capital preservation, discipline, systematic de-risking, and kill-switch protocols for FX trading.",
     canonical: "https://princecapitalgroup.com/risk",
   });
 
@@ -128,18 +173,29 @@ export default function Risk() {
           }}
         />
         <div className="relative container">
-          <div className="pcg-section-label mb-4 fade-up">Risk & Governance</div>
+          <div className="pcg-section-label mb-4 fade-up">
+            Risk & Governance
+          </div>
           <h1
             className="text-white text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
-            style={{ fontFamily: "'Playfair Display', serif", maxWidth: "700px" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              maxWidth: "700px",
+            }}
           >
             Preservation, Discipline, and the Kill-Switch
           </h1>
           <p
             className="text-lg leading-relaxed fade-up"
-            style={{ color: "oklch(0.80 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "580px" }}
+            style={{
+              color: "oklch(0.80 0.03 243)",
+              fontFamily: "'IBM Plex Sans', sans-serif",
+              maxWidth: "580px",
+            }}
           >
-            Risk governance is not a constraint on performance — it is the foundation of sustainable execution. Every rule exists to protect the process from the trader's own psychology.
+            Risk governance is not a constraint on performance — it is the
+            foundation of sustainable execution. Every rule exists to protect
+            the process from the trader's own psychology.
           </p>
         </div>
       </section>
@@ -168,7 +224,12 @@ export default function Risk() {
             >
               <div
                 className="text-xs mb-3"
-                style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.12em", textTransform: "uppercase" }}
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  color: "oklch(0.52 0.07 228)",
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                }}
               >
                 {String(i + 1).padStart(2, "0")}.
               </div>
@@ -180,7 +241,10 @@ export default function Risk() {
               </h3>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{
+                  color: "oklch(0.68 0.03 243)",
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                }}
               >
                 {principle.description}
               </p>
@@ -221,11 +285,18 @@ export default function Risk() {
                       className="w-8 h-8 flex items-center justify-center border shrink-0"
                       style={{ borderColor: "oklch(0.52 0.07 228 / 40%)" }}
                     >
-                      <Icon size={14} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon
+                        size={14}
+                        style={{ color: "oklch(0.52 0.07 228)" }}
+                      />
                     </div>
                     <span
                       className="text-xs"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em" }}
+                      style={{
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        color: "oklch(0.52 0.07 228)",
+                        letterSpacing: "0.1em",
+                      }}
                     >
                       STEP {item.step}
                     </span>
@@ -238,7 +309,10 @@ export default function Risk() {
                   </h3>
                   <p
                     className="text-xs leading-relaxed"
-                    style={{ color: "oklch(0.62 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{
+                      color: "oklch(0.62 0.03 243)",
+                      fontFamily: "'IBM Plex Sans', sans-serif",
+                    }}
                   >
                     {item.description}
                   </p>
@@ -264,9 +338,14 @@ export default function Risk() {
             </h2>
             <p
               className="text-sm leading-relaxed mb-8"
-              style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+              style={{
+                color: "oklch(0.68 0.03 243)",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+              }}
             >
-              Every trade requires a complete checklist pass before a plan is formed. There are no shortcuts. An incomplete checklist means no trade — regardless of perceived opportunity.
+              Every trade requires a complete checklist pass before a plan is
+              formed. There are no shortcuts. An incomplete checklist means no
+              trade — regardless of perceived opportunity.
             </p>
             <div className="space-y-3">
               {preTradeChecklist.map((item, i) => (
@@ -281,14 +360,20 @@ export default function Risk() {
                   >
                     <span
                       className="text-[8px]"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)" }}
+                      style={{
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        color: "oklch(0.52 0.07 228)",
+                      }}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
                   <span
                     className="text-sm"
-                    style={{ color: "oklch(0.78 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{
+                      color: "oklch(0.78 0.03 243)",
+                      fontFamily: "'IBM Plex Sans', sans-serif",
+                    }}
                   >
                     {item}
                   </span>
@@ -307,9 +392,14 @@ export default function Risk() {
             </h2>
             <p
               className="text-sm leading-relaxed mb-8"
-              style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+              style={{
+                color: "oklch(0.68 0.03 243)",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+              }}
             >
-              Risk limits are defined across six categories. Specific values are calibrated to account size and are not published — the categories and their purpose are documented here for transparency.
+              Risk limits are defined across six categories. Specific values are
+              calibrated to account size and are not published — the categories
+              and their purpose are documented here for transparency.
             </p>
             <div className="space-y-4">
               {riskLimitCategories.map((limit, i) => (
@@ -320,13 +410,21 @@ export default function Risk() {
                 >
                   <div
                     className="text-xs mb-2"
-                    style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                    style={{
+                      fontFamily: "'IBM Plex Mono', monospace",
+                      color: "oklch(0.52 0.07 228)",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}
                   >
                     {limit.category}
                   </div>
                   <p
                     className="text-xs leading-relaxed"
-                    style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{
+                      color: "oklch(0.65 0.03 243)",
+                      fontFamily: "'IBM Plex Sans', sans-serif",
+                    }}
                   >
                     {limit.description}
                   </p>
@@ -355,9 +453,16 @@ export default function Risk() {
               </h2>
               <p
                 className="text-sm leading-relaxed mb-6"
-                style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{
+                  color: "oklch(0.68 0.03 243)",
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                }}
               >
-                Every week ends with a structured review memo. The memo evaluates process quality — not returns. Key questions include: Were all checklist items completed? Were risk limits respected? Were setups taken only when confluence criteria were met? Were any rules breached?
+                Every week ends with a structured review memo. The memo
+                evaluates process quality — not returns. Key questions include:
+                Were all checklist items completed? Were risk limits respected?
+                Were setups taken only when confluence criteria were met? Were
+                any rules breached?
               </p>
               <div className="space-y-3">
                 {[
@@ -370,12 +475,26 @@ export default function Risk() {
                   <div
                     key={i}
                     className="flex items-start gap-3"
-                    style={{ borderBottom: "1px solid oklch(1 0 0 / 6%)", paddingBottom: "0.75rem" }}
+                    style={{
+                      borderBottom: "1px solid oklch(1 0 0 / 6%)",
+                      paddingBottom: "0.75rem",
+                    }}
                   >
-                    <span style={{ color: "oklch(0.52 0.07 228)", fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem" }}>→</span>
+                    <span
+                      style={{
+                        color: "oklch(0.52 0.07 228)",
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        fontSize: "0.7rem",
+                      }}
+                    >
+                      →
+                    </span>
                     <span
                       className="text-sm"
-                      style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{
+                        color: "oklch(0.75 0.03 243)",
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                      }}
                     >
                       {item}
                     </span>
@@ -395,43 +514,84 @@ export default function Risk() {
               </h2>
               <div
                 className="p-6 mb-6"
-                style={{ border: "1px solid oklch(0.577 0.245 27.325 / 30%)", background: "oklch(0.577 0.245 27.325 / 8%)" }}
+                style={{
+                  border: "1px solid oklch(0.577 0.245 27.325 / 30%)",
+                  background: "oklch(0.577 0.245 27.325 / 8%)",
+                }}
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <Pause size={16} style={{ color: "oklch(0.80 0.245 27.325)" }} />
+                  <Pause
+                    size={16}
+                    style={{ color: "oklch(0.80 0.245 27.325)" }}
+                  />
                   <span
                     className="text-sm font-medium"
-                    style={{ color: "oklch(0.80 0.245 27.325)", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase" }}
+                    style={{
+                      color: "oklch(0.80 0.245 27.325)",
+                      fontFamily: "'IBM Plex Mono', monospace",
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                    }}
                   >
                     Pause + Review
                   </span>
                 </div>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.72 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                  style={{
+                    color: "oklch(0.72 0.03 243)",
+                    fontFamily: "'IBM Plex Sans', sans-serif",
+                  }}
                 >
-                  Any rule breach triggers an immediate pause. Trading stops. A formal review is conducted to identify the breach, understand the cause, and document the corrective action before trading resumes.
+                  Any rule breach triggers an immediate pause. Trading stops. A
+                  formal review is conducted to identify the breach, understand
+                  the cause, and document the corrective action before trading
+                  resumes.
                 </p>
               </div>
               <div className="space-y-4">
                 {[
-                  { step: "01", action: "Identify the breach — which rule was violated?" },
-                  { step: "02", action: "Pause all trading activity immediately." },
-                  { step: "03", action: "Document the breach in the trade journal." },
+                  {
+                    step: "01",
+                    action: "Identify the breach — which rule was violated?",
+                  },
+                  {
+                    step: "02",
+                    action: "Pause all trading activity immediately.",
+                  },
+                  {
+                    step: "03",
+                    action: "Document the breach in the trade journal.",
+                  },
                   { step: "04", action: "Conduct root cause analysis." },
-                  { step: "05", action: "Define corrective action and update process notes." },
-                  { step: "06", action: "Resume trading only after review is complete." },
-                ].map((item) => (
+                  {
+                    step: "05",
+                    action:
+                      "Define corrective action and update process notes.",
+                  },
+                  {
+                    step: "06",
+                    action: "Resume trading only after review is complete.",
+                  },
+                ].map(item => (
                   <div key={item.step} className="flex items-start gap-4">
                     <span
                       className="text-xs shrink-0"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.08em", marginTop: "2px" }}
+                      style={{
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        color: "oklch(0.52 0.07 228)",
+                        letterSpacing: "0.08em",
+                        marginTop: "2px",
+                      }}
                     >
                       {item.step}
                     </span>
                     <span
                       className="text-sm"
-                      style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{
+                        color: "oklch(0.75 0.03 243)",
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                      }}
                     >
                       {item.action}
                     </span>
@@ -447,8 +607,18 @@ export default function Risk() {
       <section className="container py-16">
         <div className="fade-up">
           <div className="pcg-disclaimer">
-            <strong style={{ color: "oklch(0.75 0.07 228)" }}>RISK DISCLAIMER:</strong>{" "}
-            The risk framework described on this page represents PCG's internal governance approach for proprietary trading. It is published for educational and transparency purposes only. Nothing contained herein constitutes investment advice, a recommendation to trade, or a representation that these risk management techniques are appropriate for any individual. Trading foreign exchange involves substantial risk of loss. Past adherence to a risk framework does not guarantee future capital preservation. All trading involves risk, and you may lose more than your initial investment.
+            <strong style={{ color: "oklch(0.75 0.07 228)" }}>
+              RISK DISCLAIMER:
+            </strong>{" "}
+            The risk framework described on this page represents PCG's internal
+            governance approach for proprietary trading. It is published for
+            educational and transparency purposes only. Nothing contained herein
+            constitutes investment advice, a recommendation to trade, or a
+            representation that these risk management techniques are appropriate
+            for any individual. Trading foreign exchange involves substantial
+            risk of loss. Past adherence to a risk framework does not guarantee
+            future capital preservation. All trading involves risk, and you may
+            lose more than your initial investment.
           </div>
         </div>
       </section>

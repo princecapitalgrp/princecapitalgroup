@@ -9,7 +9,8 @@ import { ArrowRight, Target, BarChart2, CheckSquare } from "lucide-react";
 import { Link } from "wouter";
 import { useSEO } from "@/hooks/useSEO";
 
-const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pasted_file_YC1Nmo_image_adec1763.png";
+const PORTRAIT_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pasted_file_YC1Nmo_image_adec1763.png";
 
 function useScrollFadeUp() {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,14 +18,14 @@ function useScrollFadeUp() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
-    el.querySelectorAll(".fade-up").forEach((e) => observer.observe(e));
+    el.querySelectorAll(".fade-up").forEach(e => observer.observe(e));
     return () => observer.disconnect();
   }, []);
   return ref;
@@ -34,25 +35,29 @@ const kpis = [
   {
     icon: CheckSquare,
     label: "Rule Adherence Rate",
-    description: "Percentage of trades executed with a fully completed pre-trade checklist. Target: 100%.",
+    description:
+      "Percentage of trades executed with a fully completed pre-trade checklist. Target: 100%.",
     metric: "Target: 100%",
   },
   {
     icon: BarChart2,
     label: "Process Cadence",
-    description: "Weekly review memo completion rate. Every week ends with a structured audit, regardless of trading activity.",
+    description:
+      "Weekly review memo completion rate. Every week ends with a structured audit, regardless of trading activity.",
     metric: "Weekly",
   },
   {
     icon: Target,
     label: "Confluence Gate Rate",
-    description: "Percentage of trade ideas that pass the full signal stack gate. Measures selectivity and discipline.",
+    description:
+      "Percentage of trade ideas that pass the full signal stack gate. Measures selectivity and discipline.",
     metric: "Tracked",
   },
   {
     icon: CheckSquare,
     label: "Journal Completion",
-    description: "Percentage of executed trades with a complete journal entry. Process documentation is non-negotiable.",
+    description:
+      "Percentage of executed trades with a complete journal entry. Process documentation is non-negotiable.",
     metric: "Target: 100%",
   },
 ];
@@ -89,7 +94,8 @@ const values = [
 export default function About() {
   useSEO({
     title: "About | Prince Capital Group",
-    description: "Learn about Antonio Grillo-Balen and PCG's mission: disciplined FX trading through confluence gating, risk governance, and weekly audit loops.",
+    description:
+      "Learn about Antonio Grillo-Balen and PCG's mission: disciplined FX trading through confluence gating, risk governance, and weekly audit loops.",
     canonical: "https://princecapitalgroup.com/about",
   });
 
@@ -115,9 +121,16 @@ export default function About() {
               </h1>
               <p
                 className="text-lg leading-relaxed fade-up"
-                style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "520px" }}
+                style={{
+                  color: "oklch(0.75 0.03 243)",
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                  maxWidth: "520px",
+                }}
               >
-                Prince Capital Group is a proprietary research-to-execution project. It is not a fund. It is not an advisory firm. It is a structured attempt to apply institutional-grade process discipline to independent macro FX research.
+                Prince Capital Group is a proprietary research-to-execution
+                project. It is not a fund. It is not an advisory firm. It is a
+                structured attempt to apply institutional-grade process
+                discipline to independent macro FX research.
               </p>
             </div>
             {/* Portrait */}
@@ -138,7 +151,8 @@ export default function About() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: "linear-gradient(to top, oklch(0.22 0.04 243) 0%, transparent 40%)",
+                    background:
+                      "linear-gradient(to top, oklch(0.22 0.04 243) 0%, transparent 40%)",
                   }}
                 />
               </div>
@@ -164,7 +178,11 @@ export default function About() {
               </div>
               <div
                 className="text-sm mb-6"
-                style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.08em" }}
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  color: "oklch(0.52 0.07 228)",
+                  letterSpacing: "0.08em",
+                }}
               >
                 Founder · Prince Capital Group
               </div>
@@ -175,11 +193,14 @@ export default function About() {
                   "Macro Analysis",
                   "Process Architecture",
                   "Risk Governance",
-                ].map((item) => (
+                ].map(item => (
                   <div
                     key={item}
                     className="flex items-center gap-3 text-sm"
-                    style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{
+                      color: "oklch(0.68 0.03 243)",
+                      fontFamily: "'IBM Plex Sans', sans-serif",
+                    }}
                   >
                     <span style={{ color: "oklch(0.52 0.07 228)" }}>→</span>
                     {item}
@@ -187,24 +208,47 @@ export default function About() {
                 ))}
               </div>
             </div>
-            <div className="md:col-span-8 fade-up" style={{ transitionDelay: "100ms" }}>
+            <div
+              className="md:col-span-8 fade-up"
+              style={{ transitionDelay: "100ms" }}
+            >
               <p
                 className="text-base leading-relaxed mb-6"
-                style={{ color: "oklch(0.78 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{
+                  color: "oklch(0.78 0.03 243)",
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                }}
               >
-                Prince Capital Group was founded with a single objective: to build a research-to-execution process that is systematic, auditable, and honest. The project operates on proprietary capital only, with no external investors, no client funds, and no advisory obligations.
+                Prince Capital Group was founded with a single objective: to
+                build a research-to-execution process that is systematic,
+                auditable, and honest. The project operates on proprietary
+                capital only, with no external investors, no client funds, and
+                no advisory obligations.
               </p>
               <p
                 className="text-base leading-relaxed mb-6"
-                style={{ color: "oklch(0.78 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{
+                  color: "oklch(0.78 0.03 243)",
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                }}
               >
-                The focus is G10 foreign exchange — the deepest, most liquid, and most macro-driven segment of global financial markets. The approach combines structural price action analysis, cross-pair mispricing frameworks, and top-down macro filters into a three-layer confluence gate.
+                The focus is G10 foreign exchange — the deepest, most liquid,
+                and most macro-driven segment of global financial markets. The
+                approach combines structural price action analysis, cross-pair
+                mispricing frameworks, and top-down macro filters into a
+                three-layer confluence gate.
               </p>
               <p
                 className="text-base leading-relaxed"
-                style={{ color: "oklch(0.78 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{
+                  color: "oklch(0.78 0.03 243)",
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                }}
               >
-                PCG's educational output — process memos, setup anatomy, risk toolkits — is shared to demonstrate that disciplined process documentation is possible at the individual level. It is not shared as advice, signals, or a track record.
+                PCG's educational output — process memos, setup anatomy, risk
+                toolkits — is shared to demonstrate that disciplined process
+                documentation is possible at the individual level. It is not
+                shared as advice, signals, or a track record.
               </p>
             </div>
           </div>
@@ -242,14 +286,20 @@ export default function About() {
               >
                 <span
                   className="text-[9px]"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)" }}
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    color: "oklch(0.52 0.07 228)",
+                  }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
               <span
                 className="text-sm leading-relaxed"
-                style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{
+                  color: "oklch(0.75 0.03 243)",
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                }}
               >
                 {goal}
               </span>
@@ -276,9 +326,15 @@ export default function About() {
             </h2>
             <p
               className="text-sm leading-relaxed"
-              style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "580px" }}
+              style={{
+                color: "oklch(0.65 0.03 243)",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+                maxWidth: "580px",
+              }}
             >
-              PCG's performance metrics are process-based. We do not publish P&L, returns, or win rates. The KPIs that matter are those that measure the quality and consistency of the process itself.
+              PCG's performance metrics are process-based. We do not publish
+              P&L, returns, or win rates. The KPIs that matter are those that
+              measure the quality and consistency of the process itself.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -295,7 +351,10 @@ export default function About() {
                       className="w-10 h-10 flex items-center justify-center border"
                       style={{ borderColor: "oklch(0.52 0.07 228 / 40%)" }}
                     >
-                      <Icon size={16} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon
+                        size={16}
+                        style={{ color: "oklch(0.52 0.07 228)" }}
+                      />
                     </div>
                     <span
                       className="text-xs px-2 py-1 border"
@@ -317,7 +376,10 @@ export default function About() {
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "oklch(0.62 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{
+                      color: "oklch(0.62 0.03 243)",
+                      fontFamily: "'IBM Plex Sans', sans-serif",
+                    }}
                   >
                     {kpi.description}
                   </p>
@@ -350,14 +412,20 @@ export default function About() {
             >
               <div
                 className="text-white text-2xl font-bold mb-4"
-                style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontStyle: "italic",
+                }}
               >
                 {value.title}
               </div>
               <div className="pcg-rule mb-4" />
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{
+                  color: "oklch(0.68 0.03 243)",
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                }}
               >
                 {value.description}
               </p>

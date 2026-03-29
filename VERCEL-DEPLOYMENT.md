@@ -31,6 +31,7 @@ Your Prince Capital Group website is ready to deploy on Vercel. This guide walks
 6. **Click "Deploy"**
 
 Vercel will automatically:
+
 - Install dependencies
 - Build the project
 - Deploy to a live URL
@@ -150,6 +151,7 @@ git push origin main
 ### Build Fails on Vercel
 
 **Error: "Cannot find module"**
+
 ```bash
 # Solution: Ensure all dependencies are in package.json
 pnpm install
@@ -159,6 +161,7 @@ git push origin main
 ```
 
 **Error: "Build command failed"**
+
 ```bash
 # Check build logs in Vercel dashboard
 # Verify: pnpm run build works locally
@@ -168,6 +171,7 @@ git push origin main
 ### Site Shows Blank Page
 
 **Solution:**
+
 1. Open browser DevTools (F12)
 2. Check Console tab for errors
 3. Check Network tab for failed requests
@@ -177,6 +181,7 @@ git push origin main
 ### Domain Not Working
 
 **Solution:**
+
 1. Verify DNS records are updated (use: https://dnschecker.org)
 2. Wait 24–48 hours for DNS propagation
 3. Check domain configuration in Vercel dashboard
@@ -185,6 +190,7 @@ git push origin main
 ### Slow Performance
 
 **Solution:**
+
 1. Enable Vercel Analytics (free tier available)
 2. Check image sizes (use CDN URLs)
 3. Enable Gzip compression (automatic on Vercel)
@@ -198,29 +204,31 @@ The `vercel.json` file includes:
 
 ```json
 {
-  "buildCommand": "pnpm run build",           // Build command
-  "outputDirectory": "dist/public",           // Output folder
-  "installCommand": "pnpm install",          // Install dependencies
-  "framework": "vite",                        // Framework detection
-  "nodeVersion": "22.x",                      // Node.js version
+  "buildCommand": "pnpm run build", // Build command
+  "outputDirectory": "dist/public", // Output folder
+  "installCommand": "pnpm install", // Install dependencies
+  "framework": "vite", // Framework detection
+  "nodeVersion": "22.x", // Node.js version
   "env": {
-    "NODE_ENV": "production"                  // Environment variable
+    "NODE_ENV": "production" // Environment variable
   },
-  "headers": [                                // Security headers
+  "headers": [
+    // Security headers
     {
       "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"     // Cache for 1 hour
+          "value": "public, max-age=3600" // Cache for 1 hour
         }
       ]
     }
   ],
-  "rewrites": [                               // SPA routing
+  "rewrites": [
+    // SPA routing
     {
       "source": "/(.*)",
-      "destination": "/index.html"            // Route to index.html
+      "destination": "/index.html" // Route to index.html
     }
   ]
 }
@@ -256,6 +264,7 @@ The `vercel.json` file includes:
 ### Automatic Deployments
 
 Vercel automatically deploys when:
+
 - ✅ You push to `main` branch
 - ✅ A pull request is created (preview deployment)
 - ✅ A pull request is merged
@@ -263,6 +272,7 @@ Vercel automatically deploys when:
 ### Preview Deployments
 
 For every pull request, Vercel creates a preview URL:
+
 - **Format:** `https://princecapitalgroup-pr-123.vercel.app`
 - **Useful for:** Testing changes before merging
 - **Auto-deleted:** When PR is closed
@@ -279,6 +289,7 @@ If something breaks:
 4. **Click "Promote to Production"**
 
 Or revert code on GitHub:
+
 ```bash
 git revert HEAD
 git push origin main
@@ -289,12 +300,14 @@ git push origin main
 ## Security Best Practices
 
 ✅ **Already configured:**
+
 - HTTPS/SSL (automatic)
 - Security headers (X-Frame-Options, X-XSS-Protection)
 - Cache control headers
 - DDoS protection
 
 ✅ **Recommended:**
+
 - Enable Vercel's Web Application Firewall (WAF)
 - Set up environment variables for secrets
 - Use GitHub branch protection rules
@@ -315,6 +328,7 @@ git push origin main
 ### Further Optimization
 
 1. **Enable Image Optimization:**
+
    ```json
    {
      "images": {
@@ -345,14 +359,14 @@ git push origin main
 
 ## Quick Reference
 
-| Task | Command |
-|------|---------|
-| **Deploy** | `vercel --prod` |
-| **Preview** | `vercel --prod --confirm` |
-| **View logs** | Go to Vercel Dashboard → Deployments |
-| **Rollback** | Vercel Dashboard → Promote previous deployment |
-| **Add domain** | Vercel Dashboard → Settings → Domains |
-| **View analytics** | Vercel Dashboard → Analytics |
+| Task               | Command                                        |
+| ------------------ | ---------------------------------------------- |
+| **Deploy**         | `vercel --prod`                                |
+| **Preview**        | `vercel --prod --confirm`                      |
+| **View logs**      | Go to Vercel Dashboard → Deployments           |
+| **Rollback**       | Vercel Dashboard → Promote previous deployment |
+| **Add domain**     | Vercel Dashboard → Settings → Domains          |
+| **View analytics** | Vercel Dashboard → Analytics                   |
 
 ---
 
