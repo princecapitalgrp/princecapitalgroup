@@ -9,7 +9,7 @@ import { ArrowRight, Target, BarChart2, CheckSquare } from "lucide-react";
 import { Link } from "wouter";
 import { useSEO } from "@/hooks/useSEO";
 
-const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pasted_file_YC1Nmo_image_adec1763.png";
+const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pasted_file_uvPH7O_image_8c026b9f.png";
 
 function useScrollFadeUp() {
   const ref = useRef<HTMLDivElement>(null);
