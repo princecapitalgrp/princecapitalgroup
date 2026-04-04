@@ -12,6 +12,7 @@ import Risk from "./pages/Risk";
 import Academy from "./pages/Academy";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import MacroMuseum from "./pages/MacroMuseum";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/strategy" component={Strategy} />
       <Route path="/risk" component={Risk} />
       <Route path="/academy" component={Academy} />
+      <Route path="/macro-museum" component={MacroMuseum} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/404" component={NotFound} />

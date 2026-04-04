@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/strategy", label: "Strategy" },
   { href: "/risk", label: "Risk & Governance" },
   { href: "/academy", label: "Academy" },
+  { href: "/macro-museum", label: "Macro Museum" },
   { href: "/about", label: "About" },
 ];
 
