@@ -10,6 +10,7 @@ import { useSEO } from '@/hooks/useSEO'
 import { Loader2, Filter, Calendar, User, Tag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import EmailCaptureForm from '@/components/EmailCaptureForm'
+import { useLocation } from 'wouter'
 
 type Category = 'analysis' | 'case_study' | 'framework' | 'macro_view' | 'all'
 
@@ -70,11 +71,17 @@ export default function MacroMuseum() {
             <h1 className="text-5xl md:text-6xl font-serif font-bold mb-4 leading-tight">
               Macro Museum
             </h1>
-            <p className="text-lg text-foreground/80 leading-relaxed">
+            <p className="text-lg text-foreground/80 leading-relaxed mb-6">
               A curated collection of macro analysis, case studies, and trading frameworks from
               PCG research. Explore how we think about market structure, cross-pair relationships,
               and macro context.
             </p>
+            <Button
+              onClick={() => window.location.href = '/macro-museum/regime-gallery'}
+              className="bg-accent hover:bg-accent/90 text-foreground"
+            >
+              Enter Renaissance Museum →
+            </Button>
           </div>
         </div>
       </section>

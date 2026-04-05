@@ -13,6 +13,9 @@ import Academy from "./pages/Academy";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import MacroMuseum from "./pages/MacroMuseum";
+import RegimeGallery from "./pages/RegimeGallery";
+import MapWall from "./pages/MapWall";
+import RegionalChamber from "./pages/RegionalChamber";
 
 function Router() {
   return (
@@ -22,6 +25,9 @@ function Router() {
       <Route path="/risk" component={Risk} />
       <Route path="/academy" component={Academy} />
       <Route path="/macro-museum" component={MacroMuseum} />
+      <Route path="/macro-museum/regime-gallery" component={RegimeGallery} />
+      <Route path="/macro-museum/map-wall" component={MapWall} />
+      <Route path="/macro-museum/regional-chamber" component={RegionalChamber} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/404" component={NotFound} />

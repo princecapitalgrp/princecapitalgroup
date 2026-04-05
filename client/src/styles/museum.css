@@ -1,0 +1,375 @@
+/* Renaissance Macro Museum Design System */
+
+:root {
+  /* Palace Color Palette */
+  --museum-navy: #0a0e1a;
+  --museum-gold: #d4af37;
+  --museum-champagne: #f5e6d3;
+  --museum-marble: #e8dcc8;
+  --museum-burgundy: #5c2e2e;
+  --museum-blue-deep: #1a3a52;
+  --museum-purple: #6b5b95;
+  
+  /* Lighting */
+  --museum-shadow: rgba(0, 0, 0, 0.4);
+  --museum-glow: rgba(212, 175, 55, 0.3);
+  
+  /* Typography */
+  --museum-serif: 'Playfair Display', serif;
+  --museum-sans: 'IBM Plex Sans', sans-serif;
+  --museum-mono: 'IBM Plex Mono', monospace;
+}
+
+/* Base Styles */
+.museum-container {
+  background: var(--museum-navy);
+  color: var(--museum-champagne);
+  font-family: var(--museum-sans);
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background with texture overlay */
+.museum-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.museum-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+}
+
+/* Content wrapper */
+.museum-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Regime Portal Styles */
+.regime-portal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 2px solid var(--museum-gold);
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(212, 175, 55, 0.05) 100%
+  );
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.regime-portal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.regime-portal:hover {
+  border-color: var(--museum-champagne);
+  box-shadow: 0 0 30px var(--museum-glow),
+              inset 0 0 20px rgba(212, 175, 55, 0.2);
+  transform: translateY(-8px);
+}
+
+.regime-portal:hover::before {
+  left: 100%;
+}
+
+.regime-portal-title {
+  font-family: var(--museum-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--museum-gold);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  z-index: 2;
+}
+
+.regime-portal-description {
+  font-size: 0.95rem;
+  color: var(--museum-champagne);
+  text-align: center;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+/* Map Wall Styles */
+.map-wall {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: url('data:image/svg+xml,...') center / cover;
+  border: 3px solid var(--museum-gold);
+  box-shadow: 0 0 40px var(--museum-glow),
+              inset 0 0 30px rgba(212, 175, 55, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.map-wall-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Continent Hotspot */
+.continent-hotspot {
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.continent-hotspot:hover {
+  opacity: 1;
+}
+
+.continent-hotspot-label {
+  position: absolute;
+  background: rgba(212, 175, 55, 0.9);
+  color: var(--museum-navy);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.continent-hotspot:hover .continent-hotspot-label {
+  opacity: 1;
+}
+
+/* Asset Class Door */
+.asset-door {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 300px;
+  border: 2px solid var(--museum-gold);
+  border-radius: 4px;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 58, 82, 0.4) 0%,
+    rgba(26, 58, 82, 0.2) 100%
+  );
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.asset-door::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(212, 175, 55, 0.2) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.asset-door:hover {
+  border-color: var(--museum-champagne);
+  box-shadow: 0 0 40px var(--museum-glow),
+              inset 0 0 30px rgba(212, 175, 55, 0.15);
+  transform: scale(1.05);
+}
+
+.asset-door:hover::before {
+  opacity: 1;
+}
+
+.asset-door-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.asset-door:hover .asset-door-icon {
+  transform: scale(1.15);
+}
+
+.asset-door-title {
+  font-family: var(--museum-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--museum-gold);
+  text-align: center;
+  z-index: 2;
+}
+
+.asset-door-subtitle {
+  font-size: 0.85rem;
+  color: var(--museum-champagne);
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  z-index: 2;
+}
+
+/* Navigation Crest */
+.nav-crest {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--museum-gold), #c9a961);
+  border: 2px solid var(--museum-champagne);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+  font-size: 1.8rem;
+}
+
+.nav-crest:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+}
+
+.nav-crest-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background: var(--museum-navy);
+  border: 2px solid var(--museum-gold);
+  border-radius: 4px;
+  min-width: 180px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.nav-crest.active .nav-crest-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-crest-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--museum-champagne);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.nav-crest-item:last-child {
+  border-bottom: none;
+}
+
+.nav-crest-item:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--museum-gold);
+  padding-left: 1.5rem;
+}
+
+/* Cinematic Transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--museum-glow);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--museum-glow);
+  }
+}
+
+.museum-fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.museum-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .regime-portal-title {
+    font-size: 1.4rem;
+  }
+  
+  .asset-door {
+    min-height: 200px;
+  }
+  
+  .asset-door-icon {
+    font-size: 2rem;
+  }
+  
+  .asset-door-title {
+    font-size: 1.2rem;
+  }
+}
