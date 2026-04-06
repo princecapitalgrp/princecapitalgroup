@@ -171,18 +171,19 @@ export default function Academy() {
 
   return (
     <div ref={pageRef}>
-      {/* ── EDUCATIONAL BANNER ── */}
+      {/* ── STICKY EDUCATIONAL BANNER ── */}
       <div
-        className="w-full py-4 text-center border-b"
+        className="fixed top-16 md:top-20 left-0 right-0 z-40 w-full py-3 text-center border-b"
         style={{
           background: "oklch(0.52 0.07 228 / 10%)",
           borderColor: "oklch(0.52 0.07 228 / 40%)",
+          backdropFilter: "blur(8px)",
         }}
       >
         <div className="flex items-center justify-center gap-2">
-          <AlertCircle size={18} style={{ color: "oklch(0.52 0.07 228)" }} />
+          <AlertCircle size={16} style={{ color: "oklch(0.52 0.07 228)", flexShrink: 0 }} />
           <span
-            className="text-sm font-medium"
+            className="text-xs md:text-sm font-medium"
             style={{
               color: "oklch(0.52 0.07 228)",
               fontFamily: "'IBM Plex Mono', monospace",
@@ -194,9 +195,12 @@ export default function Academy() {
         </div>
       </div>
 
+      {/* ── SPACING FOR STICKY BANNER ── */}
+      <div className="h-14 md:h-16" />
+
       {/* ── HERO ── */}
       <section
-        className="relative pt-32 pb-20 md:pt-40 md:pb-28"
+        className="relative pt-16 pb-20 md:pt-20 md:pb-28"
         style={{
           backgroundImage: `url(${ACADEMY_BG})`,
           backgroundSize: "cover",
