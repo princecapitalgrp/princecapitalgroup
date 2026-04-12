@@ -10,12 +10,15 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 
 if (!supabaseUrl || !supabaseKey) {
-  throw new Error(
-    'Missing Supabase environment variables. Check .env.local for VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY'
+  console.warn(
+    '[PCG] Missing Supabase environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY). ' +
+    'Waitlist and data features will be disabled.'
   )
 }
 
-export const supabase = createClient(supabaseUrl, supabaseKey)
+export const supabase = supabaseUrl && supabaseKey
+  ? createClient(supabaseUrl, supabaseKey)
+  : null
 
 /**
  * Type definitions for database tables

@@ -22,6 +22,11 @@ export function usePosts(category?: string, limit: number = 10) {
         setLoading(true)
         setError(null)
 
+        if (!supabase) {
+          setLoading(false)
+          return
+        }
+
         let query = supabase
           .from('macro_museum_posts')
           .select('*')
@@ -68,6 +73,11 @@ export function useMemos(limit: number = 10) {
         setLoading(true)
         setError(null)
 
+        if (!supabase) {
+          setLoading(false)
+          return
+        }
+
         const { data, error: fetchError } = await supabase
           .from('weekly_memos')
           .select('*')
@@ -106,6 +116,11 @@ export function useSaveEmail() {
       setLoading(true)
       setError(null)
       setSuccess(false)
+
+      if (!supabase) {
+        setError('Database not configured.')
+        return false
+      }
 
       const { error: insertError } = await supabase
         .from('email_captures')
@@ -146,9 +161,14 @@ export function useRealTimePosts() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    if (!supabase) {
+      setLoading(false)
+      return
+    }
+
     const fetchInitialPosts = async () => {
       try {
-        const { data, error: fetchError } = await supabase
+        const { data, error: fetchError } = await supabase!
           .from('macro_museum_posts')
           .select('*')
           .order('published_at', { ascending: false })
