@@ -88,7 +88,30 @@ export default function Navigation() {
             </div>
 
             {/* CTA + Mobile Toggle */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <Link href="/waitlist" className="hidden md:block">
+                <button
+                  className="text-xs font-semibold px-4 py-2 transition-colors duration-200"
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "oklch(0.52 0.07 228)",
+                    border: "1px solid oklch(0.52 0.07 228 / 50%)",
+                    background: "oklch(0.52 0.07 228 / 8%)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.52 0.07 228 / 18%)";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = "oklch(0.52 0.07 228 / 80%)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.52 0.07 228 / 8%)";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = "oklch(0.52 0.07 228 / 50%)";
+                  }}
+                >
+                  Join Waitlist
+                </button>
+              </Link>
               <Link href="/contact" className="hidden md:block">
                 <button className="pcg-btn-primary text-xs">
                   Contact
@@ -147,7 +170,22 @@ export default function Navigation() {
               </Link>
             ))}
           </div>
-          <div className="mt-12">
+          <div className="mt-12 flex flex-col gap-3">
+            <Link href="/waitlist">
+              <button
+                className="w-full text-center text-sm font-semibold py-3 transition-colors duration-200"
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "oklch(0.52 0.07 228)",
+                  border: "1px solid oklch(0.52 0.07 228 / 50%)",
+                  background: "oklch(0.52 0.07 228 / 8%)",
+                }}
+              >
+                Join Waitlist
+              </button>
+            </Link>
             <Link href="/contact">
               <button className="pcg-btn-primary w-full text-center">
                 Get in Touch

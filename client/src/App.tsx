@@ -12,6 +12,7 @@ import Risk from "./pages/Risk";
 import Academy from "./pages/Academy";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Waitlist from "./pages/Waitlist";
 import MacroMuseum from "./pages/MacroMuseum";
 import RegimeGallery from "./pages/RegimeGallery";
 import MapWall from "./pages/MapWall";
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/strategy" component={Strategy} />
       <Route path="/risk" component={Risk} />
       <Route path="/academy" component={Academy} />
+      <Route path="/waitlist" component={Waitlist} />
       <Route path="/macro-museum" component={MacroMuseum} />
       <Route path="/macro-museum/regime-gallery" component={RegimeGallery} />
       <Route path="/macro-museum/map-wall" component={MapWall} />
