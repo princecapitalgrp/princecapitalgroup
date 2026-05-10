@@ -1,6 +1,6 @@
 /*
  * PCG Waitlist Page
- * Design: Editorial Authority — matches live site dark theme
+ * Design: Private Bank Heritage — white sections, gold accents
  * Backend: Supabase email_captures table via useSaveEmail hook
  * Sections: Hero, Form + Perks, Disclaimer
  */
@@ -53,9 +53,9 @@ const perks = [
 ];
 
 const inputStyle: React.CSSProperties = {
-  background: "oklch(0.26 0.035 243)",
-  border: "1px solid oklch(1 0 0 / 12%)",
-  color: "white",
+  background: "oklch(0.99 0.001 286)",
+  border: "1px solid oklch(0 0 0 / 12%)",
+  color: "oklch(0.22 0.04 243)",
   fontFamily: "'IBM Plex Sans', sans-serif",
   fontSize: "0.875rem",
   padding: "0.75rem 1rem",
@@ -69,7 +69,7 @@ const labelStyle: React.CSSProperties = {
   fontSize: "0.7rem",
   letterSpacing: "0.12em",
   textTransform: "uppercase",
-  color: "oklch(0.52 0.07 228)",
+  color: "oklch(0.68 0.10 64)",
   display: "block",
   marginBottom: "0.5rem",
 };
@@ -77,7 +77,7 @@ const labelStyle: React.CSSProperties = {
 const errorStyle: React.CSSProperties = {
   fontFamily: "'IBM Plex Mono', monospace",
   fontSize: "0.7rem",
-  color: "oklch(0.80 0.245 27.325)",
+  color: "oklch(0.577 0.245 27.325)",
   marginTop: "0.375rem",
 };
 
@@ -128,20 +128,21 @@ export default function Waitlist() {
       {/* ── HERO ── */}
       <section
         className="pt-32 pb-16 md:pt-40 md:pb-20"
-        style={{ background: "oklch(0.22 0.04 243)" }}
+        style={{ background: "oklch(0.97 0.002 286)" }}
       >
         <div className="container">
           <div className="max-w-2xl">
             <div className="pcg-section-label mb-4 fade-up">Entry Protocol</div>
             <h1
-              className="text-white text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
-              Join the <span style={{ color: "oklch(0.52 0.07 228)" }}>Waitlist</span>
+              Join the{" "}
+              <span style={{ color: "oklch(0.68 0.10 64)", fontStyle: "italic" }}>Waitlist</span>
             </h1>
             <p
               className="text-lg leading-relaxed fade-up"
-              style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+              style={{ color: "oklch(0.38 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               PCG Academy launches shortly. Founding members lock in €39/month — below standard pricing — for life. No commitment required.
             </p>
@@ -159,35 +160,35 @@ export default function Waitlist() {
               <div
                 className="p-10 text-center"
                 style={{
-                  border: "1px solid oklch(0.52 0.07 228 / 30%)",
-                  background: "oklch(0.20 0.04 243)",
+                  border: "1px solid oklch(0.68 0.10 64 / 30%)",
+                  background: "oklch(0.68 0.10 64 / 6%)",
                 }}
               >
                 <CheckCircle
                   size={40}
-                  style={{ color: "oklch(0.52 0.07 228)", margin: "0 auto 1.5rem" }}
+                  style={{ color: "oklch(0.68 0.10 64)", margin: "0 auto 1.5rem" }}
                 />
                 <h3
-                  className="text-white text-2xl font-bold mb-3"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="text-2xl font-bold mb-3"
+                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                 >
                   You're on the list.
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-6"
-                  style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                  style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                 >
                   We'll contact{" "}
-                  <span style={{ color: "white" }}>{formData.email}</span> before
-                  launch with founding member access details.
+                  <span style={{ color: "oklch(0.22 0.04 243)", fontWeight: 600 }}>{formData.email}</span>{" "}
+                  before launch with founding member access details.
                 </p>
                 <div
                   className="text-xs"
                   style={{
                     fontFamily: "'IBM Plex Mono', monospace",
-                    color: "oklch(0.52 0.07 228)",
+                    color: "oklch(0.68 0.10 64)",
                     letterSpacing: "0.1em",
-                    borderTop: "1px solid oklch(1 0 0 / 10%)",
+                    borderTop: "1px solid oklch(0 0 0 / 10%)",
                     paddingTop: "1.5rem",
                   }}
                 >
@@ -197,20 +198,20 @@ export default function Waitlist() {
             ) : (
               <div
                 style={{
-                  border: "1px solid oklch(1 0 0 / 12%)",
-                  background: "oklch(0.20 0.04 243)",
+                  border: "1px solid oklch(0 0 0 / 12%)",
+                  background: "oklch(0.99 0.001 286)",
                   padding: "2rem",
                 }}
               >
                 <h2
-                  className="text-white text-xl font-bold mb-2"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="text-xl font-bold mb-2"
+                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                 >
                   Secure Your Spot
                 </h2>
                 <p
                   className="text-sm mb-8"
-                  style={{ color: "oklch(0.60 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                  style={{ color: "oklch(0.55 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                 >
                   No spam. No commitment. Unsubscribe anytime.
                 </p>
@@ -227,8 +228,8 @@ export default function Waitlist() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Your first name"
                       style={inputStyle}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.52 0.07 228)")}
-                      onBlur={(e) => (e.target.style.borderColor = "oklch(1 0 0 / 12%)")}
+                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.68 0.10 64)")}
+                      onBlur={(e) => (e.target.style.borderColor = "oklch(0 0 0 / 12%)")}
                     />
                   </div>
 
@@ -243,18 +244,18 @@ export default function Waitlist() {
                       style={{
                         ...inputStyle,
                         borderColor: errors.email
-                          ? "oklch(0.80 0.245 27.325 / 60%)"
-                          : "oklch(1 0 0 / 12%)",
+                          ? "oklch(0.577 0.245 27.325 / 60%)"
+                          : "oklch(0 0 0 / 12%)",
                       }}
                       onFocus={(e) =>
                         (e.target.style.borderColor = errors.email
-                          ? "oklch(0.80 0.245 27.325 / 60%)"
-                          : "oklch(0.52 0.07 228)")
+                          ? "oklch(0.577 0.245 27.325 / 60%)"
+                          : "oklch(0.68 0.10 64)")
                       }
                       onBlur={(e) =>
                         (e.target.style.borderColor = errors.email
-                          ? "oklch(0.80 0.245 27.325 / 60%)"
-                          : "oklch(1 0 0 / 12%)")
+                          ? "oklch(0.577 0.245 27.325 / 60%)"
+                          : "oklch(0 0 0 / 12%)")
                       }
                       required
                     />
@@ -283,7 +284,7 @@ export default function Waitlist() {
                 {/* Stats */}
                 <div
                   className="grid grid-cols-2 gap-3 mt-8"
-                  style={{ borderTop: "1px solid oklch(1 0 0 / 10%)", paddingTop: "1.5rem" }}
+                  style={{ borderTop: "1px solid oklch(0 0 0 / 8%)", paddingTop: "1.5rem" }}
                 >
                   {[
                     { val: "€39/mo", label: "Founding rate" },
@@ -294,7 +295,7 @@ export default function Waitlist() {
                     <div key={item.label} className="text-center">
                       <div
                         className="text-sm font-bold"
-                        style={{ color: "oklch(0.52 0.07 228)", fontFamily: "'IBM Plex Mono', monospace" }}
+                        style={{ color: "oklch(0.68 0.10 64)", fontFamily: "'IBM Plex Mono', monospace" }}
                       >
                         {item.val}
                       </div>
@@ -315,8 +316,8 @@ export default function Waitlist() {
           <div className="md:col-span-7 fade-up" style={{ transitionDelay: "120ms" }}>
             <div className="pcg-section-label mb-6">What You Get</div>
             <h2
-              className="text-white text-2xl font-bold mb-8"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-2xl font-bold mb-8"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               Academy Membership Includes
             </h2>
@@ -327,36 +328,36 @@ export default function Waitlist() {
                   key={perk.label}
                   className="flex items-start gap-5 p-5"
                   style={{
-                    border: "1px solid oklch(1 0 0 / 10%)",
-                    background: "oklch(0.20 0.04 243)",
+                    border: "1px solid oklch(0 0 0 / 10%)",
+                    background: "oklch(0.99 0.001 286)",
                     transition: "border-color 200ms",
                     animationDelay: `${i * 80}ms`,
                   }}
                   onMouseEnter={(e) =>
                     ((e.currentTarget as HTMLDivElement).style.borderColor =
-                      "oklch(0.52 0.07 228 / 40%)")
+                      "oklch(0.68 0.10 64 / 40%)")
                   }
                   onMouseLeave={(e) =>
                     ((e.currentTarget as HTMLDivElement).style.borderColor =
-                      "oklch(1 0 0 / 10%)")
+                      "oklch(0 0 0 / 10%)")
                   }
                 >
                   <div
                     className="flex items-center justify-center w-10 h-10 shrink-0"
-                    style={{ border: "1px solid oklch(0.52 0.07 228 / 40%)" }}
+                    style={{ border: "1px solid oklch(0.68 0.10 64 / 40%)" }}
                   >
-                    <perk.icon size={18} style={{ color: "oklch(0.52 0.07 228)" }} />
+                    <perk.icon size={18} style={{ color: "oklch(0.68 0.10 64)" }} />
                   </div>
                   <div>
                     <div
-                      className="text-white text-sm font-semibold mb-1"
-                      style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      className="text-sm font-semibold mb-1"
+                      style={{ color: "oklch(0.22 0.04 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                     >
                       {perk.label}
                     </div>
                     <div
                       className="text-xs leading-relaxed"
-                      style={{ color: "oklch(0.60 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{ color: "oklch(0.52 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                     >
                       {perk.description}
                     </div>
@@ -368,13 +369,13 @@ export default function Waitlist() {
             <div
               className="mt-8 p-5"
               style={{
-                borderLeft: "2px solid oklch(0.52 0.07 228 / 40%)",
+                borderLeft: "2px solid oklch(0.68 0.10 64 / 40%)",
                 paddingLeft: "1.25rem",
               }}
             >
               <p
                 className="text-xs leading-relaxed"
-                style={{ color: "oklch(0.55 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{ color: "oklch(0.52 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 vs. Bloomberg Terminal courses at €250+/month. Same institutional frameworks.
                 Transparent track record. No performance claims. No signals. No hype.
@@ -385,7 +386,7 @@ export default function Waitlist() {
 
         {/* Disclaimer */}
         <div className="pcg-disclaimer mt-12 fade-up">
-          <strong style={{ color: "oklch(0.75 0.07 228)" }}>DISCLAIMER:</strong>{" "}
+          <strong style={{ color: "oklch(0.55 0.08 64)" }}>DISCLAIMER:</strong>{" "}
           PCG Academy is an educational product. Joining this waitlist does not constitute a purchase, subscription, or financial services engagement. PCG does not provide investment advice, manage client funds, or accept external capital. All content is for educational and informational purposes only.
         </div>
       </section>

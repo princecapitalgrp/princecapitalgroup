@@ -62,3 +62,15 @@ export interface EmailCapture {
   interest?: string
   created_at: string
 }
+
+export interface TradeBreakdown {
+  id: string
+  name: string
+  date: string
+  pair: string
+  session: string
+  side: string
+  tags: string[]
+  description: string
+  created_at: string
+}

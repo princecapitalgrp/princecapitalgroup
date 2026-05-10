@@ -1,7 +1,7 @@
 /*
  * PCG Navigation Component
- * Design: Editorial Authority — dark navy, IBM Plex Sans labels, steel blue accent
- * Behavior: Fixed top nav, transparent → solid on scroll, mobile hamburger
+ * Design: Private Bank Heritage — white bg, IBM Plex Sans labels, gold accent
+ * Behavior: Fixed top nav, transparent → solid white on scroll, mobile hamburger
  */
 
 import { useState, useEffect } from "react";
@@ -38,10 +38,10 @@ export default function Navigation() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
           background: scrolled
-            ? "oklch(0.20 0.04 243 / 97%)"
-            : "oklch(0.20 0.04 243 / 0%)",
+            ? "oklch(0.98 0.002 286 / 97%)"
+            : "oklch(0.98 0.002 286 / 0%)",
           backdropFilter: scrolled ? "blur(12px)" : "none",
-          borderBottom: scrolled ? "1px solid oklch(1 0 0 / 8%)" : "none",
+          borderBottom: scrolled ? "1px solid oklch(0 0 0 / 8%)" : "none",
         }}
       >
         <div className="container">
@@ -50,23 +50,31 @@ export default function Navigation() {
             <Link href="/">
               <div className="flex items-center gap-3 group">
                 <div
-                  className="flex items-center justify-center w-10 h-10 border-2 border-white/80 group-hover:border-[oklch(0.52_0.07_228)] transition-colors duration-200"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace" }}
+                  className="flex items-center justify-center w-10 h-10 border-2 transition-colors duration-200"
+                  style={{
+                    borderColor: "oklch(0.22 0.04 243 / 60%)",
+                    fontFamily: "'IBM Plex Mono', monospace",
+                  }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "oklch(0.68 0.10 64)")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "oklch(0.22 0.04 243 / 60%)")}
                 >
-                  <span className="text-white text-sm font-bold tracking-wider group-hover:text-[oklch(0.62_0.07_228)] transition-colors duration-200">
+                  <span
+                    className="text-sm font-bold tracking-wider transition-colors duration-200"
+                    style={{ color: "oklch(0.22 0.04 243)" }}
+                  >
                     PCG
                   </span>
                 </div>
                 <div className="hidden sm:block">
                   <div
-                    className="text-white text-sm font-semibold leading-tight"
-                    style={{ fontFamily: "'IBM Plex Sans', sans-serif", letterSpacing: "0.04em" }}
+                    className="text-sm font-semibold leading-tight"
+                    style={{ fontFamily: "'IBM Plex Sans', sans-serif", letterSpacing: "0.04em", color: "oklch(0.22 0.04 243)" }}
                   >
                     Prince Capital Group
                   </div>
                   <div
-                    className="text-[oklch(0.52_0.07_228)] text-[10px] leading-tight"
-                    style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase" }}
+                    className="text-[10px] leading-tight"
+                    style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.68 0.10 64)" }}
                   >
                     Global Macro FX
                   </div>
@@ -96,17 +104,17 @@ export default function Navigation() {
                     fontFamily: "'IBM Plex Mono', monospace",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
-                    color: "oklch(0.52 0.07 228)",
-                    border: "1px solid oklch(0.52 0.07 228 / 50%)",
-                    background: "oklch(0.52 0.07 228 / 8%)",
+                    color: "oklch(0.68 0.10 64)",
+                    border: "1px solid oklch(0.68 0.10 64 / 50%)",
+                    background: "oklch(0.68 0.10 64 / 6%)",
                   }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.52 0.07 228 / 18%)";
-                    (e.currentTarget as HTMLButtonElement).style.borderColor = "oklch(0.52 0.07 228 / 80%)";
+                    (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.68 0.10 64 / 14%)";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = "oklch(0.68 0.10 64 / 80%)";
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.52 0.07 228 / 8%)";
-                    (e.currentTarget as HTMLButtonElement).style.borderColor = "oklch(0.52 0.07 228 / 50%)";
+                    (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.68 0.10 64 / 6%)";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = "oklch(0.68 0.10 64 / 50%)";
                   }}
                 >
                   Join Waitlist
@@ -118,9 +126,12 @@ export default function Navigation() {
                 </button>
               </Link>
               <button
-                className="lg:hidden text-white/80 hover:text-white transition-colors"
+                className="lg:hidden transition-colors"
+                style={{ color: "oklch(0.38 0.03 243)" }}
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label="Toggle menu"
+                onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.color = "oklch(0.22 0.04 243)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.color = "oklch(0.38 0.03 243)")}
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
@@ -139,7 +150,7 @@ export default function Navigation() {
       >
         <div
           className="absolute inset-0"
-          style={{ background: "oklch(0.18 0.04 243 / 97%)", backdropFilter: "blur(16px)" }}
+          style={{ background: "oklch(0.97 0.002 286 / 97%)", backdropFilter: "blur(16px)" }}
           onClick={() => setMobileOpen(false)}
         />
         <div className="relative flex flex-col justify-center h-full px-8">
@@ -155,14 +166,14 @@ export default function Navigation() {
                   }}
                 >
                   <span
-                    className="text-[oklch(0.52_0.07_228)] text-xs"
-                    style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.1em" }}
+                    className="text-xs"
+                    style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.1em", color: "oklch(0.68 0.10 64)" }}
                   >
                     0{i + 1}.
                   </span>
                   <span
-                    className="text-white text-2xl font-semibold group-hover:text-[oklch(0.62_0.07_228)] transition-colors"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    className="text-2xl font-semibold transition-colors"
+                    style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                   >
                     {link.label}
                   </span>
@@ -178,9 +189,9 @@ export default function Navigation() {
                   fontFamily: "'IBM Plex Mono', monospace",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: "oklch(0.52 0.07 228)",
-                  border: "1px solid oklch(0.52 0.07 228 / 50%)",
-                  background: "oklch(0.52 0.07 228 / 8%)",
+                  color: "oklch(0.68 0.10 64)",
+                  border: "1px solid oklch(0.68 0.10 64 / 50%)",
+                  background: "oklch(0.68 0.10 64 / 6%)",
                 }}
               >
                 Join Waitlist

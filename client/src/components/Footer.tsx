@@ -1,6 +1,6 @@
 /*
  * PCG Footer Component
- * Design: Editorial Authority — dark charcoal base, IBM Plex Mono labels
+ * Design: Private Bank Heritage — warm off-white base, IBM Plex Mono labels, gold accent
  * Contains: nav links, disclaimer, copyright
  */
 
@@ -8,7 +8,7 @@ import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer style={{ background: "oklch(0.18 0.04 243)", borderTop: "1px solid oklch(1 0 0 / 10%)" }}>
+    <footer style={{ background: "oklch(0.95 0.003 286)", borderTop: "1px solid oklch(0 0 0 / 10%)" }}>
       <div className="container py-12 md:py-16">
         {/* Top Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
@@ -16,21 +16,21 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div
-                className="flex items-center justify-center w-9 h-9 border border-white/60"
-                style={{ fontFamily: "'IBM Plex Mono', monospace" }}
+                className="flex items-center justify-center w-9 h-9"
+                style={{ border: "1px solid oklch(0.22 0.04 243 / 50%)", fontFamily: "'IBM Plex Mono', monospace" }}
               >
-                <span className="text-white text-xs font-bold tracking-wider">PCG</span>
+                <span className="text-xs font-bold tracking-wider" style={{ color: "oklch(0.22 0.04 243)" }}>PCG</span>
               </div>
               <span
-                className="text-white text-sm font-semibold"
-                style={{ fontFamily: "'IBM Plex Sans', sans-serif", letterSpacing: "0.04em" }}
+                className="text-sm font-semibold"
+                style={{ fontFamily: "'IBM Plex Sans', sans-serif", letterSpacing: "0.04em", color: "oklch(0.22 0.04 243)" }}
               >
                 Prince Capital Group
               </span>
             </div>
             <p
               className="text-sm leading-relaxed"
-              style={{ color: "oklch(0.60 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+              style={{ color: "oklch(0.50 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               Proprietary research-to-execution project focused on G10 FX markets.
             </p>
@@ -44,7 +44,7 @@ export default function Footer() {
                 fontFamily: "'IBM Plex Mono', monospace",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "oklch(0.52 0.07 228)",
+                color: "oklch(0.68 0.10 64)",
               }}
             >
               Navigation
@@ -60,8 +60,10 @@ export default function Footer() {
               ].map((link) => (
                 <Link key={link.href} href={link.href}>
                   <div
-                    className="text-sm hover:text-white transition-colors cursor-pointer"
-                    style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    className="text-sm cursor-pointer transition-colors"
+                    style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.color = "oklch(0.22 0.04 243)")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.color = "oklch(0.48 0.03 243)")}
                   >
                     {link.label}
                   </div>
@@ -78,7 +80,7 @@ export default function Footer() {
                 fontFamily: "'IBM Plex Mono', monospace",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "oklch(0.52 0.07 228)",
+                color: "oklch(0.68 0.10 64)",
               }}
             >
               Connect
@@ -86,8 +88,10 @@ export default function Footer() {
             <div className="space-y-3">
               <a
                 href="mailto:contact@princecapitalgroup.com"
-                className="block text-sm hover:text-white transition-colors"
-                style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                className="block text-sm transition-colors"
+                style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "oklch(0.22 0.04 243)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "oklch(0.48 0.03 243)")}
               >
                 contact@princecapitalgroup.com
               </a>
@@ -95,8 +99,10 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-sm hover:text-white transition-colors"
-                style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                className="block text-sm transition-colors"
+                style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "oklch(0.22 0.04 243)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "oklch(0.48 0.03 243)")}
               >
                 LinkedIn — Antonio Grillo-Balen
               </a>
@@ -106,20 +112,20 @@ export default function Footer() {
 
         {/* Disclaimer */}
         <div className="pcg-disclaimer mb-8">
-          <strong style={{ color: "oklch(0.75 0.07 228)" }}>IMPORTANT DISCLAIMER:</strong>{" "}
+          <strong style={{ color: "oklch(0.55 0.08 64)" }}>IMPORTANT DISCLAIMER:</strong>{" "}
           Prince Capital Group (PCG) is a proprietary research-to-execution project. PCG trades proprietary capital only. PCG does not manage client funds, does not accept external investment, and does not provide investment advice of any kind. All content published by PCG — including but not limited to strategy notes, educational materials, process memos, and analytical frameworks — is provided for educational and informational purposes only. Nothing on this website constitutes a solicitation, recommendation, or offer to buy or sell any financial instrument. Past process adherence does not guarantee future results. Trading foreign exchange involves substantial risk of loss and is not suitable for all individuals.
         </div>
 
         {/* Bottom Row */}
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6"
-          style={{ borderTop: "1px solid oklch(1 0 0 / 8%)" }}
+          style={{ borderTop: "1px solid oklch(0 0 0 / 8%)" }}
         >
           <span
             className="text-xs"
             style={{
               fontFamily: "'IBM Plex Mono', monospace",
-              color: "oklch(0.50 0.03 243)",
+              color: "oklch(0.58 0.03 243)",
               letterSpacing: "0.06em",
             }}
           >
@@ -129,7 +135,7 @@ export default function Footer() {
             className="text-xs"
             style={{
               fontFamily: "'IBM Plex Mono', monospace",
-              color: "oklch(0.50 0.03 243)",
+              color: "oklch(0.58 0.03 243)",
               letterSpacing: "0.06em",
             }}
           >

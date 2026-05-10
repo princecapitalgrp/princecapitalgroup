@@ -1,6 +1,6 @@
 /*
  * PCG Contact Page
- * Design: Editorial Authority — minimal form, dropdown, disclaimer
+ * Design: Private Bank Heritage — white sections, gold accents
  * Sections: Hero, Contact Form, Email/LinkedIn, Disclaimer
  */
 
@@ -67,9 +67,9 @@ export default function Contact() {
   };
 
   const inputStyle = {
-    background: "oklch(0.26 0.035 243)",
-    border: "1px solid oklch(1 0 0 / 12%)",
-    color: "white",
+    background: "oklch(0.99 0.001 286)",
+    border: "1px solid oklch(0 0 0 / 12%)",
+    color: "oklch(0.22 0.04 243)",
     fontFamily: "'IBM Plex Sans', sans-serif",
     fontSize: "0.875rem",
     padding: "0.75rem 1rem",
@@ -83,7 +83,7 @@ export default function Contact() {
     fontSize: "0.7rem",
     letterSpacing: "0.12em",
     textTransform: "uppercase" as const,
-    color: "oklch(0.52 0.07 228)",
+    color: "oklch(0.68 0.10 64)",
     display: "block",
     marginBottom: "0.5rem",
   };
@@ -91,7 +91,7 @@ export default function Contact() {
   const errorStyle = {
     fontFamily: "'IBM Plex Mono', monospace",
     fontSize: "0.7rem",
-    color: "oklch(0.80 0.245 27.325)",
+    color: "oklch(0.577 0.245 27.325)",
     marginTop: "0.375rem",
   };
 
@@ -100,20 +100,20 @@ export default function Contact() {
       {/* ── HERO ── */}
       <section
         className="pt-32 pb-16 md:pt-40 md:pb-20"
-        style={{ background: "oklch(0.22 0.04 243)" }}
+        style={{ background: "oklch(0.97 0.002 286)" }}
       >
         <div className="container">
           <div className="max-w-2xl">
             <div className="pcg-section-label mb-4 fade-up">Contact</div>
             <h1
-              className="text-white text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               Get in Touch
             </h1>
             <p
               className="text-lg leading-relaxed fade-up"
-              style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+              style={{ color: "oklch(0.38 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               PCG welcomes inquiries related to mentorship, partnerships, research collaboration, and media. Please select the appropriate category below.
             </p>
@@ -129,18 +129,18 @@ export default function Contact() {
             {submitted ? (
               <div
                 className="p-10 text-center"
-                style={{ border: "1px solid oklch(0.52 0.07 228 / 30%)", background: "oklch(0.20 0.04 243)" }}
+                style={{ border: "1px solid oklch(0.68 0.10 64 / 30%)", background: "oklch(0.68 0.10 64 / 6%)" }}
               >
-                <CheckCircle size={40} style={{ color: "oklch(0.52 0.07 228)", margin: "0 auto 1.5rem" }} />
+                <CheckCircle size={40} style={{ color: "oklch(0.68 0.10 64)", margin: "0 auto 1.5rem" }} />
                 <h3
-                  className="text-white text-2xl font-bold mb-3"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="text-2xl font-bold mb-3"
+                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                 >
                   Message Received
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                  style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                 >
                   Thank you for reaching out. PCG will review your inquiry and respond within 3–5 business days. Please note that PCG does not provide investment advice or accept client funds.
                 </p>
@@ -158,10 +158,10 @@ export default function Contact() {
                       placeholder="Your full name"
                       style={{
                         ...inputStyle,
-                        borderColor: errors.name ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)",
+                        borderColor: errors.name ? "oklch(0.577 0.245 27.325 / 60%)" : "oklch(0 0 0 / 12%)",
                       }}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.52 0.07 228)")}
-                      onBlur={(e) => (e.target.style.borderColor = errors.name ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)")}
+                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.68 0.10 64)")}
+                      onBlur={(e) => (e.target.style.borderColor = errors.name ? "oklch(0.577 0.245 27.325 / 60%)" : "oklch(0 0 0 / 12%)")}
                     />
                     {errors.name && <div style={errorStyle}>{errors.name}</div>}
                   </div>
@@ -176,10 +176,10 @@ export default function Contact() {
                       placeholder="your@email.com"
                       style={{
                         ...inputStyle,
-                        borderColor: errors.email ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)",
+                        borderColor: errors.email ? "oklch(0.577 0.245 27.325 / 60%)" : "oklch(0 0 0 / 12%)",
                       }}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.52 0.07 228)")}
-                      onBlur={(e) => (e.target.style.borderColor = errors.email ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)")}
+                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.68 0.10 64)")}
+                      onBlur={(e) => (e.target.style.borderColor = errors.email ? "oklch(0.577 0.245 27.325 / 60%)" : "oklch(0 0 0 / 12%)")}
                     />
                     {errors.email && <div style={errorStyle}>{errors.email}</div>}
                   </div>
@@ -192,17 +192,17 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, inquiry: e.target.value })}
                       style={{
                         ...inputStyle,
-                        borderColor: errors.inquiry ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)",
+                        borderColor: errors.inquiry ? "oklch(0.577 0.245 27.325 / 60%)" : "oklch(0 0 0 / 12%)",
                         appearance: "none",
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235b7c99' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23BB965A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "right 1rem center",
                         paddingRight: "2.5rem",
                       }}
                     >
-                      <option value="" style={{ background: "oklch(0.22 0.04 243)" }}>Select inquiry type...</option>
+                      <option value="" style={{ background: "white" }}>Select inquiry type...</option>
                       {inquiryTypes.map((type) => (
-                        <option key={type.value} value={type.value} style={{ background: "oklch(0.22 0.04 243)" }}>
+                        <option key={type.value} value={type.value} style={{ background: "white" }}>
                           {type.label}
                         </option>
                       ))}
@@ -221,10 +221,10 @@ export default function Contact() {
                       style={{
                         ...inputStyle,
                         resize: "vertical",
-                        borderColor: errors.message ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)",
+                        borderColor: errors.message ? "oklch(0.577 0.245 27.325 / 60%)" : "oklch(0 0 0 / 12%)",
                       }}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.52 0.07 228)")}
-                      onBlur={(e) => (e.target.style.borderColor = errors.message ? "oklch(0.80 0.245 27.325 / 60%)" : "oklch(1 0 0 / 12%)")}
+                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.68 0.10 64)")}
+                      onBlur={(e) => (e.target.style.borderColor = errors.message ? "oklch(0.577 0.245 27.325 / 60%)" : "oklch(0 0 0 / 12%)")}
                     />
                     {errors.message && <div style={errorStyle}>{errors.message}</div>}
                   </div>
@@ -252,21 +252,25 @@ export default function Contact() {
                     className="flex items-center gap-4 group"
                   >
                     <div
-                      className="w-10 h-10 flex items-center justify-center border shrink-0 group-hover:border-[oklch(0.52_0.07_228)] transition-colors"
-                      style={{ borderColor: "oklch(1 0 0 / 15%)" }}
+                      className="w-10 h-10 flex items-center justify-center border shrink-0 transition-colors"
+                      style={{ borderColor: "oklch(0 0 0 / 15%)" }}
+                      onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "oklch(0.68 0.10 64)")}
+                      onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "oklch(0 0 0 / 15%)")}
                     >
-                      <Mail size={16} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Mail size={16} style={{ color: "oklch(0.68 0.10 64)" }} />
                     </div>
                     <div>
                       <div
                         className="text-xs mb-0.5"
-                        style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                        style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)", letterSpacing: "0.1em", textTransform: "uppercase" }}
                       >
                         Email
                       </div>
                       <div
-                        className="text-sm text-white group-hover:text-[oklch(0.62_0.07_228)] transition-colors"
-                        style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
+                        className="text-sm transition-colors"
+                        style={{ fontFamily: "'IBM Plex Sans', sans-serif", color: "oklch(0.30 0.03 243)" }}
+                        onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.color = "oklch(0.68 0.10 64)")}
+                        onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.color = "oklch(0.30 0.03 243)")}
                       >
                         contact@princecapitalgroup.com
                       </div>
@@ -280,21 +284,25 @@ export default function Contact() {
                     className="flex items-center gap-4 group"
                   >
                     <div
-                      className="w-10 h-10 flex items-center justify-center border shrink-0 group-hover:border-[oklch(0.52_0.07_228)] transition-colors"
-                      style={{ borderColor: "oklch(1 0 0 / 15%)" }}
+                      className="w-10 h-10 flex items-center justify-center border shrink-0 transition-colors"
+                      style={{ borderColor: "oklch(0 0 0 / 15%)" }}
+                      onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "oklch(0.68 0.10 64)")}
+                      onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "oklch(0 0 0 / 15%)")}
                     >
-                      <Linkedin size={16} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Linkedin size={16} style={{ color: "oklch(0.68 0.10 64)" }} />
                     </div>
                     <div>
                       <div
                         className="text-xs mb-0.5"
-                        style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                        style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)", letterSpacing: "0.1em", textTransform: "uppercase" }}
                       >
                         LinkedIn
                       </div>
                       <div
-                        className="text-sm text-white group-hover:text-[oklch(0.62_0.07_228)] transition-colors"
-                        style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
+                        className="text-sm transition-colors"
+                        style={{ fontFamily: "'IBM Plex Sans', sans-serif", color: "oklch(0.30 0.03 243)" }}
+                        onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.color = "oklch(0.68 0.10 64)")}
+                        onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.color = "oklch(0.30 0.03 243)")}
                       >
                         Antonio Grillo-Balen
                       </div>
@@ -328,17 +336,17 @@ export default function Contact() {
                     <div
                       key={item.type}
                       className="p-4"
-                      style={{ borderLeft: "2px solid oklch(0.52 0.07 228 / 30%)", paddingLeft: "1rem" }}
+                      style={{ borderLeft: "2px solid oklch(0.68 0.10 64 / 30%)", paddingLeft: "1rem" }}
                     >
                       <div
-                        className="text-white text-sm font-medium mb-1"
-                        style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
+                        className="text-sm font-medium mb-1"
+                        style={{ fontFamily: "'IBM Plex Sans', sans-serif", color: "oklch(0.22 0.04 243)" }}
                       >
                         {item.type}
                       </div>
                       <div
                         className="text-xs leading-relaxed"
-                        style={{ color: "oklch(0.60 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                        style={{ color: "oklch(0.52 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                       >
                         {item.description}
                       </div>
@@ -352,7 +360,7 @@ export default function Contact() {
 
         {/* Disclaimer */}
         <div className="pcg-disclaimer mt-12 fade-up">
-          <strong style={{ color: "oklch(0.75 0.07 228)" }}>CONTACT DISCLAIMER:</strong>{" "}
+          <strong style={{ color: "oklch(0.55 0.08 64)" }}>CONTACT DISCLAIMER:</strong>{" "}
           PCG does not provide investment advice, financial planning services, or trading recommendations of any kind. Responses to inquiries are for informational and educational purposes only. PCG does not manage client funds and does not accept external investment. Any communication with PCG does not constitute a client relationship, advisory relationship, or financial services engagement. All inquiries are subject to review and PCG reserves the right to decline any request at its sole discretion.
         </div>
       </section>

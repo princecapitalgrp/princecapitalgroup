@@ -1,9 +1,9 @@
 /*
  * PRINCE CAPITAL GROUP — Design System
- * Design Philosophy: Editorial Authority (Swiss/Bloomberg Hybrid)
- * Movement: Swiss International Typographic Style + Bloomberg Terminal Aesthetic
- * Core Principles: Typography-first, structural asymmetry, monochromatic depth, institutional restraint
- * Color: #1a2332 navy, #FFFFFF white, #3a3f47 charcoal, #5b7c99 steel blue, #f7f8fa off-white
+ * Design Philosophy: Private Bank Heritage
+ * Palette: White & Antique Gold (#BB965A) with Navy as sparse accent
+ * Core Principles: Institutional authority, refined restraint, typographic clarity
+ * Color: #F7F8FA white, #BB965A antique gold, #1a2332 navy (accents only)
  * Typography: Playfair Display (display) + IBM Plex Sans (body) + IBM Plex Mono (labels/data)
  */
 
@@ -50,50 +50,50 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* PCG Brand Colors */
+  /* PCG Brand Colors — Private Bank Heritage */
   --color-pcg-navy: oklch(0.22 0.04 243);
   --color-pcg-navy-light: oklch(0.28 0.04 243);
   --color-pcg-charcoal: oklch(0.30 0.01 250);
-  --color-pcg-steel: oklch(0.52 0.07 228);
-  --color-pcg-steel-light: oklch(0.62 0.07 228);
-  --color-pcg-offwhite: oklch(0.98 0.002 286);
+  --color-pcg-gold: oklch(0.68 0.10 64);
+  --color-pcg-gold-light: oklch(0.74 0.09 64);
+  --color-pcg-offwhite: oklch(0.97 0.002 286);
 }
 
 :root {
   --radius: 0.25rem;
-  /* PCG Dark Theme as default */
-  --background: oklch(0.22 0.04 243);
-  --foreground: oklch(0.97 0.002 286);
-  --card: oklch(0.26 0.035 243);
-  --card-foreground: oklch(0.97 0.002 286);
-  --popover: oklch(0.26 0.035 243);
-  --popover-foreground: oklch(0.97 0.002 286);
-  --primary: oklch(0.52 0.07 228);
-  --primary-foreground: oklch(0.97 0.002 286);
-  --secondary: oklch(0.30 0.01 250);
-  --secondary-foreground: oklch(0.97 0.002 286);
-  --muted: oklch(0.28 0.03 243);
-  --muted-foreground: oklch(0.70 0.03 243);
-  --accent: oklch(0.52 0.07 228);
-  --accent-foreground: oklch(0.97 0.002 286);
+  /* PCG Light Theme — Private Bank Heritage */
+  --background: oklch(0.97 0.002 286);
+  --foreground: oklch(0.22 0.04 243);
+  --card: oklch(0.99 0.001 286);
+  --card-foreground: oklch(0.22 0.04 243);
+  --popover: oklch(0.99 0.001 286);
+  --popover-foreground: oklch(0.22 0.04 243);
+  --primary: oklch(0.68 0.10 64);
+  --primary-foreground: oklch(0.99 0.001 286);
+  --secondary: oklch(0.95 0.003 286);
+  --secondary-foreground: oklch(0.22 0.04 243);
+  --muted: oklch(0.95 0.003 286);
+  --muted-foreground: oklch(0.50 0.04 243);
+  --accent: oklch(0.68 0.10 64);
+  --accent-foreground: oklch(0.99 0.001 286);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.52 0.07 228);
-  --chart-1: oklch(0.62 0.07 228);
-  --chart-2: oklch(0.52 0.07 228);
-  --chart-3: oklch(0.42 0.07 228);
-  --chart-4: oklch(0.32 0.07 228);
-  --chart-5: oklch(0.22 0.07 228);
-  --sidebar: oklch(0.20 0.04 243);
-  --sidebar-foreground: oklch(0.97 0.002 286);
-  --sidebar-primary: oklch(0.52 0.07 228);
-  --sidebar-primary-foreground: oklch(0.97 0.002 286);
-  --sidebar-accent: oklch(0.28 0.035 243);
-  --sidebar-accent-foreground: oklch(0.97 0.002 286);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.52 0.07 228);
+  --border: oklch(0 0 0 / 10%);
+  --input: oklch(0 0 0 / 8%);
+  --ring: oklch(0.68 0.10 64);
+  --chart-1: oklch(0.68 0.10 64);
+  --chart-2: oklch(0.60 0.10 64);
+  --chart-3: oklch(0.52 0.10 64);
+  --chart-4: oklch(0.44 0.10 64);
+  --chart-5: oklch(0.36 0.10 64);
+  --sidebar: oklch(0.96 0.003 286);
+  --sidebar-foreground: oklch(0.22 0.04 243);
+  --sidebar-primary: oklch(0.68 0.10 64);
+  --sidebar-primary-foreground: oklch(0.99 0.001 286);
+  --sidebar-accent: oklch(0.95 0.003 286);
+  --sidebar-accent-foreground: oklch(0.22 0.04 243);
+  --sidebar-border: oklch(0 0 0 / 8%);
+  --sidebar-ring: oklch(0.68 0.10 64);
 }
 
 @layer base {
@@ -152,20 +152,20 @@
     }
   }
 
-  /* PCG Editorial Components */
+  /* PCG Editorial Components — Private Bank Heritage */
   .pcg-section-label {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: oklch(0.52 0.07 228);
+    color: oklch(0.68 0.10 64);
   }
 
   .pcg-section-number {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 4rem;
     font-weight: 700;
-    color: oklch(0.52 0.07 228 / 20%);
+    color: oklch(0.68 0.10 64 / 18%);
     line-height: 1;
     letter-spacing: -0.05em;
     user-select: none;
@@ -173,7 +173,7 @@
 
   .pcg-rule {
     height: 1px;
-    background: oklch(1 0 0 / 12%);
+    background: oklch(0 0 0 / 10%);
     position: relative;
   }
 
@@ -187,21 +187,21 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: oklch(1 0 0 / 12%);
+    background: oklch(0 0 0 / 10%);
   }
 
   .pcg-card {
-    background: oklch(0.26 0.035 243);
-    border: 1px solid oklch(1 0 0 / 10%);
+    background: oklch(0.99 0.001 286);
+    border: 1px solid oklch(0 0 0 / 8%);
     transition: border-color 200ms ease;
   }
 
   .pcg-card:hover {
-    border-color: oklch(0.52 0.07 228 / 50%);
+    border-color: oklch(0.68 0.10 64 / 50%);
   }
 
   .pcg-btn-primary {
-    background: oklch(0.52 0.07 228);
+    background: oklch(0.68 0.10 64);
     color: white;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 0.8125rem;
@@ -209,46 +209,46 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 0.75rem 2rem;
-    border: 1px solid oklch(0.52 0.07 228);
+    border: 1px solid oklch(0.68 0.10 64);
     transition: all 200ms ease;
   }
 
   .pcg-btn-primary:hover {
-    background: oklch(0.62 0.07 228);
-    border-color: oklch(0.62 0.07 228);
+    background: oklch(0.60 0.10 64);
+    border-color: oklch(0.60 0.10 64);
   }
 
   .pcg-btn-outline {
     background: transparent;
-    color: white;
+    color: oklch(0.22 0.04 243);
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 0.8125rem;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 0.75rem 2rem;
-    border: 1px solid oklch(1 0 0 / 30%);
+    border: 1px solid oklch(0 0 0 / 25%);
     transition: all 200ms ease;
   }
 
   .pcg-btn-outline:hover {
-    border-color: white;
-    background: oklch(1 0 0 / 5%);
+    border-color: oklch(0.22 0.04 243);
+    background: oklch(0 0 0 / 4%);
   }
 
   .pcg-disclaimer {
-    background: oklch(0.18 0.04 243);
-    border-left: 3px solid oklch(0.52 0.07 228);
+    background: oklch(0.95 0.003 286);
+    border-left: 3px solid oklch(0.68 0.10 64);
     padding: 1rem 1.5rem;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
-    color: oklch(0.65 0.03 243);
+    color: oklch(0.50 0.04 243);
     line-height: 1.6;
   }
 
   .pcg-compliance-box {
-    background: oklch(0.18 0.04 243);
-    border: 1px solid oklch(0.52 0.07 228 / 30%);
+    background: oklch(0.97 0.002 286);
+    border: 1px solid oklch(0.68 0.10 64 / 30%);
     padding: 1.5rem 2rem;
   }
 
@@ -258,7 +258,7 @@
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: oklch(0.75 0.03 243);
+    color: oklch(0.38 0.03 243);
     transition: color 150ms ease;
     position: relative;
   }
@@ -270,12 +270,12 @@
     left: 0;
     width: 0;
     height: 1px;
-    background: oklch(0.52 0.07 228);
+    background: oklch(0.68 0.10 64);
     transition: width 200ms ease;
   }
 
   .pcg-nav-link:hover {
-    color: white;
+    color: oklch(0.22 0.04 243);
   }
 
   .pcg-nav-link:hover::after {
@@ -283,7 +283,7 @@
   }
 
   .pcg-nav-link.active {
-    color: white;
+    color: oklch(0.22 0.04 243);
   }
 
   .pcg-nav-link.active::after {
@@ -292,15 +292,15 @@
 
   /* Academy Banner */
   .pcg-academy-banner {
-    background: oklch(0.52 0.07 228 / 15%);
-    border-top: 2px solid oklch(0.52 0.07 228);
-    border-bottom: 1px solid oklch(0.52 0.07 228 / 30%);
+    background: oklch(0.68 0.10 64 / 8%);
+    border-top: 2px solid oklch(0.68 0.10 64);
+    border-bottom: 1px solid oklch(0.68 0.10 64 / 30%);
     padding: 0.625rem 1rem;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: oklch(0.75 0.07 228);
+    color: oklch(0.55 0.08 64);
     text-align: center;
   }
 
@@ -327,7 +327,7 @@
     right: -1.25rem;
     top: 50%;
     transform: translateY(-50%);
-    color: oklch(0.52 0.07 228);
+    color: oklch(0.68 0.10 64);
     font-size: 0.875rem;
   }
 

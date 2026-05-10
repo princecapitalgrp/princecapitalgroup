@@ -1,7 +1,7 @@
 /*
  * PCG Strategy Page
- * Design: Editorial Authority — strategy-bg hero, signal stack sections
- * Sections: Hero, Signal Stack (reordered to emphasize z-score), Macro Filters, Scope, Interpretation Note
+ * Design: Private Bank Heritage — strategy-bg hero, white sections, gold accents
+ * Sections: Hero, Signal Stack, Macro Filters, Scope, Interpretation Note
  * SEO: Dynamic meta tags with useSEO hook
  */
 
@@ -96,7 +96,7 @@ export default function Strategy() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 80%) 0%, oklch(0.18 0.04 243 / 90%) 60%, oklch(0.22 0.04 243) 100%)",
+              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 80%) 0%, oklch(0.18 0.04 243 / 90%) 60%, oklch(0.18 0.04 243 / 95%) 80%, oklch(0.97 0.002 286) 100%)",
           }}
         />
         <div className="relative container">
@@ -110,7 +110,7 @@ export default function Strategy() {
           <p
             className="text-lg leading-relaxed mb-8 fade-up"
             style={{
-              color: "oklch(0.80 0.03 243)",
+              color: "oklch(0.88 0.02 286)",
               fontFamily: "'IBM Plex Sans', sans-serif",
               maxWidth: "600px",
             }}
@@ -132,8 +132,8 @@ export default function Strategy() {
         </div>
         <div className="flex items-end justify-between mb-12 fade-up">
           <h2
-            className="text-white text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
           >
             Confluence Gating Framework
           </h2>
@@ -150,16 +150,16 @@ export default function Strategy() {
                     <div
                       className="w-16 h-16 rounded-lg flex items-center justify-center mb-4"
                       style={{
-                        background: "oklch(0.52 0.07 228 / 15%)",
-                        border: "1px solid oklch(0.52 0.07 228 / 40%)",
+                        background: "oklch(0.68 0.10 64 / 10%)",
+                        border: "1px solid oklch(0.68 0.10 64 / 35%)",
                       }}
                     >
-                      <Icon size={28} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon size={28} style={{ color: "oklch(0.68 0.10 64)" }} />
                     </div>
                     <div
                       className="text-4xl font-bold"
                       style={{
-                        color: "oklch(0.52 0.07 228 / 40%)",
+                        color: "oklch(0.68 0.10 64 / 35%)",
                         fontFamily: "'IBM Plex Mono', monospace",
                       }}
                     >
@@ -170,15 +170,15 @@ export default function Strategy() {
                   {/* Right: Content */}
                   <div className="md:col-span-2">
                     <h3
-                      className="text-white text-2xl font-bold mb-2"
-                      style={{ fontFamily: "'Playfair Display', serif" }}
+                      className="text-2xl font-bold mb-2"
+                      style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                     >
                       {component.title}
                     </h3>
                     <div
                       className="text-sm mb-4"
                       style={{
-                        color: "oklch(0.52 0.07 228)",
+                        color: "oklch(0.68 0.10 64)",
                         fontFamily: "'IBM Plex Mono', monospace",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
@@ -189,7 +189,7 @@ export default function Strategy() {
                     <p
                       className="text-base leading-relaxed mb-6"
                       style={{
-                        color: "oklch(0.80 0.03 243)",
+                        color: "oklch(0.32 0.03 243)",
                         fontFamily: "'IBM Plex Sans', sans-serif",
                       }}
                     >
@@ -203,8 +203,8 @@ export default function Strategy() {
                           key={tag}
                           className="text-xs px-3 py-1 rounded"
                           style={{
-                            background: "oklch(0.52 0.07 228 / 15%)",
-                            color: "oklch(0.52 0.07 228)",
+                            background: "oklch(0.68 0.10 64 / 10%)",
+                            color: "oklch(0.60 0.10 64)",
                             fontFamily: "'IBM Plex Mono', monospace",
                             letterSpacing: "0.08em",
                           }}
@@ -219,13 +219,13 @@ export default function Strategy() {
                       <div
                         className="p-4 rounded-lg border-l-4"
                         style={{
-                          background: "oklch(0.52 0.07 228 / 8%)",
-                          borderColor: "oklch(0.52 0.07 228)",
+                          background: "oklch(0.68 0.10 64 / 6%)",
+                          borderColor: "oklch(0.68 0.10 64)",
                         }}
                       >
                         <div
                           className="text-sm font-semibold mb-2 flex items-center gap-2"
-                          style={{ color: "oklch(0.52 0.07 228)" }}
+                          style={{ color: "oklch(0.60 0.10 64)" }}
                         >
                           <AlertCircle size={16} />
                           {component.callout.title}
@@ -233,7 +233,7 @@ export default function Strategy() {
                         <p
                           className="text-sm leading-relaxed"
                           style={{
-                            color: "oklch(0.75 0.03 243)",
+                            color: "oklch(0.40 0.03 243)",
                             fontFamily: "'IBM Plex Sans', sans-serif",
                           }}
                         >
@@ -252,7 +252,7 @@ export default function Strategy() {
       {/* ── G10 SCOPE ── */}
       <section
         className="py-20 md:py-28"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="fade-up mb-4">
@@ -260,8 +260,8 @@ export default function Strategy() {
           </div>
           <div className="flex items-end justify-between mb-12 fade-up">
             <h2
-              className="text-white text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               G10 FX Focus
             </h2>
@@ -271,7 +271,7 @@ export default function Strategy() {
             <p
               className="text-base leading-relaxed mb-8"
               style={{
-                color: "oklch(0.80 0.03 243)",
+                color: "oklch(0.32 0.03 243)",
                 fontFamily: "'IBM Plex Sans', sans-serif",
                 maxWidth: "700px",
               }}
@@ -285,14 +285,14 @@ export default function Strategy() {
                   key={pair}
                   className="p-4 rounded-lg text-center fade-up"
                   style={{
-                    background: "oklch(0.22 0.04 243)",
-                    border: "1px solid oklch(0.52 0.07 228 / 30%)",
+                    background: "oklch(0.99 0.001 286)",
+                    border: "1px solid oklch(0.68 0.10 64 / 25%)",
                   }}
                 >
                   <div
                     className="text-sm font-semibold"
                     style={{
-                      color: "oklch(0.52 0.07 228)",
+                      color: "oklch(0.68 0.10 64)",
                       fontFamily: "'IBM Plex Mono', monospace",
                       letterSpacing: "0.1em",
                     }}
@@ -312,23 +312,23 @@ export default function Strategy() {
           <div
             className="p-8 rounded-lg"
             style={{
-              background: "oklch(0.52 0.07 228 / 8%)",
-              border: "1px solid oklch(0.52 0.07 228 / 40%)",
+              background: "oklch(0.68 0.10 64 / 6%)",
+              border: "1px solid oklch(0.68 0.10 64 / 35%)",
             }}
           >
             <div className="flex items-start gap-4">
-              <AlertCircle size={24} style={{ color: "oklch(0.52 0.07 228)", marginTop: "4px", flexShrink: 0 }} />
+              <AlertCircle size={24} style={{ color: "oklch(0.68 0.10 64)", marginTop: "4px", flexShrink: 0 }} />
               <div>
                 <h3
-                  className="text-white text-lg font-bold mb-3"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="text-lg font-bold mb-3"
+                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                 >
                   How to Interpret Our Work
                 </h3>
                 <p
                   className="text-base leading-relaxed mb-4"
                   style={{
-                    color: "oklch(0.80 0.03 243)",
+                    color: "oklch(0.32 0.03 243)",
                     fontFamily: "'IBM Plex Sans', sans-serif",
                   }}
                 >
@@ -337,7 +337,7 @@ export default function Strategy() {
                 <p
                   className="text-base leading-relaxed"
                   style={{
-                    color: "oklch(0.80 0.03 243)",
+                    color: "oklch(0.32 0.03 243)",
                     fontFamily: "'IBM Plex Sans', sans-serif",
                   }}
                 >

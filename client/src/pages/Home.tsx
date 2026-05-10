@@ -1,6 +1,6 @@
 /*
  * PCG Home Page
- * Design: Editorial Authority — hero with dark overlay, asymmetric sections
+ * Design: Private Bank Heritage — hero with dark overlay, white sections, gold accents
  * Sections: Hero, Compliance Box, Pillars, Process, Proof-of-Work, Footer Disclaimer
  * SEO: Dynamic meta tags with useSEO hook
  */
@@ -145,12 +145,12 @@ export default function Home() {
           backgroundPosition: "center",
         }}
       >
-        {/* Overlay */}
+        {/* Overlay — dark for photo legibility, transitions to white at bottom */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 70%) 0%, oklch(0.18 0.04 243 / 85%) 50%, oklch(0.18 0.04 243) 100%)",
+              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 70%) 0%, oklch(0.18 0.04 243 / 85%) 50%, oklch(0.18 0.04 243 / 96%) 82%, oklch(0.97 0.002 286) 100%)",
           }}
         />
 
@@ -165,8 +165,8 @@ export default function Home() {
         <div className="relative container">
           <div className="max-w-3xl">
             <div
-              className="text-[oklch(0.52_0.07_228)] text-6xl md:text-8xl font-bold leading-none mb-6 fade-up"
-              style={{ fontFamily: "'IBM Plex Mono', monospace", opacity: 0.15, letterSpacing: "-0.04em" }}
+              className="text-6xl md:text-8xl font-bold leading-none mb-6 fade-up"
+              style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)", opacity: 0.15, letterSpacing: "-0.04em" }}
             >
               PCG
             </div>
@@ -178,13 +178,31 @@ export default function Home() {
             </h1>
             <p
               className="text-lg md:text-xl leading-relaxed mb-10 fade-up"
-              style={{ color: "oklch(0.80 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "600px" }}
+              style={{ color: "oklch(0.88 0.02 286)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "600px" }}
             >
               PCG is a proprietary research-to-execution project focused on G10 FX, built around confluence gating, risk governance, and weekly audit loops.
             </p>
             <div className="flex flex-wrap gap-4 fade-up">
               <Link href="/academy">
-                <button className="pcg-btn-outline flex items-center gap-2">
+                <button
+                  className="flex items-center gap-2 text-xs font-semibold px-8 py-3 transition-all duration-200"
+                  style={{
+                    fontFamily: "'IBM Plex Sans', sans-serif",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "oklch(0.22 0.04 243)",
+                    background: "white",
+                    border: "1px solid white",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.95 0.003 286)";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = "oklch(0.95 0.003 286)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.background = "white";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = "white";
+                  }}
+                >
                   View Academy <BookOpen size={14} />
                 </button>
               </Link>
@@ -198,7 +216,7 @@ export default function Home() {
         <div className="fade-up">
           <div
             className="pcg-rule-labeled mb-8"
-            style={{ color: "oklch(0.52 0.07 228)", fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase" }}
+            style={{ color: "oklch(0.68 0.10 64)", fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase" }}
           >
             Scope & Compliance
           </div>
@@ -207,9 +225,9 @@ export default function Home() {
               <div>
                 <div
                   className="text-xs mb-4 flex items-center gap-2"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.52 0.07 228)" }}
+                  style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.68 0.10 64)" }}
                 >
-                  <span className="w-2 h-2 rounded-full bg-green-400 inline-block" />
+                  <span className="w-2 h-2 rounded-full bg-green-500 inline-block" />
                   What We Do
                 </div>
                 <ul className="space-y-3">
@@ -222,9 +240,9 @@ export default function Home() {
                     <li
                       key={item}
                       className="flex items-start gap-3 text-sm"
-                      style={{ color: "oklch(0.85 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{ color: "oklch(0.30 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                     >
-                      <span className="text-green-400 mt-0.5 shrink-0">✓</span>
+                      <span className="text-green-500 mt-0.5 shrink-0">✓</span>
                       {item}
                     </li>
                   ))}
@@ -233,7 +251,7 @@ export default function Home() {
               <div>
                 <div
                   className="text-xs mb-4 flex items-center gap-2"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.52 0.07 228)" }}
+                  style={{ fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.68 0.10 64)" }}
                 >
                   <span className="w-2 h-2 rounded-full bg-red-400 inline-block" />
                   What We Don't Do
@@ -248,7 +266,7 @@ export default function Home() {
                     <li
                       key={item}
                       className="flex items-start gap-3 text-sm"
-                      style={{ color: "oklch(0.85 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{ color: "oklch(0.30 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                     >
                       <span className="text-red-400 mt-0.5 shrink-0">✕</span>
                       {item}
@@ -264,7 +282,7 @@ export default function Home() {
       {/* ── PILLARS ── */}
       <section
         className="py-20 md:py-28"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="fade-up mb-4">
@@ -272,8 +290,8 @@ export default function Home() {
           </div>
           <div className="flex items-end justify-between mb-12 fade-up">
             <h2
-              className="text-white text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               The PCG Framework
             </h2>
@@ -284,36 +302,39 @@ export default function Home() {
               return (
                 <Link key={pillar.title} href={pillar.href}>
                   <div
-                    className="fade-up group cursor-pointer p-8 rounded-lg transition-all duration-300 hover:shadow-lg"
+                    className="fade-up group cursor-pointer p-8 rounded-lg transition-all duration-300 hover:shadow-md"
                     style={{
-                      background: "oklch(0.22 0.04 243)",
-                      borderLeft: "3px solid oklch(0.52 0.07 228)",
+                      background: "oklch(0.99 0.001 286)",
+                      borderLeft: "3px solid oklch(0.68 0.10 64)",
+                      border: "1px solid oklch(0 0 0 / 6%)",
+                      borderLeftWidth: "3px",
+                      borderLeftColor: "oklch(0.68 0.10 64)",
                     }}
                   >
                     <div className="flex items-start gap-4 mb-6">
-                      <Icon size={24} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon size={24} style={{ color: "oklch(0.68 0.10 64)" }} />
                       <span
                         className="text-sm font-mono"
-                        style={{ color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em" }}
+                        style={{ color: "oklch(0.68 0.10 64)", letterSpacing: "0.1em" }}
                       >
                         {pillar.number}
                       </span>
                     </div>
                     <h3
-                      className="text-white text-xl font-bold mb-4"
-                      style={{ fontFamily: "'Playfair Display', serif" }}
+                      className="text-xl font-bold mb-4"
+                      style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                     >
                       {pillar.title}
                     </h3>
                     <p
                       className="text-sm leading-relaxed mb-6"
-                      style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                     >
                       {pillar.description}
                     </p>
                     <div
                       className="flex items-center gap-2 text-xs group-hover:gap-3 transition-all"
-                      style={{ color: "oklch(0.52 0.07 228)", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                      style={{ color: "oklch(0.68 0.10 64)", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.1em", textTransform: "uppercase" }}
                     >
                       Learn more <ArrowRight size={12} />
                     </div>
@@ -332,8 +353,8 @@ export default function Home() {
         </div>
         <div className="flex items-end justify-between mb-12 fade-up">
           <h2
-            className="text-white text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
           >
             The Trade Process Loop
           </h2>
@@ -349,23 +370,23 @@ export default function Home() {
                   className={`w-full p-3 rounded-lg text-center transition-all duration-300 ${
                     expandedStep === idx
                       ? "shadow-lg"
-                      : "hover:shadow-md"
+                      : "hover:shadow-sm"
                   }`}
                   style={{
                     background: expandedStep === idx
-                      ? "oklch(0.52 0.07 228)"
-                      : "oklch(0.22 0.04 243)",
+                      ? "oklch(0.68 0.10 64)"
+                      : "oklch(0.99 0.001 286)",
                     boxShadow: expandedStep === idx
-                      ? "0 0 20px oklch(0.52 0.07 228 / 50%)"
+                      ? "0 0 20px oklch(0.68 0.10 64 / 30%)"
                       : "none",
-                    border: "1px solid oklch(0.52 0.07 228 / 30%)",
+                    border: `1px solid oklch(0.68 0.10 64 / ${expandedStep === idx ? 80 : 25}%)`,
                   }}
                 >
                   <div
                     className="text-[10px] mb-1"
                     style={{
                       fontFamily: "'IBM Plex Mono', monospace",
-                      color: expandedStep === idx ? "white" : "oklch(0.52 0.07 228)",
+                      color: expandedStep === idx ? "white" : "oklch(0.68 0.10 64)",
                       letterSpacing: "0.08em",
                     }}
                   >
@@ -374,7 +395,7 @@ export default function Home() {
                   <div
                     className="text-xs font-medium leading-tight mb-2"
                     style={{
-                      color: expandedStep === idx ? "white" : "oklch(0.80 0.03 243)",
+                      color: expandedStep === idx ? "white" : "oklch(0.30 0.03 243)",
                       fontFamily: "'IBM Plex Sans', sans-serif",
                     }}
                   >
@@ -383,7 +404,7 @@ export default function Home() {
                   <ChevronDown
                     size={14}
                     className={`mx-auto transition-transform ${expandedStep === idx ? "rotate-180" : ""}`}
-                    style={{ color: expandedStep === idx ? "white" : "oklch(0.52 0.07 228)" }}
+                    style={{ color: expandedStep === idx ? "white" : "oklch(0.68 0.10 64)" }}
                   />
                 </button>
 
@@ -392,11 +413,11 @@ export default function Home() {
                   <div
                     className="absolute top-full left-0 right-0 mt-2 p-4 rounded-lg text-sm leading-relaxed z-20 animate-in fade-in slide-in-from-top-2"
                     style={{
-                      background: "oklch(0.22 0.04 243)",
-                      border: "1px solid oklch(0.52 0.07 228 / 50%)",
-                      color: "oklch(0.80 0.03 243)",
+                      background: "oklch(0.99 0.001 286)",
+                      border: "1px solid oklch(0.68 0.10 64 / 40%)",
+                      color: "oklch(0.32 0.03 243)",
                       fontFamily: "'IBM Plex Sans', sans-serif",
-                      boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)",
+                      boxShadow: "0 8px 16px oklch(0 0 0 / 8%)",
                     }}
                   >
                     {step.content}
@@ -406,7 +427,7 @@ export default function Home() {
                 {idx < processDetails.length - 1 && (
                   <div
                     className="hidden md:block absolute top-1/2 -right-1 z-10 -translate-y-1/2 text-xs"
-                    style={{ color: "oklch(0.52 0.07 228)" }}
+                    style={{ color: "oklch(0.68 0.10 64)" }}
                   >
                     →
                   </div>
@@ -430,7 +451,7 @@ export default function Home() {
       {/* ── PROOF OF WORK ── */}
       <section
         className="py-20 md:py-28"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="fade-up mb-4">
@@ -438,8 +459,8 @@ export default function Home() {
           </div>
           <div className="flex items-end justify-between mb-12 fade-up">
             <h2
-              className="text-white text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               Educational Resources
             </h2>
@@ -451,19 +472,19 @@ export default function Home() {
               return (
                 <Link key={item.label} href={item.href}>
                   <div
-                    className="fade-up group cursor-pointer p-8 rounded-lg transition-all duration-300 hover:shadow-lg"
+                    className="fade-up group cursor-pointer p-8 rounded-lg transition-all duration-300 hover:shadow-md"
                     style={{
-                      background: "oklch(0.22 0.04 243)",
-                      border: "1px solid oklch(0.52 0.07 228 / 30%)",
+                      background: "oklch(0.99 0.001 286)",
+                      border: "1px solid oklch(0.68 0.10 64 / 25%)",
                     }}
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <Icon size={24} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon size={24} style={{ color: "oklch(0.68 0.10 64)" }} />
                       <span
                         className="text-xs px-2 py-1 rounded"
                         style={{
-                          background: "oklch(0.52 0.07 228 / 20%)",
-                          color: "oklch(0.52 0.07 228)",
+                          background: "oklch(0.68 0.10 64 / 12%)",
+                          color: "oklch(0.68 0.10 64)",
                           fontFamily: "'IBM Plex Mono', monospace",
                           letterSpacing: "0.08em",
                         }}
@@ -472,14 +493,14 @@ export default function Home() {
                       </span>
                     </div>
                     <h3
-                      className="text-white text-lg font-bold mb-3"
-                      style={{ fontFamily: "'Playfair Display', serif" }}
+                      className="text-lg font-bold mb-3"
+                      style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                     >
                       {item.label}
                     </h3>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                     >
                       {item.description}
                     </p>
@@ -492,7 +513,7 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER DISCLAIMER ── */}
-      <section className="py-16 border-t" style={{ borderColor: "oklch(0.52 0.07 228 / 20%)" }}>
+      <section className="py-16 border-t" style={{ borderColor: "oklch(0.68 0.10 64 / 20%)" }}>
         <div className="container">
           <div
             className="pcg-disclaimer text-xs text-center"

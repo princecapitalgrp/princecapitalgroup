@@ -1,7 +1,7 @@
 /*
  * PCG Academy Page
- * Design: Editorial Authority — educational hub with expandable memos and setup library
- * Sections: Banner, Public Preview, Weekly Memos, Setup Library, Triangle Dashboard, Risk Toolkit, Learning Paths, Office Hours
+ * Design: Private Bank Heritage — white sections, gold accents
+ * Sections: Banner, Public Preview, Weekly Memos, Setup Library, Risk Toolkit, Learning Paths, Office Hours
  * SEO: Dynamic meta tags with useSEO hook
  */
 
@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { AlertCircle, ChevronDown, Download, BookOpen, Zap, Users, FileText } from "lucide-react";
 import { Link } from "wouter";
 import { useSEO } from "@/hooks/useSEO";
+import { useMemos, useTradeBreakdowns } from "@/hooks/useSupabase";
 
 const ACADEMY_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-academy-bg-SiZWbmuevCpcAsjAwJ5uNx.webp";
 
@@ -53,7 +54,7 @@ const weeklyMemos = [
   },
 ];
 
-// Setup Library from PDF
+// Setup Library
 const setupLibrary = [
   {
     id: 1,
@@ -166,8 +167,24 @@ export default function Academy() {
   });
 
   const pageRef = useScrollFadeUp();
-  const [expandedMemo, setExpandedMemo] = useState<number | null>(null);
-  const [expandedSetup, setExpandedSetup] = useState<number | null>(null);
+  const [expandedMemo, setExpandedMemo] = useState<string | null>(null);
+  const [expandedSetup, setExpandedSetup] = useState<string | null>(null);
+
+  const { memos: liveMemos } = useMemos(10);
+  const { breakdowns: liveBreakdowns } = useTradeBreakdowns(20);
+
+  const displayMemos = liveMemos.length > 0
+    ? liveMemos.map(m => ({
+        id: m.id,
+        week: m.title,
+        adherence: `${m.adherence_score}%`,
+        snippet: m.content,
+      }))
+    : weeklyMemos.map(m => ({ ...m, id: String(m.id) }));
+
+  const displaySetups = liveBreakdowns.length > 0
+    ? liveBreakdowns
+    : setupLibrary.map(s => ({ ...s, id: String(s.id) }));
 
   return (
     <div ref={pageRef}>
@@ -175,17 +192,17 @@ export default function Academy() {
       <div
         className="fixed top-16 md:top-20 left-0 right-0 z-40 w-full py-3 text-center border-b"
         style={{
-          background: "oklch(0.52 0.07 228 / 10%)",
-          borderColor: "oklch(0.52 0.07 228 / 40%)",
+          background: "oklch(0.68 0.10 64 / 8%)",
+          borderColor: "oklch(0.68 0.10 64 / 35%)",
           backdropFilter: "blur(8px)",
         }}
       >
         <div className="flex items-center justify-center gap-2">
-          <AlertCircle size={16} style={{ color: "oklch(0.52 0.07 228)", flexShrink: 0 }} />
+          <AlertCircle size={16} style={{ color: "oklch(0.68 0.10 64)", flexShrink: 0 }} />
           <span
             className="text-xs md:text-sm font-medium"
             style={{
-              color: "oklch(0.52 0.07 228)",
+              color: "oklch(0.55 0.08 64)",
               fontFamily: "'IBM Plex Mono', monospace",
               letterSpacing: "0.08em",
             }}
@@ -211,7 +228,7 @@ export default function Academy() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 80%) 0%, oklch(0.18 0.04 243 / 90%) 60%, oklch(0.22 0.04 243) 100%)",
+              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 80%) 0%, oklch(0.18 0.04 243 / 90%) 60%, oklch(0.18 0.04 243 / 95%) 80%, oklch(0.97 0.002 286) 100%)",
           }}
         />
         <div className="relative container">
@@ -225,7 +242,7 @@ export default function Academy() {
           <p
             className="text-lg leading-relaxed mb-8 fade-up"
             style={{
-              color: "oklch(0.80 0.03 243)",
+              color: "oklch(0.88 0.02 286)",
               fontFamily: "'IBM Plex Sans', sans-serif",
               maxWidth: "600px",
             }}
@@ -242,36 +259,36 @@ export default function Academy() {
         </div>
         <div className="flex items-end justify-between mb-12 fade-up">
           <h2
-            className="text-white text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
           >
             Weekly Process Memos
           </h2>
         </div>
 
         <div className="space-y-4">
-          {weeklyMemos.map((memo) => (
+          {displayMemos.map((memo) => (
             <div key={memo.id} className="fade-up">
               <button
                 onClick={() => setExpandedMemo(expandedMemo === memo.id ? null : memo.id)}
                 className="w-full p-6 rounded-lg text-left transition-all duration-300"
                 style={{
-                  background: expandedMemo === memo.id ? "oklch(0.52 0.07 228 / 15%)" : "oklch(0.22 0.04 243)",
-                  border: `1px solid oklch(0.52 0.07 228 / ${expandedMemo === memo.id ? 60 : 30}%)`,
+                  background: expandedMemo === memo.id ? "oklch(0.68 0.10 64 / 10%)" : "oklch(0.99 0.001 286)",
+                  border: `1px solid oklch(0.68 0.10 64 / ${expandedMemo === memo.id ? 50 : 25}%)`,
                 }}
               >
                 <div className="flex items-center justify-between">
                   <div>
                     <h3
-                      className="text-white font-bold mb-2"
-                      style={{ fontFamily: "'Playfair Display', serif" }}
+                      className="font-bold mb-2"
+                      style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                     >
                       {memo.week}
                     </h3>
                     <div
                       className="text-sm"
                       style={{
-                        color: "oklch(0.52 0.07 228)",
+                        color: "oklch(0.68 0.10 64)",
                         fontFamily: "'IBM Plex Mono', monospace",
                         letterSpacing: "0.08em",
                       }}
@@ -282,7 +299,7 @@ export default function Academy() {
                   <ChevronDown
                     size={20}
                     className={`transition-transform ${expandedMemo === memo.id ? "rotate-180" : ""}`}
-                    style={{ color: "oklch(0.52 0.07 228)" }}
+                    style={{ color: "oklch(0.68 0.10 64)" }}
                   />
                 </div>
               </button>
@@ -291,14 +308,14 @@ export default function Academy() {
                 <div
                   className="mt-2 p-6 rounded-lg animate-in fade-in slide-in-from-top-2"
                   style={{
-                    background: "oklch(0.22 0.04 243)",
-                    border: "1px solid oklch(0.52 0.07 228 / 40%)",
+                    background: "oklch(0.97 0.002 286)",
+                    border: "1px solid oklch(0.68 0.10 64 / 30%)",
                   }}
                 >
                   <p
                     className="text-base leading-relaxed"
                     style={{
-                      color: "oklch(0.80 0.03 243)",
+                      color: "oklch(0.32 0.03 243)",
                       fontFamily: "'IBM Plex Sans', sans-serif",
                     }}
                   >
@@ -314,7 +331,7 @@ export default function Academy() {
       {/* ── SETUP ANATOMY LIBRARY ── */}
       <section
         className="py-20 md:py-28"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="fade-up mb-4">
@@ -322,29 +339,29 @@ export default function Academy() {
           </div>
           <div className="flex items-end justify-between mb-12 fade-up">
             <h2
-              className="text-white text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               Setup Anatomy Library
             </h2>
           </div>
 
           <div className="space-y-4">
-            {setupLibrary.map((setup) => (
+            {displaySetups.map((setup) => (
               <div key={setup.id} className="fade-up">
                 <button
                   onClick={() => setExpandedSetup(expandedSetup === setup.id ? null : setup.id)}
                   className="w-full p-6 rounded-lg text-left transition-all duration-300"
                   style={{
-                    background: expandedSetup === setup.id ? "oklch(0.52 0.07 228 / 15%)" : "oklch(0.22 0.04 243)",
-                    border: `1px solid oklch(0.52 0.07 228 / ${expandedSetup === setup.id ? 60 : 30}%)`,
+                    background: expandedSetup === setup.id ? "oklch(0.68 0.10 64 / 10%)" : "oklch(0.99 0.001 286)",
+                    border: `1px solid oklch(0.68 0.10 64 / ${expandedSetup === setup.id ? 50 : 25}%)`,
                   }}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <h3
-                        className="text-white font-bold mb-2"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
+                        className="font-bold mb-2"
+                        style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                       >
                         {setup.name}
                       </h3>
@@ -352,8 +369,8 @@ export default function Academy() {
                         <span
                           className="text-xs px-2 py-1 rounded"
                           style={{
-                            background: "oklch(0.52 0.07 228 / 20%)",
-                            color: "oklch(0.52 0.07 228)",
+                            background: "oklch(0.68 0.10 64 / 15%)",
+                            color: "oklch(0.60 0.10 64)",
                             fontFamily: "'IBM Plex Mono', monospace",
                             letterSpacing: "0.08em",
                           }}
@@ -365,8 +382,8 @@ export default function Academy() {
                             key={tag}
                             className="text-xs px-2 py-1 rounded"
                             style={{
-                              background: "oklch(0.52 0.07 228 / 10%)",
-                              color: "oklch(0.65 0.03 243)",
+                              background: "oklch(0 0 0 / 5%)",
+                              color: "oklch(0.48 0.03 243)",
                               fontFamily: "'IBM Plex Mono', monospace",
                               letterSpacing: "0.08em",
                             }}
@@ -388,7 +405,7 @@ export default function Academy() {
                     <ChevronDown
                       size={20}
                       className={`transition-transform flex-shrink-0 mt-1 ${expandedSetup === setup.id ? "rotate-180" : ""}`}
-                      style={{ color: "oklch(0.52 0.07 228)" }}
+                      style={{ color: "oklch(0.68 0.10 64)" }}
                     />
                   </div>
                 </button>
@@ -397,14 +414,14 @@ export default function Academy() {
                   <div
                     className="mt-2 p-6 rounded-lg animate-in fade-in slide-in-from-top-2"
                     style={{
-                      background: "oklch(0.22 0.04 243)",
-                      border: "1px solid oklch(0.52 0.07 228 / 40%)",
+                      background: "oklch(0.97 0.002 286)",
+                      border: "1px solid oklch(0.68 0.10 64 / 30%)",
                     }}
                   >
                     <p
                       className="text-base leading-relaxed"
                       style={{
-                        color: "oklch(0.80 0.03 243)",
+                        color: "oklch(0.32 0.03 243)",
                         fontFamily: "'IBM Plex Sans', sans-serif",
                       }}
                     >
@@ -425,8 +442,8 @@ export default function Academy() {
         </div>
         <div className="flex items-end justify-between mb-12 fade-up">
           <h2
-            className="text-white text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
           >
             Risk Toolkit Downloads
           </h2>
@@ -438,26 +455,26 @@ export default function Academy() {
             return (
               <div
                 key={item.title}
-                className="fade-up p-8 rounded-lg transition-all duration-300 hover:shadow-lg cursor-pointer"
+                className="fade-up p-8 rounded-lg transition-all duration-300 hover:shadow-md cursor-pointer"
                 style={{
-                  background: "oklch(0.22 0.04 243)",
-                  border: "1px solid oklch(0.52 0.07 228 / 30%)",
+                  background: "oklch(0.99 0.001 286)",
+                  border: "1px solid oklch(0.68 0.10 64 / 25%)",
                 }}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <Icon size={28} style={{ color: "oklch(0.52 0.07 228)" }} />
-                  <Download size={18} style={{ color: "oklch(0.52 0.07 228)" }} />
+                  <Icon size={28} style={{ color: "oklch(0.68 0.10 64)" }} />
+                  <Download size={18} style={{ color: "oklch(0.68 0.10 64)" }} />
                 </div>
                 <h3
-                  className="text-white font-bold mb-2"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="font-bold mb-2"
+                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                 >
                   {item.title}
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
                   style={{
-                    color: "oklch(0.65 0.03 243)",
+                    color: "oklch(0.48 0.03 243)",
                     fontFamily: "'IBM Plex Sans', sans-serif",
                   }}
                 >
@@ -472,7 +489,7 @@ export default function Academy() {
       {/* ── LEARNING PATHS ── */}
       <section
         className="py-20 md:py-28"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="fade-up mb-4">
@@ -480,8 +497,8 @@ export default function Academy() {
           </div>
           <div className="flex items-end justify-between mb-12 fade-up">
             <h2
-              className="text-white text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               Learning Paths
             </h2>
@@ -493,21 +510,21 @@ export default function Academy() {
                 key={path.level}
                 className="fade-up p-8 rounded-lg"
                 style={{
-                  background: "oklch(0.22 0.04 243)",
-                  border: "1px solid oklch(0.52 0.07 228 / 30%)",
+                  background: "oklch(0.99 0.001 286)",
+                  border: "1px solid oklch(0.68 0.10 64 / 25%)",
                 }}
               >
-                <BookOpen size={28} style={{ color: "oklch(0.52 0.07 228)", marginBottom: "16px" }} />
+                <BookOpen size={28} style={{ color: "oklch(0.68 0.10 64)", marginBottom: "16px" }} />
                 <h3
-                  className="text-white text-lg font-bold mb-3"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="text-lg font-bold mb-3"
+                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                 >
                   {path.level}
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-4"
                   style={{
-                    color: "oklch(0.65 0.03 243)",
+                    color: "oklch(0.48 0.03 243)",
                     fontFamily: "'IBM Plex Sans', sans-serif",
                   }}
                 >
@@ -516,7 +533,7 @@ export default function Academy() {
                 <div
                   className="text-xs"
                   style={{
-                    color: "oklch(0.52 0.07 228)",
+                    color: "oklch(0.68 0.10 64)",
                     fontFamily: "'IBM Plex Mono', monospace",
                     letterSpacing: "0.08em",
                   }}
@@ -535,23 +552,23 @@ export default function Academy() {
           <div
             className="p-8 rounded-lg"
             style={{
-              background: "oklch(0.52 0.07 228 / 8%)",
-              border: "1px solid oklch(0.52 0.07 228 / 40%)",
+              background: "oklch(0.68 0.10 64 / 6%)",
+              border: "1px solid oklch(0.68 0.10 64 / 35%)",
             }}
           >
             <div className="flex items-start gap-4">
-              <Users size={28} style={{ color: "oklch(0.52 0.07 228)", marginTop: "4px", flexShrink: 0 }} />
+              <Users size={28} style={{ color: "oklch(0.68 0.10 64)", marginTop: "4px", flexShrink: 0 }} />
               <div>
                 <h3
-                  className="text-white text-lg font-bold mb-3"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="text-lg font-bold mb-3"
+                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
                 >
                   Office Hours & Q&A
                 </h3>
                 <p
                   className="text-base leading-relaxed mb-6"
                   style={{
-                    color: "oklch(0.80 0.03 243)",
+                    color: "oklch(0.32 0.03 243)",
                     fontFamily: "'IBM Plex Sans', sans-serif",
                   }}
                 >

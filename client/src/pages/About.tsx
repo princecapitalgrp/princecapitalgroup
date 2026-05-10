@@ -1,6 +1,6 @@
 /*
  * PCG About Page
- * Design: Editorial Authority — portrait + editorial layout, values section
+ * Design: Private Bank Heritage — white hero, portrait + editorial layout, gold accents
  * Sections: Hero, Founder, 90-Day Build, Process KPIs, Values
  */
 
@@ -100,7 +100,7 @@ export default function About() {
       {/* ── HERO ── */}
       <section
         className="relative pt-32 pb-0 md:pt-40"
-        style={{ background: "oklch(0.22 0.04 243)" }}
+        style={{ background: "oklch(0.97 0.002 286)" }}
       >
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-end">
@@ -108,14 +108,14 @@ export default function About() {
             <div className="md:col-span-7 pb-16 md:pb-24">
               <div className="pcg-section-label mb-4 fade-up">About PCG</div>
               <h1
-                className="text-white text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
+                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
               >
                 Building a Disciplined Research Operation
               </h1>
               <p
                 className="text-lg leading-relaxed fade-up"
-                style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "520px" }}
+                style={{ color: "oklch(0.38 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "520px" }}
               >
                 Prince Capital Group is a proprietary research-to-execution project. It is not a fund. It is not an advisory firm. It is a structured attempt to apply institutional-grade process discipline to independent macro FX research.
               </p>
@@ -133,12 +133,12 @@ export default function About() {
                   src={PORTRAIT_IMG}
                   alt="Antonio Grillo-Balen — Founder, Prince Capital Group"
                   className="w-full h-full object-cover object-top"
-                  style={{ filter: "brightness(0.85) contrast(1.05)" }}
+                  style={{ filter: "brightness(0.92) contrast(1.05)" }}
                 />
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: "linear-gradient(to top, oklch(0.22 0.04 243) 0%, transparent 40%)",
+                    background: "linear-gradient(to top, oklch(0.97 0.002 286) 0%, transparent 40%)",
                   }}
                 />
               </div>
@@ -150,21 +150,21 @@ export default function About() {
       {/* ── FOUNDER ── */}
       <section
         className="py-20 md:py-28"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-4 fade-up">
               <div className="pcg-section-label mb-4">Founder</div>
               <div
-                className="text-white text-3xl font-bold mb-2"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-3xl font-bold mb-2"
+                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
               >
                 Antonio Grillo-Balen
               </div>
               <div
                 className="text-sm mb-6"
-                style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.08em" }}
+                style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)", letterSpacing: "0.08em" }}
               >
                 Founder · Prince Capital Group
               </div>
@@ -179,9 +179,9 @@ export default function About() {
                   <div
                     key={item}
                     className="flex items-center gap-3 text-sm"
-                    style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{ color: "oklch(0.44 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                   >
-                    <span style={{ color: "oklch(0.52 0.07 228)" }}>→</span>
+                    <span style={{ color: "oklch(0.68 0.10 64)" }}>→</span>
                     {item}
                   </div>
                 ))}
@@ -190,19 +190,19 @@ export default function About() {
             <div className="md:col-span-8 fade-up" style={{ transitionDelay: "100ms" }}>
               <p
                 className="text-base leading-relaxed mb-6"
-                style={{ color: "oklch(0.78 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{ color: "oklch(0.32 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 Prince Capital Group was founded with a single objective: to build a research-to-execution process that is systematic, auditable, and honest. The project operates on proprietary capital only, with no external investors, no client funds, and no advisory obligations.
               </p>
               <p
                 className="text-base leading-relaxed mb-6"
-                style={{ color: "oklch(0.78 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{ color: "oklch(0.32 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 The focus is G10 foreign exchange — the deepest, most liquid, and most macro-driven segment of global financial markets. The approach combines structural price action analysis, cross-pair mispricing frameworks, and top-down macro filters into a three-layer confluence gate.
               </p>
               <p
                 className="text-base leading-relaxed"
-                style={{ color: "oklch(0.78 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{ color: "oklch(0.32 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 PCG's educational output — process memos, setup anatomy, risk toolkits — is shared to demonstrate that disciplined process documentation is possible at the individual level. It is not shared as advice, signals, or a track record.
               </p>
@@ -218,8 +218,8 @@ export default function About() {
         </div>
         <div className="flex items-end justify-between mb-12 fade-up">
           <h2
-            className="text-white text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
           >
             What We're Building in 90 Days
           </h2>
@@ -232,24 +232,24 @@ export default function About() {
               key={i}
               className="flex items-start gap-4 p-4 fade-up"
               style={{
-                borderBottom: "1px solid oklch(1 0 0 / 6%)",
+                borderBottom: "1px solid oklch(0 0 0 / 6%)",
                 transitionDelay: `${i * 60}ms`,
               }}
             >
               <div
                 className="w-6 h-6 border flex items-center justify-center shrink-0 mt-0.5"
-                style={{ borderColor: "oklch(0.52 0.07 228 / 40%)" }}
+                style={{ borderColor: "oklch(0.68 0.10 64 / 40%)" }}
               >
                 <span
                   className="text-[9px]"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)" }}
+                  style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)" }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
               <span
                 className="text-sm leading-relaxed"
-                style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{ color: "oklch(0.38 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 {goal}
               </span>
@@ -261,7 +261,7 @@ export default function About() {
       {/* ── PROCESS KPIs ── */}
       <section
         className="py-20 md:py-28"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="fade-up mb-4">
@@ -269,14 +269,14 @@ export default function About() {
           </div>
           <div className="mb-12 fade-up">
             <h2
-              className="text-white text-3xl md:text-4xl font-bold mb-4"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl md:text-4xl font-bold mb-4"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               We Measure Process, Not Returns
             </h2>
             <p
               className="text-sm leading-relaxed"
-              style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "580px" }}
+              style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "580px" }}
             >
               PCG's performance metrics are process-based. We do not publish P&L, returns, or win rates. The KPIs that matter are those that measure the quality and consistency of the process itself.
             </p>
@@ -293,31 +293,31 @@ export default function About() {
                   <div className="flex items-start justify-between mb-4">
                     <div
                       className="w-10 h-10 flex items-center justify-center border"
-                      style={{ borderColor: "oklch(0.52 0.07 228 / 40%)" }}
+                      style={{ borderColor: "oklch(0.68 0.10 64 / 40%)" }}
                     >
-                      <Icon size={16} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon size={16} style={{ color: "oklch(0.68 0.10 64)" }} />
                     </div>
                     <span
                       className="text-xs px-2 py-1 border"
                       style={{
                         fontFamily: "'IBM Plex Mono', monospace",
                         letterSpacing: "0.1em",
-                        color: "oklch(0.52 0.07 228)",
-                        borderColor: "oklch(0.52 0.07 228 / 25%)",
+                        color: "oklch(0.68 0.10 64)",
+                        borderColor: "oklch(0.68 0.10 64 / 25%)",
                       }}
                     >
                       {kpi.metric}
                     </span>
                   </div>
                   <h3
-                    className="text-white text-lg font-semibold mb-2"
-                    style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    className="text-lg font-semibold mb-2"
+                    style={{ fontFamily: "'IBM Plex Sans', sans-serif", color: "oklch(0.22 0.04 243)" }}
                   >
                     {kpi.label}
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "oklch(0.62 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{ color: "oklch(0.50 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                   >
                     {kpi.description}
                   </p>
@@ -335,8 +335,8 @@ export default function About() {
         </div>
         <div className="mb-12 fade-up">
           <h2
-            className="text-white text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
           >
             Discipline. Honesty. Iteration.
           </h2>
@@ -349,15 +349,15 @@ export default function About() {
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div
-                className="text-white text-2xl font-bold mb-4"
-                style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+                className="text-2xl font-bold mb-4"
+                style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", color: "oklch(0.22 0.04 243)" }}
               >
                 {value.title}
               </div>
               <div className="pcg-rule mb-4" />
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{ color: "oklch(0.44 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 {value.description}
               </p>
@@ -374,8 +374,8 @@ export default function About() {
             <div>
               <div className="pcg-section-label mb-2">Get in Touch</div>
               <h3
-                className="text-white text-xl font-semibold"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-xl font-semibold"
+                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
               >
                 Mentorship, Partnerships, or Research
               </h3>

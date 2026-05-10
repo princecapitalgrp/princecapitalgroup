@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useState } from 'react'
-import { supabase, MacroMuseumPost, WeeklyMemo, EmailCapture } from '@/lib/supabase'
+import { supabase, MacroMuseumPost, WeeklyMemo, EmailCapture, TradeBreakdown } from '@/lib/supabase'
 
 /**
  * usePosts - Fetch Macro Museum posts from Supabase
@@ -149,6 +149,51 @@ export function useSaveEmail() {
   }
 
   return { saveEmail, loading, error, success }
+}
+
+/**
+ * useTradeBreakdowns - Fetch setup anatomy entries from Supabase
+ * @param limit - Optional: limit number of entries (default: 20)
+ */
+export function useTradeBreakdowns(limit: number = 20) {
+  const [breakdowns, setBreakdowns] = useState<TradeBreakdown[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchBreakdowns = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+
+        if (!supabase) {
+          setLoading(false)
+          return
+        }
+
+        const { data, error: fetchError } = await supabase
+          .from('trade_breakdowns')
+          .select('*')
+          .order('date', { ascending: false })
+          .limit(limit)
+
+        if (fetchError) {
+          throw new Error(fetchError.message)
+        }
+
+        setBreakdowns(data || [])
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch trade breakdowns')
+        console.error('Error fetching trade breakdowns:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchBreakdowns()
+  }, [limit])
+
+  return { breakdowns, loading, error }
 }
 
 /**

@@ -1,6 +1,6 @@
 /*
  * PCG Risk & Governance Page
- * Design: Editorial Authority — risk-bg hero, governance loop sections
+ * Design: Private Bank Heritage — risk-bg hero, white sections, gold accents
  * Sections: Hero, Risk Philosophy, Governance Loop, Pre-trade Checklist, Risk Limits, Review Cadence, Breach Protocol, Disclaimer
  */
 
@@ -124,7 +124,7 @@ export default function Risk() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 80%) 0%, oklch(0.18 0.04 243 / 90%) 60%, oklch(0.22 0.04 243) 100%)",
+              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 80%) 0%, oklch(0.18 0.04 243 / 90%) 60%, oklch(0.18 0.04 243 / 95%) 80%, oklch(0.97 0.002 286) 100%)",
           }}
         />
         <div className="relative container">
@@ -137,7 +137,7 @@ export default function Risk() {
           </h1>
           <p
             className="text-lg leading-relaxed fade-up"
-            style={{ color: "oklch(0.80 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "580px" }}
+            style={{ color: "oklch(0.88 0.02 286)", fontFamily: "'IBM Plex Sans', sans-serif", maxWidth: "580px" }}
           >
             Risk governance is not a constraint on performance — it is the foundation of sustainable execution. Every rule exists to protect the process from the trader's own psychology.
           </p>
@@ -151,8 +151,8 @@ export default function Risk() {
         </div>
         <div className="flex items-end justify-between mb-12 fade-up">
           <h2
-            className="text-white text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
           >
             Four Governing Principles
           </h2>
@@ -168,19 +168,19 @@ export default function Risk() {
             >
               <div
                 className="text-xs mb-3"
-                style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.12em", textTransform: "uppercase" }}
+                style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)", letterSpacing: "0.12em", textTransform: "uppercase" }}
               >
                 {String(i + 1).padStart(2, "0")}.
               </div>
               <h3
-                className="text-white text-xl font-semibold mb-3"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-xl font-semibold mb-3"
+                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
               >
                 {principle.title}
               </h3>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{ color: "oklch(0.44 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 {principle.description}
               </p>
@@ -192,7 +192,7 @@ export default function Risk() {
       {/* ── GOVERNANCE LOOP ── */}
       <section
         className="py-20 md:py-28"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="fade-up mb-4">
@@ -200,8 +200,8 @@ export default function Risk() {
           </div>
           <div className="mb-12 fade-up">
             <h2
-              className="text-white text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               The Six-Step Governance Cycle
             </h2>
@@ -219,26 +219,26 @@ export default function Risk() {
                   <div className="flex items-center gap-3 mb-4">
                     <div
                       className="w-8 h-8 flex items-center justify-center border shrink-0"
-                      style={{ borderColor: "oklch(0.52 0.07 228 / 40%)" }}
+                      style={{ borderColor: "oklch(0.68 0.10 64 / 40%)" }}
                     >
-                      <Icon size={14} style={{ color: "oklch(0.52 0.07 228)" }} />
+                      <Icon size={14} style={{ color: "oklch(0.68 0.10 64)" }} />
                     </div>
                     <span
                       className="text-xs"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em" }}
+                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)", letterSpacing: "0.1em" }}
                     >
                       STEP {item.step}
                     </span>
                   </div>
                   <h3
-                    className="text-white text-base font-semibold mb-2"
-                    style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    className="text-base font-semibold mb-2"
+                    style={{ fontFamily: "'IBM Plex Sans', sans-serif", color: "oklch(0.22 0.04 243)" }}
                   >
                     {item.title}
                   </h3>
                   <p
                     className="text-xs leading-relaxed"
-                    style={{ color: "oklch(0.62 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{ color: "oklch(0.50 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                   >
                     {item.description}
                   </p>
@@ -257,14 +257,14 @@ export default function Risk() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div className="fade-up">
             <h2
-              className="text-white text-3xl font-bold mb-6"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl font-bold mb-6"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               Pre-Trade Checklist
             </h2>
             <p
               className="text-sm leading-relaxed mb-8"
-              style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+              style={{ color: "oklch(0.44 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               Every trade requires a complete checklist pass before a plan is formed. There are no shortcuts. An incomplete checklist means no trade — regardless of perceived opportunity.
             </p>
@@ -273,22 +273,22 @@ export default function Risk() {
                 <div
                   key={i}
                   className="flex items-start gap-3 p-3"
-                  style={{ borderBottom: "1px solid oklch(1 0 0 / 6%)" }}
+                  style={{ borderBottom: "1px solid oklch(0 0 0 / 6%)" }}
                 >
                   <div
                     className="w-5 h-5 border flex items-center justify-center shrink-0 mt-0.5"
-                    style={{ borderColor: "oklch(0.52 0.07 228 / 40%)" }}
+                    style={{ borderColor: "oklch(0.68 0.10 64 / 40%)" }}
                   >
                     <span
                       className="text-[8px]"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)" }}
+                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)" }}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
                   <span
                     className="text-sm"
-                    style={{ color: "oklch(0.78 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{ color: "oklch(0.32 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                   >
                     {item}
                   </span>
@@ -300,14 +300,14 @@ export default function Risk() {
           {/* Risk Limits */}
           <div className="fade-up">
             <h2
-              className="text-white text-3xl font-bold mb-6"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-3xl font-bold mb-6"
+              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
             >
               Risk Limits Framework
             </h2>
             <p
               className="text-sm leading-relaxed mb-8"
-              style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+              style={{ color: "oklch(0.44 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               Risk limits are defined across six categories. Specific values are calibrated to account size and are not published — the categories and their purpose are documented here for transparency.
             </p>
@@ -320,13 +320,13 @@ export default function Risk() {
                 >
                   <div
                     className="text-xs mb-2"
-                    style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                    style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)", letterSpacing: "0.1em", textTransform: "uppercase" }}
                   >
                     {limit.category}
                   </div>
                   <p
                     className="text-xs leading-relaxed"
-                    style={{ color: "oklch(0.65 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                    style={{ color: "oklch(0.48 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                   >
                     {limit.description}
                   </p>
@@ -340,7 +340,7 @@ export default function Risk() {
       {/* ── REVIEW CADENCE ── */}
       <section
         className="py-20 md:py-24"
-        style={{ background: "oklch(0.20 0.04 243)" }}
+        style={{ background: "oklch(0.96 0.003 286)" }}
       >
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -348,14 +348,14 @@ export default function Risk() {
             <div className="fade-up">
               <div className="pcg-section-label mb-4">Review Cadence</div>
               <h2
-                className="text-white text-3xl font-bold mb-6"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-3xl font-bold mb-6"
+                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
               >
                 Weekly Review Memo
               </h2>
               <p
                 className="text-sm leading-relaxed mb-6"
-                style={{ color: "oklch(0.68 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                style={{ color: "oklch(0.44 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 Every week ends with a structured review memo. The memo evaluates process quality — not returns. Key questions include: Were all checklist items completed? Were risk limits respected? Were setups taken only when confluence criteria were met? Were any rules breached?
               </p>
@@ -370,12 +370,12 @@ export default function Risk() {
                   <div
                     key={i}
                     className="flex items-start gap-3"
-                    style={{ borderBottom: "1px solid oklch(1 0 0 / 6%)", paddingBottom: "0.75rem" }}
+                    style={{ borderBottom: "1px solid oklch(0 0 0 / 6%)", paddingBottom: "0.75rem" }}
                   >
-                    <span style={{ color: "oklch(0.52 0.07 228)", fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem" }}>→</span>
+                    <span style={{ color: "oklch(0.68 0.10 64)", fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem" }}>→</span>
                     <span
                       className="text-sm"
-                      style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{ color: "oklch(0.38 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                     >
                       {item}
                     </span>
@@ -388,27 +388,27 @@ export default function Risk() {
             <div className="fade-up">
               <div className="pcg-section-label mb-4">Breach Protocol</div>
               <h2
-                className="text-white text-3xl font-bold mb-6"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-3xl font-bold mb-6"
+                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
               >
                 Rule Breach Response
               </h2>
               <div
                 className="p-6 mb-6"
-                style={{ border: "1px solid oklch(0.577 0.245 27.325 / 30%)", background: "oklch(0.577 0.245 27.325 / 8%)" }}
+                style={{ border: "1px solid oklch(0.577 0.245 27.325 / 30%)", background: "oklch(0.577 0.245 27.325 / 6%)" }}
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <Pause size={16} style={{ color: "oklch(0.80 0.245 27.325)" }} />
+                  <Pause size={16} style={{ color: "oklch(0.577 0.245 27.325)" }} />
                   <span
                     className="text-sm font-medium"
-                    style={{ color: "oklch(0.80 0.245 27.325)", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase" }}
+                    style={{ color: "oklch(0.577 0.245 27.325)", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase" }}
                   >
                     Pause + Review
                   </span>
                 </div>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.72 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                  style={{ color: "oklch(0.40 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                 >
                   Any rule breach triggers an immediate pause. Trading stops. A formal review is conducted to identify the breach, understand the cause, and document the corrective action before trading resumes.
                 </p>
@@ -425,13 +425,13 @@ export default function Risk() {
                   <div key={item.step} className="flex items-start gap-4">
                     <span
                       className="text-xs shrink-0"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.52 0.07 228)", letterSpacing: "0.08em", marginTop: "2px" }}
+                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "oklch(0.68 0.10 64)", letterSpacing: "0.08em", marginTop: "2px" }}
                     >
                       {item.step}
                     </span>
                     <span
                       className="text-sm"
-                      style={{ color: "oklch(0.75 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
+                      style={{ color: "oklch(0.38 0.03 243)", fontFamily: "'IBM Plex Sans', sans-serif" }}
                     >
                       {item.action}
                     </span>
@@ -447,7 +447,7 @@ export default function Risk() {
       <section className="container py-16">
         <div className="fade-up">
           <div className="pcg-disclaimer">
-            <strong style={{ color: "oklch(0.75 0.07 228)" }}>RISK DISCLAIMER:</strong>{" "}
+            <strong style={{ color: "oklch(0.55 0.08 64)" }}>RISK DISCLAIMER:</strong>{" "}
             The risk framework described on this page represents PCG's internal governance approach for proprietary trading. It is published for educational and transparency purposes only. Nothing contained herein constitutes investment advice, a recommendation to trade, or a representation that these risk management techniques are appropriate for any individual. Trading foreign exchange involves substantial risk of loss. Past adherence to a risk framework does not guarantee future capital preservation. All trading involves risk, and you may lose more than your initial investment.
           </div>
         </div>
@@ -461,8 +461,8 @@ export default function Risk() {
             <div>
               <div className="pcg-section-label mb-2">Next</div>
               <h3
-                className="text-white text-xl font-semibold"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-xl font-semibold"
+                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
               >
                 Academy — Educational Resources
               </h3>
