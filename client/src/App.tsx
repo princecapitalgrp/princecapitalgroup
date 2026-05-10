@@ -44,7 +44,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <div className="min-h-screen flex flex-col" style={{ background: "oklch(0.22 0.04 243)" }}>
+          <div className="min-h-screen flex flex-col" style={{ background: "oklch(0.97 0.002 286)" }}>
             <Navigation />
             <main className="flex-1">
               <Router />
