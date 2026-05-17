@@ -14,6 +14,7 @@ interface EmailCaptureFormProps {
   subtitle?: string
   placeholder?: string
   interest?: string
+  defaultSource?: string
   onSuccess?: () => void
 }
 
@@ -21,11 +22,10 @@ export default function EmailCaptureForm({
   title = 'Stay Updated',
   subtitle = 'Get access to exclusive research and weekly process memos.',
   placeholder = 'your@email.com',
-  interest,
+  defaultSource = 'direct',
   onSuccess,
 }: EmailCaptureFormProps) {
   const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
   const { saveEmail, loading, error, success } = useSaveEmail()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,11 +35,13 @@ export default function EmailCaptureForm({
       return
     }
 
-    const result = await saveEmail(email, name || undefined, interest)
+    const search = new URLSearchParams(window.location.search)
+    const ref = search.get('ref') ?? defaultSource
+
+    const result = await saveEmail(email.trim().toLowerCase(), ref)
 
     if (result) {
       setEmail('')
-      setName('')
       onSuccess?.()
     }
   }
@@ -52,17 +54,6 @@ export default function EmailCaptureForm({
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-3">
-        <div>
-          <Input
-            type="text"
-            placeholder="Your name (optional)"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            disabled={loading}
-            className="bg-background border-border"
-          />
-        </div>
-
         <div className="flex gap-2">
           <Input
             type="email"

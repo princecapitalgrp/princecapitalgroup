@@ -79,6 +79,53 @@ CREATE POLICY "anon_select_trade_breakdowns"
 
 
 -- ─────────────────────────────────────────────
+-- 4. macro_museum_posts
+--    Research and analysis articles. Public read-only.
+-- ─────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS public.macro_museum_posts (
+  id                  uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  title               text NOT NULL,
+  content             text NOT NULL,
+  category            text NOT NULL CHECK (category IN ('analysis', 'case_study', 'framework', 'macro_view')),
+  tags                text[] NOT NULL DEFAULT '{}',
+  featured_image_url  text,
+  author              text NOT NULL,
+  published_at        timestamptz NOT NULL DEFAULT now(),
+  created_at          timestamptz NOT NULL DEFAULT now(),
+  updated_at          timestamptz NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.macro_museum_posts ENABLE ROW LEVEL SECURITY;
+
+-- Allow anonymous reads
+CREATE POLICY "anon_select_macro_museum_posts"
+  ON public.macro_museum_posts
+  FOR SELECT
+  TO anon
+  USING (true);
+
+
+-- ─────────────────────────────────────────────
+-- Seed data: macro_museum_posts
+-- ─────────────────────────────────────────────
+INSERT INTO public.macro_museum_posts (title, content, category, author, tags) VALUES
+(
+  'The Macro Edge: High-Probability Convergence',
+  'Convergence between fundamental data and technical structure provides the highest edge in modern markets...',
+  'framework',
+  'PCG Research',
+  ARRAY['Framework', 'Edge']
+),
+(
+  'Q1 2026 Global Outlook',
+  'Analyzing the shift in G7 monetary policy and its impact on carry trades...',
+  'macro_view',
+  'Macro Team',
+  ARRAY['Outlook', 'Monetary Policy']
+);
+
+
+-- ─────────────────────────────────────────────
 -- Seed data: weekly_memos
 -- ─────────────────────────────────────────────
 INSERT INTO public.weekly_memos (title, content, adherence_score, week_of) VALUES
@@ -103,60 +150,23 @@ INSERT INTO public.weekly_memos (title, content, adherence_score, week_of) VALUE
 
 
 -- ─────────────────────────────────────────────
--- Seed data: trade_breakdowns
+-- 5. waitlist
+--    Stores waitlist sign-ups. Anonymous users can INSERT only.
 -- ─────────────────────────────────────────────
-INSERT INTO public.trade_breakdowns (name, date, pair, session, side, tags, description) VALUES
-(
-  'GBPUSD MR DOL Invalidation',
-  '2026-02-26',
-  'GBPUSD',
-  'Thursday',
-  'High',
-  ARRAY['Stop Hunt', 'Structure'],
-  'Mean reversion setup on Dollar invalidation. Price closed back inside the range after sweeping the high. High-probability mean reversion candidate but trade was not taken due to insufficient z-score confirmation.'
-),
-(
-  'EURGBP Mean Reversion',
-  '2026-02-23',
-  'EURGBP',
-  'Monday',
-  'High',
-  ARRAY['Mispricing', 'Z-Score'],
-  'Cross-pair mispricing detected on synthetic vs quoted dislocation. Z-score ≥ 2.0 triggered entry. Trade taken and closed at 2.14x multiple. Excellent confluence between structure and z-score analysis.'
-),
-(
-  'EURUSD MRH Sweep',
-  '2026-02-10',
-  'EURUSD',
-  'Tuesday',
-  'High',
-  ARRAY['Macro Filter', 'Structure'],
-  'Monthly range high sweep with ECB rate differential as macro filter. Setup showed strong structure but macro backdrop was risk-off. Trade not taken due to conflicting macro filter signal.'
-),
-(
-  '+$CR T from MRL',
-  '2026-02-06',
-  'EURUSD',
-  'Asia',
-  'Low',
-  ARRAY['Stop Hunt', 'Risk'],
-  'Turtle soup setup on MRL (monthly range low). Stop hunt pattern identified but z-score was only 1.2 — below minimum 2.0 threshold. Trade not taken. Setup anatomy logged for future reference.'
-),
-(
-  'Asia Highs Sweep Bullish 02s Pump Fake',
-  '2026-02-03',
-  'EURUSD',
-  'Asia',
-  'High',
-  ARRAY['Liquidity Run', 'Mispricing'],
-  'Bullish 02s pump fake on Asia highs. Z-score showed 2.5 standard deviations from mean. Trade taken and closed at 2.5x multiple. Perfect alignment of structure, z-score, and macro filter.'
-),
-(
-  'Weekly TS of HTF Highs in +htf',
-  '2025-04-21',
-  'EURUSD',
-  'Monday',
-  'High',
-  ARRAY['Liquidity Run', 'Macro Filter'],
-  'Weekly turtle soup of higher timeframe highs. Macro filter showed strong risk-on environment. Trade taken and closed at breakeven after hitting stop loss. Process was correct despite negative outcome.'
+CREATE TABLE IF NOT EXISTS public.waitlist (
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  email       text NOT NULL,
+  source      text,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT waitlist_email_unique UNIQUE (email)
 );
+
+ALTER TABLE public.waitlist ENABLE ROW LEVEL SECURITY;
+
+-- Allow anonymous inserts (waitlist sign-up)
+CREATE POLICY "anon_insert_only"
+  ON public.waitlist
+  FOR INSERT
+  TO anon
+  WITH CHECK (true);
+

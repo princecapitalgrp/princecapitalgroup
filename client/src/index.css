@@ -334,4 +334,690 @@
   .process-step:last-child::after {
     display: none;
   }
+
+  .research-page {
+    min-height: 100vh;
+    color: #0f1a2b;
+    background-color: #f5f1e8;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0) 42%),
+      radial-gradient(circle at 80% 0%, rgba(198, 164, 92, 0.08) 0, rgba(198, 164, 92, 0) 28%),
+      repeating-linear-gradient(
+        135deg,
+        rgba(15, 26, 43, 0.015) 0,
+        rgba(15, 26, 43, 0.015) 1px,
+        transparent 1px,
+        transparent 11px
+      );
+  }
+
+  .research-hero,
+  .research-section,
+  .research-footer {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+  }
+
+  .research-hero {
+    padding: 36px 0 72px;
+  }
+
+  .research-hero-inner {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .research-brand-lockup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .research-brand-mark {
+    width: 104px;
+    max-width: 24vw;
+    mix-blend-mode: multiply;
+  }
+
+  .research-brand-label,
+  .research-kicker,
+  .research-section-label,
+  .research-inline-label,
+  .research-note-stats dt,
+  .research-chart-caption,
+  .research-authority,
+  .research-form-footnote,
+  .research-footer p:last-child {
+    font-family: "IBM Plex Mono", monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .research-brand-label,
+  .research-kicker,
+  .research-section-label,
+  .research-inline-label,
+  .research-chart-caption,
+  .research-form-footnote {
+    font-size: 0.72rem;
+    color: rgba(15, 26, 43, 0.68);
+  }
+
+  .research-kicker {
+    color: #c6a45c;
+  }
+
+  .research-title {
+    margin: 0;
+    max-width: 10ch;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.94;
+    color: #0f1a2b;
+    text-wrap: balance;
+  }
+
+  .research-subtitle {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.2rem, 2.4vw, 2rem);
+    font-style: italic;
+    color: rgba(15, 26, 43, 0.8);
+  }
+
+  .research-intro {
+    max-width: 42rem;
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.85;
+    color: rgba(15, 26, 43, 0.84);
+  }
+
+  .research-hero-actions,
+  .research-cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+  }
+
+  .research-btn-primary,
+  .research-btn-secondary,
+  .research-cta-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 46px;
+    padding: 0.85rem 1.35rem;
+    border: 1px solid #c6a45c;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .research-btn-primary {
+    background: #0f1a2b;
+    color: #f5f1e8;
+  }
+
+  .research-btn-primary:hover {
+    background: #17253a;
+  }
+
+  .research-btn-secondary,
+  .research-cta-links a {
+    background: transparent;
+    color: #0f1a2b;
+  }
+
+  .research-btn-secondary:hover,
+  .research-cta-links a:hover {
+    background: rgba(198, 164, 92, 0.08);
+  }
+
+  .research-hero-chart-wrap {
+    width: min(760px, 100%);
+    margin-top: 1.4rem;
+  }
+
+  .research-section {
+    padding: 0 0 92px;
+  }
+
+  .research-section-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .research-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(198, 164, 92, 0.65);
+  }
+
+  .research-framework-grid,
+  .research-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .research-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .research-framework-card,
+  .research-note-card,
+  .research-principle-block,
+  .research-diagnostic-card,
+  .research-checklist-card,
+  .research-cta-panel {
+    border: 1px solid rgba(198, 164, 92, 0.45);
+    background: rgba(255, 255, 255, 0.42);
+  }
+
+  .research-framework-card {
+    padding: 1.5rem;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .research-framework-card h2,
+  .research-principle-block h2,
+  .research-diagnostic-card h2,
+  .research-cta-copy h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.02;
+  }
+
+  .research-framework-card ul {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .research-framework-card li,
+  .research-note-stats dd,
+  .research-crosspair-copy p,
+  .research-diagnostic-card p,
+  .research-cta-copy p,
+  .research-success-panel p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(15, 26, 43, 0.82);
+  }
+
+  .research-framework-closing,
+  .research-diagnostic-bridge {
+    max-width: 48rem;
+    margin: 2rem auto 0;
+    text-align: center;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    color: #0f1a2b;
+  }
+
+  .research-note-card {
+    padding: 1.5rem;
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .research-note-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .research-note-pair {
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(15, 26, 43, 0.6);
+  }
+
+  .research-note-bias {
+    margin: 0.45rem 0 0;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: #0f1a2b;
+  }
+
+  .research-note-metadata {
+    text-align: right;
+  }
+
+  .research-note-metadata span,
+  .research-note-metadata strong {
+    display: block;
+  }
+
+  .research-note-metadata span {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(15, 26, 43, 0.58);
+  }
+
+  .research-note-metadata strong,
+  .research-archetype-row strong {
+    font-family: "Playfair Display", serif;
+    font-size: 1.15rem;
+    color: #0f1a2b;
+  }
+
+  .research-chart-shell {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .research-chart {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .research-chart-axis,
+  .research-chart-guide {
+    fill: none;
+    stroke-width: 0.7;
+  }
+
+  .research-chart-axis {
+    stroke: rgba(15, 26, 43, 0.45);
+  }
+
+  .research-chart-guide {
+    stroke: rgba(15, 26, 43, 0.16);
+  }
+
+  .research-chart-line {
+    fill: none;
+    stroke: #0f1a2b;
+    stroke-width: 1.45;
+  }
+
+  .research-chart-marker {
+    stroke: #c6a45c;
+    stroke-width: 1.05;
+    stroke-dasharray: 3 3;
+  }
+
+  .research-chart-node {
+    fill: #c6a45c;
+  }
+
+  .research-chart-caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .research-note-stats {
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .research-note-stats div {
+    display: grid;
+    gap: 0.35rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(198, 164, 92, 0.35);
+  }
+
+  .research-note-stats dd {
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    color: #0f1a2b;
+  }
+
+  .research-principles {
+    display: grid;
+    gap: 1px;
+    border: 1px solid rgba(198, 164, 92, 0.45);
+    background: rgba(198, 164, 92, 0.45);
+  }
+
+  .research-principle-block {
+    display: grid;
+    grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.35rem 1.5rem;
+    border: 0;
+    background: #f5f1e8;
+  }
+
+  .research-principle-block p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .research-crosspair-layout,
+  .research-cta-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .research-triangle-shell {
+    position: relative;
+    min-height: 320px;
+    border: 1px solid rgba(198, 164, 92, 0.45);
+    background: rgba(255, 255, 255, 0.36);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .research-triangle {
+    width: min(100%, 420px);
+    height: auto;
+  }
+
+  .research-triangle-path,
+  .research-triangle-guide {
+    fill: none;
+    stroke: #0f1a2b;
+  }
+
+  .research-triangle-path {
+    stroke-width: 1.1;
+  }
+
+  .research-triangle-guide {
+    stroke-width: 0.8;
+    stroke-dasharray: 4 4;
+    opacity: 0.4;
+  }
+
+  .research-triangle-node {
+    fill: #0f1a2b;
+  }
+
+  .research-triangle-node-active {
+    fill: #c6a45c;
+  }
+
+  .research-triangle-highlight {
+    fill: rgba(198, 164, 92, 0.16);
+    stroke: #c6a45c;
+    stroke-width: 0.8;
+  }
+
+  .research-triangle-label {
+    position: absolute;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0f1a2b;
+  }
+
+  .research-triangle-label-top {
+    top: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .research-triangle-label-left {
+    left: 1.2rem;
+    bottom: 1.2rem;
+  }
+
+  .research-triangle-label-right {
+    right: 1.2rem;
+    bottom: 1.2rem;
+    color: #c6a45c;
+  }
+
+  .research-crosspair-caption {
+    margin: 0 0 1rem;
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    line-height: 1.1;
+    color: #0f1a2b;
+  }
+
+  .research-diagnostic-card {
+    padding: 2rem;
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .research-diagnostic-eyebrow {
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c6a45c;
+  }
+
+  .research-diagnostic-subhead {
+    margin: 0;
+    max-width: 30rem;
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+
+  .research-archetype-row,
+  .research-diagnostic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .research-archetype-row p {
+    margin: 1.3rem 0 0;
+    font-family: "Playfair Display", serif;
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: #0f1a2b;
+  }
+
+  .research-diagnostic-grid p,
+  .research-checklist-card p,
+  .research-cta-copy p,
+  .research-success-panel p,
+  .research-form-footnote {
+    margin: 0.6rem 0 0;
+  }
+
+  .research-diagnostic-divider {
+    height: 1px;
+    background: rgba(198, 164, 92, 0.6);
+  }
+
+  .research-checklist-card {
+    padding: 1.5rem;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .research-checklist-card h3,
+  .research-success-panel h3 {
+    margin: 0.35rem 0 0;
+    font-size: 1.8rem;
+    line-height: 1.1;
+  }
+
+  .research-authority {
+    margin: 0;
+    color: rgba(15, 26, 43, 0.55);
+  }
+
+  .research-final-cta {
+    padding-bottom: 110px;
+  }
+
+  .research-cta-copy {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .research-price-range {
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(198, 164, 92, 0.45);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(15, 26, 43, 0.8);
+  }
+
+  .research-price-range span {
+    color: #c6a45c;
+  }
+
+  .research-cta-panel {
+    padding: 1.5rem;
+  }
+
+  .research-form,
+  .research-success-panel {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .research-input {
+    width: 100%;
+    min-height: 52px;
+    border: 1px solid rgba(15, 26, 43, 0.22);
+    background: rgba(255, 255, 255, 0.72);
+    padding: 0 1rem;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1rem;
+    color: #0f1a2b;
+  }
+
+  .research-input:focus {
+    outline: none;
+    border-color: #c6a45c;
+  }
+
+  .research-form-error {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #7a2c18;
+  }
+
+  .research-submit {
+    width: 100%;
+  }
+
+  .research-success-icon {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(198, 164, 92, 0.6);
+    color: #c6a45c;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .research-footer {
+    padding: 0 0 56px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid rgba(198, 164, 92, 0.45);
+  }
+
+  .research-footer p {
+    margin: 1.35rem 0 0;
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    color: #0f1a2b;
+  }
+
+  @media (max-width: 1024px) {
+    .research-framework-grid,
+    .research-card-grid,
+    .research-archetype-row,
+    .research-diagnostic-grid,
+    .research-crosspair-layout,
+    .research-cta-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .research-principle-block {
+      grid-template-columns: 1fr;
+    }
+
+    .research-checklist-card {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .research-hero,
+    .research-section,
+    .research-footer {
+      width: min(100% - 28px, 1180px);
+    }
+
+    .research-hero {
+      padding-top: 24px;
+      padding-bottom: 56px;
+    }
+
+    .research-hero-inner {
+      min-height: auto;
+      padding-top: 36px;
+      justify-content: start;
+    }
+
+    .research-framework-card,
+    .research-note-card,
+    .research-diagnostic-card,
+    .research-cta-panel {
+      padding: 1.2rem;
+    }
+
+    .research-title {
+      max-width: 11ch;
+    }
+
+    .research-principles {
+      gap: 1px;
+    }
+
+    .research-crosspair-caption {
+      font-size: 1.5rem;
+    }
+  }
 }

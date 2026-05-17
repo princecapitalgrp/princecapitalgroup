@@ -1,16 +1,6 @@
-/**
- * Custom React Hooks for Supabase
- * Client-side data fetching with error handling and loading states
- */
-
 import { useEffect, useState } from 'react'
-import { supabase, MacroMuseumPost, WeeklyMemo, EmailCapture, TradeBreakdown } from '@/lib/supabase'
+import { supabase, MacroMuseumPost, WeeklyMemo, TradeBreakdown } from '@/lib/supabase'
 
-/**
- * usePosts - Fetch Macro Museum posts from Supabase
- * @param category - Optional: filter by category
- * @param limit - Optional: limit number of posts (default: 10)
- */
 export function usePosts(category?: string, limit: number = 10) {
   const [posts, setPosts] = useState<MacroMuseumPost[]>([])
   const [loading, setLoading] = useState(true)
@@ -58,10 +48,6 @@ export function usePosts(category?: string, limit: number = 10) {
   return { posts, loading, error }
 }
 
-/**
- * useMemos - Fetch weekly memos from Supabase
- * @param limit - Optional: limit number of memos (default: 10)
- */
 export function useMemos(limit: number = 10) {
   const [memos, setMemos] = useState<WeeklyMemo[]>([])
   const [loading, setLoading] = useState(true)
@@ -103,45 +89,51 @@ export function useMemos(limit: number = 10) {
   return { memos, loading, error }
 }
 
-/**
- * useSaveEmail - Save email to Supabase
- */
 export function useSaveEmail() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
 
-  const saveEmail = async (email: string, name?: string, interest?: string) => {
+  const saveEmail = async (email: string, source: string = 'direct') => {
     try {
       setLoading(true)
       setError(null)
       setSuccess(false)
 
       if (!supabase) {
-        setError('Database not configured.')
+        setError('Waitlist capture is unavailable. Supabase is not configured.')
         return false
       }
 
-      const { error: insertError } = await supabase
-        .from('email_captures')
-        .insert([
-          {
-            email,
-            name: name || null,
-            interest: interest || null,
-          }
-        ])
+      const normalizedEmail = email.trim().toLowerCase()
+
+      const { error: insertError } = await supabase.from('waitlist').insert([
+        { email: normalizedEmail, source },
+      ])
 
       if (insertError) {
-        throw new Error(insertError.message)
+        console.error('[PCG] Waitlist insert error:', insertError)
+
+        if (insertError.code === '23505') {
+          setError("You're already on the list")
+          return false
+        }
+
+        if (insertError.code === '42501') {
+          setError('Waitlist temporarily unavailable')
+          return false
+        }
+
+        setError('Something went wrong. Please try again.')
+        return false
       }
 
       setSuccess(true)
+      console.info('[PCG] Waitlist signup stored.')
       return true
     } catch (err) {
-      const errorMsg = err instanceof Error ? err.message : 'Failed to save email'
-      setError(errorMsg)
-      console.error('Error saving email:', err)
+      console.error('[PCG] useSaveEmail unexpected error:', err)
+      setError('Something went wrong. Please try again.')
       return false
     } finally {
       setLoading(false)
@@ -151,10 +143,6 @@ export function useSaveEmail() {
   return { saveEmail, loading, error, success }
 }
 
-/**
- * useTradeBreakdowns - Fetch setup anatomy entries from Supabase
- * @param limit - Optional: limit number of entries (default: 20)
- */
 export function useTradeBreakdowns(limit: number = 20) {
   const [breakdowns, setBreakdowns] = useState<TradeBreakdown[]>([])
   const [loading, setLoading] = useState(true)
@@ -196,10 +184,6 @@ export function useTradeBreakdowns(limit: number = 20) {
   return { breakdowns, loading, error }
 }
 
-/**
- * useRealTimePosts - Subscribe to real-time updates for posts
- * Automatically updates when new posts are added to Supabase
- */
 export function useRealTimePosts() {
   const [posts, setPosts] = useState<MacroMuseumPost[]>([])
   const [loading, setLoading] = useState(true)
@@ -229,7 +213,6 @@ export function useRealTimePosts() {
 
     fetchInitialPosts()
 
-    // Subscribe to real-time changes
     const subscription = supabase
       .channel('macro_museum_posts')
       .on(

@@ -1,589 +1,103 @@
-/*
- * PCG Academy Page
- * Design: Private Bank Heritage — white sections, gold accents
- * Sections: Banner, Public Preview, Weekly Memos, Setup Library, Risk Toolkit, Learning Paths, Office Hours
- * SEO: Dynamic meta tags with useSEO hook
- */
+import React from 'react';
+import { useSaveEmail } from "@/hooks/useSupabase";
 
-import { useEffect, useRef, useState } from "react";
-import { AlertCircle, ChevronDown, Download, BookOpen, Zap, Users, FileText } from "lucide-react";
-import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
-import { useMemos, useTradeBreakdowns } from "@/hooks/useSupabase";
+const Academy = () => {
+  const { saveEmail, loading, error: saveError, success } = useSaveEmail();
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const email = (formData.get('email') as string).trim();
+    if (!email) return;
 
-const ACADEMY_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663478715478/3WDgnQTEJ6CYmFhbjFiUW8/pcg-academy-bg-SiZWbmuevCpcAsjAwJ5uNx.webp";
+    const searchParams = new URLSearchParams(window.location.search);
+    const ref = searchParams.get('ref') ?? 'direct';
 
-function useScrollFadeUp() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
-    );
-    el.querySelectorAll(".fade-up").forEach((e) => observer.observe(e));
-    return () => observer.disconnect();
-  }, []);
-  return ref;
-}
+    await saveEmail(email.toLowerCase(), ref);
+  };
 
-// Weekly Process Memos
-const weeklyMemos = [
-  {
-    id: 1,
-    week: "Week of Mar 24, 2026",
-    adherence: "92%",
-    snippet: "Strong adherence to signal stack this week. Z-scores remained within expected ranges. One trade hit SL due to macro event risk not fully accounted for. Lesson: increase event risk buffer on high-impact news days. Three trades taken, two closed at profit, one at breakeven. Overall process quality excellent.",
-  },
-  {
-    id: 2,
-    week: "Week of Mar 17, 2026",
-    adherence: "88%",
-    snippet: "Moderate week with mixed signals. EURUSD showed strong structure but z-scores were inconclusive. Passed on two setups due to insufficient confluence. One discretionary override on Tuesday — logged as rule breach. Adherence score reflects this deviation. Macro filter correctly identified risk-off environment.",
-  },
-  {
-    id: 3,
-    week: "Week of Mar 10, 2026",
-    adherence: "95%",
-    snippet: "Excellent execution week. All five trades followed pre-defined criteria. Z-scores aligned perfectly with price action. No discretionary overrides. Kill-switch protocol tested but not triggered. Weekly drawdown limit respected. Setup anatomy consistent across all trades. Process discipline at peak.",
-  },
-];
+  const errorStyle: React.CSSProperties = {
+    color: "#F7F8FA",
+    fontSize: "0.875rem",
+    marginTop: "0.5rem",
+    fontFamily: "'IBM Plex Mono', monospace",
+    opacity: 0.84,
+  };
 
-// Setup Library
-const setupLibrary = [
-  {
-    id: 1,
-    name: "GBPUSD MR DOL Invalidation",
-    date: "Feb 26, 2026",
-    pair: "GBPUSD",
-    session: "Thursday",
-    side: "High",
-    tags: ["Stop Hunt", "Structure"],
-    description: "Mean reversion setup on Dollar invalidation. Price closed back inside the range after sweeping the high. High-probability mean reversion candidate but trade was not taken due to insufficient z-score confirmation.",
-  },
-  {
-    id: 2,
-    name: "EURGBP Mean Reversion",
-    date: "Feb 23, 2026",
-    pair: "EURGBP",
-    session: "Monday",
-    side: "High",
-    tags: ["Mispricing", "Z-Score"],
-    description: "Cross-pair mispricing detected on synthetic vs quoted dislocation. Z-score ≥ 2.0 triggered entry. Trade taken and closed at 2.14x multiple. Excellent confluence between structure and z-score analysis.",
-  },
-  {
-    id: 3,
-    name: "EURUSD MRH Sweep",
-    date: "Feb 10, 2026",
-    pair: "EURUSD",
-    session: "Tuesday",
-    side: "High",
-    tags: ["Macro Filter", "Structure"],
-    description: "Monthly range high sweep with ECB rate differential as macro filter. Setup showed strong structure but macro backdrop was risk-off. Trade not taken due to conflicting macro filter signal.",
-  },
-  {
-    id: 4,
-    name: "+$CR T from MRL",
-    date: "Feb 6, 2026",
-    pair: "EURUSD",
-    session: "Asia",
-    side: "Low",
-    tags: ["Stop Hunt", "Risk"],
-    description: "Turtle soup setup on MRL (monthly range low). Stop hunt pattern identified but z-score was only 1.2 — below minimum 2.0 threshold. Trade not taken. Setup anatomy logged for future reference.",
-  },
-  {
-    id: 5,
-    name: "Asia Highs Sweep Bullish 02s Pump Fake",
-    date: "Feb 3, 2026",
-    pair: "EURUSD",
-    session: "Asia",
-    side: "High",
-    tags: ["Liquidity Run", "Mispricing"],
-    description: "Bullish 02s pump fake on Asia highs. Z-score showed 2.5 standard deviations from mean. Trade taken and closed at 2.5x multiple. Perfect alignment of structure, z-score, and macro filter.",
-  },
-  {
-    id: 6,
-    name: "Weekly TS of HTF Highs in +htf",
-    date: "Apr 21, 2025",
-    pair: "EURUSD",
-    session: "Monday",
-    side: "High",
-    tags: ["Liquidity Run", "Macro Filter"],
-    description: "Weekly turtle soup of higher timeframe highs. Macro filter showed strong risk-on environment. Trade taken and closed at breakeven after hitting stop loss. Process was correct despite negative outcome.",
-  },
-];
-
-// Risk Toolkit Downloads
-const riskToolkit = [
-  {
-    icon: FileText,
-    title: "Journal Template",
-    description: "Structured template for post-trade journaling. Includes sections for setup anatomy, execution quality, and psychological factors.",
-    file: "journal-template.pdf",
-  },
-  {
-    icon: AlertCircle,
-    title: "Pre-Trade Checklist",
-    description: "Eight-point checklist to verify all confluence gates before entry. Ensures discipline and removes discretion.",
-    file: "pretrade-checklist.pdf",
-  },
-  {
-    icon: FileText,
-    title: "Weekly Memo Template",
-    description: "Framework for weekly process review. Tracks adherence, setup quality, and continuous improvement metrics.",
-    file: "weekly-memo-template.pdf",
-  },
-];
-
-// Learning Paths
-const learningPaths = [
-  {
-    level: "Foundations",
-    description: "Start here. Learn the basics of market structure, session timing, and liquidity concepts.",
-    modules: 4,
-  },
-  {
-    level: "Intermediate",
-    description: "Dive deeper into z-score analysis, cross-pair relationships, and macro filtering.",
-    modules: 6,
-  },
-  {
-    level: "Advanced",
-    description: "Master confluence gating, position sizing, and psychological discipline in live trading.",
-    modules: 5,
-  },
-];
-
-export default function Academy() {
-  useSEO({
-    title: "Academy | Prince Capital Group",
-    description: "Educational resources for FX traders: weekly process memos, setup anatomy library, risk toolkit, and learning paths. Educational content only.",
-    canonical: "https://princecapitalgroup.com/academy",
-  });
-
-  const pageRef = useScrollFadeUp();
-  const [expandedMemo, setExpandedMemo] = useState<string | null>(null);
-  const [expandedSetup, setExpandedSetup] = useState<string | null>(null);
-
-  const { memos: liveMemos } = useMemos(10);
-  const { breakdowns: liveBreakdowns } = useTradeBreakdowns(20);
-
-  const displayMemos = liveMemos.length > 0
-    ? liveMemos.map(m => ({
-        id: m.id,
-        week: m.title,
-        adherence: `${m.adherence_score}%`,
-        snippet: m.content,
-      }))
-    : weeklyMemos.map(m => ({ ...m, id: String(m.id) }));
-
-  const displaySetups = liveBreakdowns.length > 0
-    ? liveBreakdowns
-    : setupLibrary.map(s => ({ ...s, id: String(s.id) }));
+  const successStyle: React.CSSProperties = {
+    color: "#F7F8FA",
+    fontSize: "1rem",
+    marginTop: "1rem",
+    textAlign: "center",
+    fontFamily: "'IBM Plex Sans', sans-serif",
+    fontWeight: "600",
+  };
 
   return (
-    <div ref={pageRef}>
-      {/* ── STICKY EDUCATIONAL BANNER ── */}
-      <div
-        className="fixed top-16 md:top-20 left-0 right-0 z-40 w-full py-3 text-center border-b"
-        style={{
-          background: "oklch(0.68 0.10 64 / 8%)",
-          borderColor: "oklch(0.68 0.10 64 / 35%)",
-          backdropFilter: "blur(8px)",
-        }}
+    <section className="min-h-screen flex flex-col items-center justify-center bg-[#1A2332] text-[#F7F8FA] p-8">
+      <h1 
+        className="text-4xl md:text-5xl font-bold mb-4 text-center"
+        style={{ fontFamily: "'Playfair Display', serif" }}
       >
-        <div className="flex items-center justify-center gap-2">
-          <AlertCircle size={16} style={{ color: "oklch(0.68 0.10 64)", flexShrink: 0 }} />
-          <span
-            className="text-xs md:text-sm font-medium"
-            style={{
-              color: "oklch(0.55 0.08 64)",
-              fontFamily: "'IBM Plex Mono', monospace",
-              letterSpacing: "0.08em",
-            }}
-          >
-            EDUCATIONAL CONTENT ONLY — NOT INVESTMENT ADVICE — NO SIGNALS
-          </span>
-        </div>
-      </div>
-
-      {/* ── SPACING FOR STICKY BANNER ── */}
-      <div className="h-14 md:h-16" />
-
-      {/* ── HERO ── */}
-      <section
-        className="relative pt-16 pb-20 md:pt-20 md:pb-28"
-        style={{
-          backgroundImage: `url(${ACADEMY_BG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        PCG Academy — First Access
+      </h1>
+      <p 
+        className="text-lg mb-8 max-w-xl text-center"
+        style={{ color: "#F7F8FA", fontFamily: "'IBM Plex Sans', sans-serif", opacity: 0.86 }}
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, oklch(0.18 0.04 243 / 80%) 0%, oklch(0.18 0.04 243 / 90%) 60%, oklch(0.18 0.04 243 / 95%) 80%, oklch(0.97 0.002 286) 100%)",
-          }}
-        />
-        <div className="relative container">
-          <div className="pcg-section-label mb-4 fade-up">Learning Hub</div>
-          <h1
-            className="text-white text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up"
-            style={{ fontFamily: "'Playfair Display', serif", maxWidth: "700px" }}
+        A systematic FX trading curriculum built on three years of documented
+        methodology. We're building it for the right people first.
+      </p>
+
+      {success ? (
+        <div style={successStyle}>
+          You're on the list.
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="flex flex-col items-center w-full max-w-md">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            disabled={loading}
+            className="w-full p-4 rounded mb-2 bg-[#3A3F47] text-[#F7F8FA] border border-transparent focus:border-[#B8965A] focus:outline-none transition-all"
+            style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
+          />
+          
+          {saveError && <div style={errorStyle}>{saveError}</div>}
+          
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full mt-4 bg-[#B8965A] text-[#1A2332] font-bold py-3 px-6 rounded transition-opacity uppercase tracking-widest text-sm hover:opacity-90"
+            style={{ fontFamily: "'IBM Plex Mono', monospace" }}
           >
-            PCG Academy
-          </h1>
-          <p
-            className="text-lg leading-relaxed mb-8 fade-up"
-            style={{
-              color: "oklch(0.88 0.02 286)",
-              fontFamily: "'IBM Plex Sans', sans-serif",
-              maxWidth: "600px",
-            }}
-          >
-            Public educational resources documenting our research-to-execution process. Learn our approach to signal stacking, risk governance, and disciplined execution.
-          </p>
-        </div>
-      </section>
+            {loading ? "Processing..." : "Get Access"}
+          </button>
+        </form>
+      )}
 
-      {/* ── WEEKLY PROCESS MEMOS ── */}
-      <section className="py-20 md:py-28 container">
-        <div className="fade-up mb-4">
-          <div className="pcg-section-label">Process Documentation</div>
-        </div>
-        <div className="flex items-end justify-between mb-12 fade-up">
-          <h2
-            className="text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-          >
-            Weekly Process Memos
-          </h2>
-        </div>
+      <p className="mt-12 text-sm text-center">
+        <a
+          href="https://antoniogrillobalen.substack.com"
+          className="underline transition-opacity hover:opacity-90"
+          style={{ color: "#B8965A", fontFamily: "'IBM Plex Mono', monospace" }}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read the free process memos →
+        </a>
+      </p>
 
-        <div className="space-y-4">
-          {displayMemos.map((memo) => (
-            <div key={memo.id} className="fade-up">
-              <button
-                onClick={() => setExpandedMemo(expandedMemo === memo.id ? null : memo.id)}
-                className="w-full p-6 rounded-lg text-left transition-all duration-300"
-                style={{
-                  background: expandedMemo === memo.id ? "oklch(0.68 0.10 64 / 10%)" : "oklch(0.99 0.001 286)",
-                  border: `1px solid oklch(0.68 0.10 64 / ${expandedMemo === memo.id ? 50 : 25}%)`,
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3
-                      className="font-bold mb-2"
-                      style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-                    >
-                      {memo.week}
-                    </h3>
-                    <div
-                      className="text-sm"
-                      style={{
-                        color: "oklch(0.68 0.10 64)",
-                        fontFamily: "'IBM Plex Mono', monospace",
-                        letterSpacing: "0.08em",
-                      }}
-                    >
-                      Adherence: {memo.adherence}
-                    </div>
-                  </div>
-                  <ChevronDown
-                    size={20}
-                    className={`transition-transform ${expandedMemo === memo.id ? "rotate-180" : ""}`}
-                    style={{ color: "oklch(0.68 0.10 64)" }}
-                  />
-                </div>
-              </button>
-
-              {expandedMemo === memo.id && (
-                <div
-                  className="mt-2 p-6 rounded-lg animate-in fade-in slide-in-from-top-2"
-                  style={{
-                    background: "oklch(0.97 0.002 286)",
-                    border: "1px solid oklch(0.68 0.10 64 / 30%)",
-                  }}
-                >
-                  <p
-                    className="text-base leading-relaxed"
-                    style={{
-                      color: "oklch(0.32 0.03 243)",
-                      fontFamily: "'IBM Plex Sans', sans-serif",
-                    }}
-                  >
-                    {memo.snippet}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── SETUP ANATOMY LIBRARY ── */}
-      <section
-        className="py-20 md:py-28"
-        style={{ background: "oklch(0.96 0.003 286)" }}
+      <p 
+        className="mt-6 text-sm italic opacity-60 text-center"
+        style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
       >
-        <div className="container">
-          <div className="fade-up mb-4">
-            <div className="pcg-section-label">Trade Examples</div>
-          </div>
-          <div className="flex items-end justify-between mb-12 fade-up">
-            <h2
-              className="text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-            >
-              Setup Anatomy Library
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {displaySetups.map((setup) => (
-              <div key={setup.id} className="fade-up">
-                <button
-                  onClick={() => setExpandedSetup(expandedSetup === setup.id ? null : setup.id)}
-                  className="w-full p-6 rounded-lg text-left transition-all duration-300"
-                  style={{
-                    background: expandedSetup === setup.id ? "oklch(0.68 0.10 64 / 10%)" : "oklch(0.99 0.001 286)",
-                    border: `1px solid oklch(0.68 0.10 64 / ${expandedSetup === setup.id ? 50 : 25}%)`,
-                  }}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <h3
-                        className="font-bold mb-2"
-                        style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-                      >
-                        {setup.name}
-                      </h3>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span
-                          className="text-xs px-2 py-1 rounded"
-                          style={{
-                            background: "oklch(0.68 0.10 64 / 15%)",
-                            color: "oklch(0.60 0.10 64)",
-                            fontFamily: "'IBM Plex Mono', monospace",
-                            letterSpacing: "0.08em",
-                          }}
-                        >
-                          {setup.pair}
-                        </span>
-                        {setup.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs px-2 py-1 rounded"
-                            style={{
-                              background: "oklch(0 0 0 / 5%)",
-                              color: "oklch(0.48 0.03 243)",
-                              fontFamily: "'IBM Plex Mono', monospace",
-                              letterSpacing: "0.08em",
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div
-                        className="text-xs"
-                        style={{
-                          color: "oklch(0.55 0.03 243)",
-                          fontFamily: "'IBM Plex Mono', monospace",
-                        }}
-                      >
-                        {setup.date} · {setup.session} · Side: {setup.side}
-                      </div>
-                    </div>
-                    <ChevronDown
-                      size={20}
-                      className={`transition-transform flex-shrink-0 mt-1 ${expandedSetup === setup.id ? "rotate-180" : ""}`}
-                      style={{ color: "oklch(0.68 0.10 64)" }}
-                    />
-                  </div>
-                </button>
-
-                {expandedSetup === setup.id && (
-                  <div
-                    className="mt-2 p-6 rounded-lg animate-in fade-in slide-in-from-top-2"
-                    style={{
-                      background: "oklch(0.97 0.002 286)",
-                      border: "1px solid oklch(0.68 0.10 64 / 30%)",
-                    }}
-                  >
-                    <p
-                      className="text-base leading-relaxed"
-                      style={{
-                        color: "oklch(0.32 0.03 243)",
-                        fontFamily: "'IBM Plex Sans', sans-serif",
-                      }}
-                    >
-                      {setup.description}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── RISK TOOLKIT ── */}
-      <section className="py-20 md:py-28 container">
-        <div className="fade-up mb-4">
-          <div className="pcg-section-label">Resources</div>
-        </div>
-        <div className="flex items-end justify-between mb-12 fade-up">
-          <h2
-            className="text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-          >
-            Risk Toolkit Downloads
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {riskToolkit.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className="fade-up p-8 rounded-lg transition-all duration-300 hover:shadow-md cursor-pointer"
-                style={{
-                  background: "oklch(0.99 0.001 286)",
-                  border: "1px solid oklch(0.68 0.10 64 / 25%)",
-                }}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <Icon size={28} style={{ color: "oklch(0.68 0.10 64)" }} />
-                  <Download size={18} style={{ color: "oklch(0.68 0.10 64)" }} />
-                </div>
-                <h3
-                  className="font-bold mb-2"
-                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{
-                    color: "oklch(0.48 0.03 243)",
-                    fontFamily: "'IBM Plex Sans', sans-serif",
-                  }}
-                >
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ── LEARNING PATHS ── */}
-      <section
-        className="py-20 md:py-28"
-        style={{ background: "oklch(0.96 0.003 286)" }}
-      >
-        <div className="container">
-          <div className="fade-up mb-4">
-            <div className="pcg-section-label">Curriculum</div>
-          </div>
-          <div className="flex items-end justify-between mb-12 fade-up">
-            <h2
-              className="text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-            >
-              Learning Paths
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {learningPaths.map((path) => (
-              <div
-                key={path.level}
-                className="fade-up p-8 rounded-lg"
-                style={{
-                  background: "oklch(0.99 0.001 286)",
-                  border: "1px solid oklch(0.68 0.10 64 / 25%)",
-                }}
-              >
-                <BookOpen size={28} style={{ color: "oklch(0.68 0.10 64)", marginBottom: "16px" }} />
-                <h3
-                  className="text-lg font-bold mb-3"
-                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-                >
-                  {path.level}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed mb-4"
-                  style={{
-                    color: "oklch(0.48 0.03 243)",
-                    fontFamily: "'IBM Plex Sans', sans-serif",
-                  }}
-                >
-                  {path.description}
-                </p>
-                <div
-                  className="text-xs"
-                  style={{
-                    color: "oklch(0.68 0.10 64)",
-                    fontFamily: "'IBM Plex Mono', monospace",
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  {path.modules} modules
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── OFFICE HOURS ── */}
-      <section className="py-20 md:py-28 container">
-        <div className="fade-up">
-          <div
-            className="p-8 rounded-lg"
-            style={{
-              background: "oklch(0.68 0.10 64 / 6%)",
-              border: "1px solid oklch(0.68 0.10 64 / 35%)",
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <Users size={28} style={{ color: "oklch(0.68 0.10 64)", marginTop: "4px", flexShrink: 0 }} />
-              <div>
-                <h3
-                  className="text-lg font-bold mb-3"
-                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.22 0.04 243)" }}
-                >
-                  Office Hours & Q&A
-                </h3>
-                <p
-                  className="text-base leading-relaxed mb-6"
-                  style={{
-                    color: "oklch(0.32 0.03 243)",
-                    fontFamily: "'IBM Plex Sans', sans-serif",
-                  }}
-                >
-                  Join periodic office hours to discuss process, ask questions about the signal stack, and engage with the PCG community. Topics include confluence gating, z-score analysis, risk management, and psychological discipline.
-                </p>
-                <Link href="/contact">
-                  <button className="pcg-btn-primary flex items-center gap-2">
-                    Sign Up for Office Hours <Zap size={14} />
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+        120+ documented trades. 5-Factor Confluence System. Process over performance.
+      </p>
+    </section>
   );
-}
+};
+
+export default Academy;

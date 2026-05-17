@@ -1,7 +1,7 @@
 /*
  * PCG Waitlist Page
  * Design: Private Bank Heritage — white sections, gold accents
- * Backend: Supabase email_captures table via useSaveEmail hook
+ * Backend: Supabase waitlist table via useSaveEmail hook
  * Sections: Hero, Form + Perks, Disclaimer
  */
 
@@ -91,7 +91,8 @@ export default function Waitlist() {
   const pageRef = useScrollFadeUp();
   const { saveEmail, loading, error: saveError, success } = useSaveEmail();
 
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const ref = new URLSearchParams(window.location.search).get('ref') ?? 'direct';
+  const [formData, setFormData] = useState({ email: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -114,8 +115,7 @@ export default function Waitlist() {
 
     const ok = await saveEmail(
       formData.email.trim().toLowerCase(),
-      formData.name.trim() || undefined,
-      "waitlist"
+      ref
     );
 
     if (ok) {
@@ -217,22 +217,6 @@ export default function Waitlist() {
                 </p>
 
                 <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                  {/* Name (optional) */}
-                  <div>
-                    <label style={labelStyle}>
-                      First Name <span style={{ opacity: 0.5 }}>(optional)</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Your first name"
-                      style={inputStyle}
-                      onFocus={(e) => (e.target.style.borderColor = "oklch(0.68 0.10 64)")}
-                      onBlur={(e) => (e.target.style.borderColor = "oklch(0 0 0 / 12%)")}
-                    />
-                  </div>
-
                   {/* Email */}
                   <div>
                     <label style={labelStyle}>Email Address</label>
@@ -265,8 +249,8 @@ export default function Waitlist() {
                   {/* Server error (e.g. duplicate email) */}
                   {saveError && (
                     <div style={errorStyle}>
-                      {saveError.includes("duplicate") || saveError.includes("unique")
-                        ? "This email is already on the waitlist."
+                      {saveError === "You're already on the list"
+                        ? saveError
                         : "Something went wrong. Please try again."}
                     </div>
                   )}

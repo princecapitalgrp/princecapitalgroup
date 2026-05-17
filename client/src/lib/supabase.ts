@@ -7,11 +7,11 @@
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 if (!supabaseUrl || !supabaseKey) {
   console.warn(
-    '[PCG] Missing Supabase environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY). ' +
+    '[PCG] Missing Supabase environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY). ' +
     'Waitlist and data features will be disabled.'
   )
 }
@@ -59,6 +59,7 @@ export interface EmailCapture {
   id: string
   email: string
   name?: string
+  source?: string
   interest?: string
   created_at: string
 }

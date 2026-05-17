@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
@@ -17,24 +17,35 @@ import MacroMuseum from "./pages/MacroMuseum";
 import RegimeGallery from "./pages/RegimeGallery";
 import MapWall from "./pages/MapWall";
 import RegionalChamber from "./pages/RegionalChamber";
+import Research from "./pages/Research";
 
 function Router() {
+  const [location] = useLocation();
+  const isStandalonePage = location === "/academy" || location === "/research";
+
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/strategy" component={Strategy} />
-      <Route path="/risk" component={Risk} />
-      <Route path="/academy" component={Academy} />
-      <Route path="/waitlist" component={Waitlist} />
-      <Route path="/macro-museum" component={MacroMuseum} />
-      <Route path="/macro-museum/regime-gallery" component={RegimeGallery} />
-      <Route path="/macro-museum/map-wall" component={MapWall} />
-      <Route path="/macro-museum/regional-chamber" component={RegionalChamber} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+    <div className="min-h-screen flex flex-col" style={{ background: "oklch(0.97 0.002 286)" }}>
+      {!isStandalonePage && <Navigation />}
+      <main className="flex-1">
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/strategy" component={Strategy} />
+          <Route path="/risk" component={Risk} />
+          <Route path="/academy" component={Academy} />
+          <Route path="/research" component={Research} />
+          <Route path="/waitlist" component={Waitlist} />
+          <Route path="/macro-museum" component={MacroMuseum} />
+          <Route path="/macro-museum/regime-gallery" component={RegimeGallery} />
+          <Route path="/macro-museum/map-wall" component={MapWall} />
+          <Route path="/macro-museum/regional-chamber" component={RegionalChamber} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/404" component={NotFound} />
+          <Route component={NotFound} />
+        </Switch>
+      </main>
+      {!isStandalonePage && <Footer />}
+    </div>
   );
 }
 
@@ -44,13 +55,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <div className="min-h-screen flex flex-col" style={{ background: "oklch(0.97 0.002 286)" }}>
-            <Navigation />
-            <main className="flex-1">
-              <Router />
-            </main>
-            <Footer />
-          </div>
+          <Router />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
